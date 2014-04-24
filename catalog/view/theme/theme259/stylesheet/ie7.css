@@ -1,0 +1,26 @@
+/* God I hate Microsoft! */
+.product-filter .display {
+	  float:right;
+	  margin-top:0px;
+	  }
+/************************* table wishlist ****************/
+.table td {
+	padding:8px
+	}
+
+header #logo a img {
+	width:auto
+	}
+/*--------------------------------------------------------*/	
+#menu > div > ul > li > a {
+	font-weight:normal;
+}
+.camera_caption {    
+    top: 48px;
+}
+.banner .s-desc:after{
+	background:url(../image/arr_banner_ie.png) no-repeat scroll 0 0 transparent;
+}
+.box .box-content .box-product ul li:hover .quick-view-button {
+   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+}
