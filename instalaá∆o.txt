@@ -1,0 +1,40 @@
+﻿/************************************************/
+Tradução pt-br OpenCart para versão v1.5.6
+Autor: Jeann, Brunna
+Local: Brasil
+e-mail: jeann@surgimento.com.br, brunna.surgimento@gmail.com
+Codificação: Unicode (UTF-8)
+Revisado em: 07/08/2013
+/************************************************/
+
+Tradução completa do sistema, tanto do administrativo como da loja.
+
+Esta tradução é alternativa e não tem relação com o OpenCart Brasil. É uma tradução que iremos adotar como padrão para nós, e resolvemos compartilhar.
+
+Distribuição gratuita - Compartilhe, não venda. Lembrando que essa não é a tradução oficial do OpenCart Brasil, e sim apenas uma variação que pretendemos trabalhar, e você poderá usar se preferir.
+
+/************************************************/
+
+=== INSTALAÇÃO ===
+1) Copie o conteúdo do arquivo descompactado (diretórios admin e catalog) para o diretório raiz da instalação de seu OpenCart;
+2) Abra a administração e navegue para "System > Localisation > Languages";
+3) Clique no botão "Insert" para abrir a página de adição de novo idioma;
+4) Preencha os campos com os dados a seguir (imagem anexada):
+	Language name: Português (BR)
+	Code: pt-br
+	Locale: pt_BR.UTF-8,pt_BR,pt-br,pt_br,portuguese,portugues
+	Image: br.png
+	Directory: portuguese-br
+	Filename: portuguese-br
+	Status: Enabled
+	Sort Order: 1
+5) Clique no botão "Save";
+6) Navegue para "System > Settings" e clique no escrito "Edit" na unica opção de loja disponivel, logo após abra a aba "Local";
+7) Altere o campo "Language" para "Português (BR)" para defini-lo como padrão da loja;
+8) Altere o campo "Admin Language" para "Português (BR)" para defini-lo como padrão do painel de administração;
+8) Clique no botão "Save";
+
+
+=== ATUALIZAÇÃO ===
+1) Copie o conteúdo do arquivo descompactado (diretórios admin e catalog) para o diretório raiz da instalação de seu OpenCart;
+2) Sobrescreva todos arquivos quando requisitado;
