@@ -3,4 +3,13 @@ admin/config.php
 
 config.php
 
+
+system/logs/error.txt
+system/cache
+system/cache/cache.currency.1398617188
+
+system/cache/cache.language.1398616341
+
+config.php
+
 admin/config.php
