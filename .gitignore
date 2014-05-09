@@ -15,3 +15,6 @@ config.php
 admin/config.php
 
 image/cache/
+config.php
+
+admin/config.php
