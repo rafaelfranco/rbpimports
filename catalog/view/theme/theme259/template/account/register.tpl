@@ -150,6 +150,19 @@
 			<tr>
 				<td>
 					<div class="control-group">
+						<label class="control-label" for="postcode"><span id="postcode-required" class="required">*</span> <?php echo $entry_postcode; ?></label>
+						<div class="controls">
+							<input class="q1" type="text" maxlength="8" name="postcode" value="<?php echo $postcode; ?>" />
+							<?php if ($error_postcode) { ?>
+							<span class="error help-inline"><?php echo $error_postcode; ?></span>
+							<?php } ?>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="control-group">
 						<label class="control-label" for="address_1"><span class="required">*</span> <?php echo $entry_address_1; ?></label>
 						<div class="controls">
 							<input class="q1" type="text" name="address_1" value="<?php echo $address_1; ?>" />
@@ -186,11 +199,12 @@
 			<tr>
 				<td>
 					<div class="control-group">
-						<label class="control-label" for="postcode"><span id="postcode-required" class="required">*</span> <?php echo $entry_postcode; ?></label>
+						<label class="control-label" for="zone_id"><span class="required">*</span> <?php echo $entry_zone; ?></label>
 						<div class="controls">
-							<input class="q1" type="text" name="postcode" value="<?php echo $postcode; ?>" />
-							<?php if ($error_postcode) { ?>
-							<span class="error help-inline"><?php echo $error_postcode; ?></span>
+							<select name="zone_id" id="zone">
+							</select>
+							<?php if ($error_zone) { ?>
+							<span class="error help-inline"><?php echo $error_zone; ?></span>
 							<?php } ?>
 						</div>
 					</div>
@@ -218,20 +232,7 @@
 					</div>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<div class="control-group">
-						<label class="control-label" for="zone_id"><span class="required">*</span> <?php echo $entry_zone; ?></label>
-						<div class="controls">
-							<select name="zone_id">
-							</select>
-							<?php if ($error_zone) { ?>
-							<span class="error help-inline"><?php echo $error_zone; ?></span>
-							<?php } ?>
-						</div>
-					</div>
-				</td>
-			</tr>
+			
 		  </table>
 		</div>
 		<h2><?php echo $text_your_password; ?></h2>
