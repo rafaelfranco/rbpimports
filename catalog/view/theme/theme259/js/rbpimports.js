@@ -98,4 +98,23 @@ jQuery(document).ready(function($) {
              }
         });
 	});
+
+
+    $('.button-email').click(function() {
+        if($('#email').val() === '') {
+            alert('Insira seu e-mail');
+        } else {
+            $.ajax({
+                url: '/cadastraEmail.php',
+                type: 'POST',
+                data: "email="+$('#email').val()+"&produto="+$('input[name=product_id]').val(),
+            success: function(json) {
+                
+                $('#email').attr('value','');
+                alert('E-mail cadastrado com sucesso');
+                }
+            });
+        }
+    });
+
 });

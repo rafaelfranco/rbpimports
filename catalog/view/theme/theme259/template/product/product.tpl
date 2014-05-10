@@ -82,8 +82,10 @@
 			<span><?php echo $text_stock; ?></span><div class="prod-stock"><?php echo $stock; ?></div>
 			<?php if ($stock == 'Indisponivel') { ?>
 			<form action="#">
+				<br>
 				<b>Avise-me quando estiver disponível</b><br>
-				<input type="text" id="email">
+				<input type="text" placeholder=" Insira seu e-mail" id="email">
+				<input type="button" value="Ok" class="button-email" />
 			</form>
 			<?php } ?>
 		</div>
