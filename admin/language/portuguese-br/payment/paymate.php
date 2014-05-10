@@ -1,23 +1,23 @@
 <?php
 // Heading
-$_['heading_title']		= 'Paymate';
+$_['heading_title']      = 'Paymate';
 
 // Text 
-$_['text_payment']		= 'Pagamento';
-$_['text_success']		= 'Pagamento Paymate atualizado com sucesso!';
+$_['text_payment']       = 'Formas de Pagamento';
+$_['text_success']       = 'Módulo Paymate modificado com sucesso!';
 
 // Entry
-$_['entry_username']	= 'Nome de usuário:';
-$_['entry_password']     = 'Password:<br /><span class="help">Just use some random password. This will be used to make sure the payment information is not interfered with after being sent to the payment gateway.</span>';
-$_['entry_test']         = 'Modo teste:';
-$_['entry_total']       = 'Total:<br /><span class="help">O total que a compra deve chegar antes que este método de pagamento se torne ativo.</span>'; 
-$_['entry_order_status']= 'Situação dos pedidos:';
-$_['entry_geo_zone']	= 'Região geográfica:';
-$_['entry_status']		= 'Situação:';
-$_['entry_sort_order']	= 'Ordenação:';
+$_['entry_username']     = 'Usuário:';
+$_['entry_password']     = 'Senha:<br /><span class="help">Coloque alguma senha aleatória. Isto deve ser utilizado para certificar-se que a informação de pagamento não sofreu modificação depois de enviada para o gateway.</span>';
+$_['entry_test']         = 'Modo de Teste:';
+$_['entry_total']        = 'Total Mínimo:<br /><span class="help">Total mínimo que o pedido deve alcançar para que este método de pagamento seja habilitado.</span>';
+$_['entry_order_status'] = 'Situação do Pedido:';
+$_['entry_geo_zone']     = 'Região Geográfica:';
+$_['entry_status']       = 'Situação:';
+$_['entry_sort_order']   = 'Ordem:';
 
 // Error
-$_['error_permission']	= 'Atenção: Você não possui permissão para modificar o pagamento Paymate!';
-$_['error_username']	= 'O campo <em>Nome de usuário</em> é obrigatório!';
-$_['error_password']     = 'Password obrigatório!'; 
+$_['error_permission']   = 'Atenção: Você não possui permissão para modificar o módulo Paymate!';
+$_['error_username']     = 'Atenção: O campo <b>Usuário</b> tem seu preenchimento obrigatório!';
+$_['error_password']     = 'Atenção: O campo <b>Senha</b> tem seu preenchimento obrigatório!!';
 ?>

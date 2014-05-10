@@ -1,4 +1,4 @@
 <?php
 // Entry
-$_['text_title'] = 'Cartão de crédito/débito (Google Checkout)';
+$_['text_title'] = 'Cartão de Crédito / Débito (Google Checkout)';
 ?>

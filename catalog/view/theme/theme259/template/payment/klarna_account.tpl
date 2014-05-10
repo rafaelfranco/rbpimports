@@ -1,7 +1,5 @@
 <?php if ($error_warning) { ?>
-<div class="span12">
-    <div class="warning"><?php echo $error_warning; ?></div>
-  </div>
+<div class="warning"><?php echo $error_warning; ?></div>
 <?php } ?>
 <div style="margin-bottom: 10px;"><img src="https://cdn.klarna.com/public/images/<?php echo $iso_code_2; ?>/badges/v1/account/<?php echo $iso_code_2; ?>_account_badge_std_blue.png?width=150&eid=<?php echo $merchant; ?>" /></div>
 <div id="payment">
@@ -13,7 +11,7 @@
         <td><input type="radio" name="code" value="<?php echo $payment_option['code']; ?>" id="plan-id<?php echo $payment_option['code']; ?>" /></td>
         <td><label for="plan-id<?php echo $payment_option['code']; ?>"><?php echo $payment_option['title']; ?></label></td>
         <td style="width: 1%;"><?php if ($iso_code_3 == 'NLD') { ?>
-          <img src="catalog/view/theme/theme259/image/klarna_nld_banner.png" />
+          <img src="catalog/view/theme/default/image/klarna_nld_banner.png" />
           <?php } ?></td>
       </tr>
       <?php } ?>
@@ -111,7 +109,7 @@ $('#button-confirm').bind('click', function() {
 			
 			$('.warning, .error').remove();	
 			
-			$('#payment').before('<div class="attention"><img src="catalog/view/theme/theme259/image/loading.gif" alt="" /> <?php echo $text_wait; ?></div>');
+			$('#payment').before('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" /> <?php echo $text_wait; ?></div>');
 		},
 		complete: function() {
 			$('#button-confirm').attr('disabled', false);

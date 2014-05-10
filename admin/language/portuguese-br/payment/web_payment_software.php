@@ -16,7 +16,7 @@ $_['entry_login']               = 'ID do Comerciante:';
 $_['entry_key']                 = 'Chave do Comerciante:';
 $_['entry_mode']                = 'Modo de Transação:';
 $_['entry_method']              = 'Método de Transação:';
-$_['entry_total']               = 'Total:<br /><span class="help">O total que a compra deve chegar antes que este método de pagamento se torne ativo.</span>';
+$_['entry_total']               = 'Total Mínimo:<br /><span class="help">Total mínimo que o pedido deve alcançar para que este método de pagamento seja habilitado.</span>';
 $_['entry_order_status']        = 'Situação do Pedido:';
 $_['entry_geo_zone']            = 'Região Geográfica:'; 
 $_['entry_status']              = 'Situação:';
