@@ -80,6 +80,12 @@
 			<span><?php echo $text_reward; ?></span> <?php echo $reward; ?><br />
 			<?php } ?>
 			<span><?php echo $text_stock; ?></span><div class="prod-stock"><?php echo $stock; ?></div>
+			<?php if ($stock == 'Indisponivel') { ?>
+			<form action="#">
+				<b>Avise-me quando estiver disponível</b><br>
+				<input type="text" id="email">
+			</form>
+			<?php } ?>
 		</div>
 		
 	  <?php if ($price) { ?>
