@@ -117,4 +117,19 @@ jQuery(document).ready(function($) {
         }
     });
 
+    $('#simulaFrete').click(function() {
+        if($('#cep').val() === '') {
+            alert('Preencha o CEP');
+        } else {
+            $.ajax({
+                url: '/index.php?route=checkout/shipping_simulate',
+                type: 'POST',
+                data: "cep="+$('#cep').val()+"&produto="+$('input[name=product_id]').val(),
+            success: function(json) {
+                    $('#freteSimulado').html(json);
+                }
+            });
+        }
+    });
+
 });

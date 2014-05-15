@@ -2500,6 +2500,40 @@ a.button-prod i {
 .product-info .review>div img{
 	margin-bottom:10px;
 	}
+#cep {
+	width:80px;
+}	
+#simulaFrete {
+	background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, from(rgb(247, 141, 27)), to(rgb(249, 174, 36)));
+	border-radius:6px;
+	border-left-color: rgb(251, 203, 48);
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-top-right-radius: 6px;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	height: 14px;
+	line-height: 14px;
+	padding-bottom: 12px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 21px;
+	position: relative;
+	text-align: left;
+	text-decoration: none;
+	text-transform: uppercase;
+	width: 77px;
+	border:0px;
+	margin-top: -12px;
+}
+.product-info .simulaFrete b {
+	color: #f7941d;
+}
 .product-info .review a:hover {
 	color:#929292;
 	}

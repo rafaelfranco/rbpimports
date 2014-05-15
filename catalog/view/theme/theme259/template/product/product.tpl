@@ -280,6 +280,12 @@
 			</div>
 		</div>
 		</div>
+		<div class="simulaFrete review">
+			<b>Simule o valor do frete</b><br>
+			CEP: <input type="text" id="cep"><input type="button" id="simulaFrete" value="Calcular">
+			<div id="freteSimulado"></div>
+			
+		</div>
 		<div class="clear"></div>
 		<?php if ($review_status) { ?>
 		<div class="review">
