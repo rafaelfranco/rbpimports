@@ -264,7 +264,7 @@ class ControllerProductProduct extends Controller {
 			if ($product_info['price'] <= 0) {
 				$this->data['button_cart_main'] = $this->config->get('rfq_zero_button');
 			} else {
-			$this->data['button_cart_main'] = $this->language->get('button_cart');
+				$this->data['button_cart_main'] = $this->language->get('button_cart');
 			}
 			
 			$this->data['button_wishlist'] = $this->language->get('button_wishlist');

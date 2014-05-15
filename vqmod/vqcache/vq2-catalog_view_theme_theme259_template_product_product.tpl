@@ -54,10 +54,10 @@
 			<?php if ($images) { ?>
 				<div class="image-additional">
 					<ul id="image-additional">
-						<?php foreach ($images as $image) { ?>
+						<?php foreach ($images as $image) {?>
 						 <li>
 							<a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="cloud-zoom-gallery" rel="useZoom: 'zoom1', smallImage: '<?php echo $image['thumb']; ?>' ">
-								<img src="<?php echo $image['small']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
+								<img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
 							</a>
 						</li>
 						<?php } ?>
@@ -285,6 +285,12 @@
 				<?php } ?>
 			</div>
 		</div>
+		</div>
+		<div class="simulaFrete review">
+			<b>Simule o valor do frete</b><br>
+			CEP: <input type="text" id="cep"><input type="button" id="simulaFrete" value="Calcular">
+			<div id="freteSimulado"></div>
+			
 		</div>
 		<div class="clear"></div>
 		<?php if ($review_status) { ?>

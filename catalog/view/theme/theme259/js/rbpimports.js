@@ -132,4 +132,6 @@ jQuery(document).ready(function($) {
         }
     });
 
+    console.log($('.price').html());
+
 });

@@ -525,8 +525,8 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
 					<div id="close" style="margin-top:-10px;">X</div>
 					<b>Nome:</b> <br/><input type="text"  id="nome"/> <br/>
 					<b>E-mail:</b> <br/><input type="text"  id="email"/> <br/>
-					<b>Código do Produto:</b> <br/><input type="text"  id="codigo"/> <br/>
-					<b>Descrição do Produto:</b> <br/><input type="text"  id="descricao"/> <br/>
+					<b>Código do Produto:</b> <br/><input type="text" disabled="disabled"  id="codigo"/> <br/>
+					<b>Descrição do Produto:</b> <br/><input type="text"  disabled="disabled" id="descricao"/> <br/>
 					<b>Mensagem:</b> <br/>
 					<textarea id="mailmessage" cols="30" rows="10"></textarea>
 					<input style="width:80px;" type="button" id="enviarCotacao" value="Enviar"/>
@@ -552,30 +552,43 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
 					$('#codigo').attr('value',$('input[name="product_id"]').val());
 					
 					$('#enviarCotacao').click(function() {
+						erros = 0;
+						if($('#nome').val() == '') {
+							alert('Preencha o nome');
+							erros++;
+						} else {
+							if($('#email').val() == '') {
+								alert('Preencha o email');
+								erros++;
+							}
+						}
+						
 						//send quote
-						$.ajax({
-						url: '/sendQuote.php',
-						type: 'POST',
-						async: true,
-						data: { 
-							nome : $('#nome').val(),
-							email : $('#email').val(),
-							codigo : $('#codigo').val(),
-							descricao : $('#descricao').val(),
-							mailmessage : $('#mailmessage').val()
-		     				},
-				            success: function(json) {
-				            	
-				            }
-				    	});	
+						if(erros == 0) {
+							$.ajax({
+							url: '/sendQuote.php',
+							type: 'POST',
+							async: true,
+							data: { 
+								nome : $('#nome').val(),
+								email : $('#email').val(),
+								codigo : $('#codigo').val(),
+								descricao : $('#descricao').val(),
+								mailmessage : $('#mailmessage').val()
+			     				},
+					            success: function(json) {
+					            	
+					            }
+					    	});	
+					
 
-
-						$('#modalBox').html('<div id="close" style="margin-top:-10px;">X</div> Solicitação enviada com sucesso!');
-							$('#close').click(function() {
-							$('#blackBox').hide();
-							$('#containerModal').hide();
-							$('#modalBox').hide();
-						});
+							$('#modalBox').html('<div id="close" style="margin-top:-10px;">X</div> Solicitação enviada com sucesso!');
+								$('#close').click(function() {
+								$('#blackBox').hide();
+								$('#containerModal').hide();
+								$('#modalBox').hide();
+							});
+						}
 					});
 				});
 			</script>

@@ -44,7 +44,8 @@ class ControllerModuleFeatured extends Controller {
 				} else {
 					$price = false;
 				}
-						
+			#$price = ($product_info['price'] == 0) ? '<span class="sobconsulta" id="'.$product_info['product_id'].'" >Preço sob consulta</sobconsulta> ' : $price;						
+
 				if ((float)$product_info['special']) {
 					$special = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')));
 				} else {
