@@ -12,17 +12,17 @@
 	mysql_query($sql);
 
 	//envia email de notificação
-	$html = 'Prezado Cliente,
+	$html = 'Prezado Cliente,<br><br>
 
-Muito obrigado por visitar e comprar em nosso site. É um prazer tê-lo como cliente!
+Muito obrigado por visitar e comprar em nosso site. É um prazer tê-lo como cliente!<br><br>
 
-Você se cadastrou no sistema “avise-me quando disponível”.
+Você se cadastrou no sistema “avise-me quando disponível”.<br><br>
 
-Infelizmente no momento não temos em estoque o produto que deseja, mas assim que tiver disponível em estoque entraremos em contato pelo email cadastrado.
+Infelizmente no momento não temos em estoque o produto que deseja, mas assim que tiver disponível em estoque entraremos em contato pelo email cadastrado.<br><br>
  
-Atenciosamente,
-RBP Eletrônicos
-www.rbpimports.com
+Atenciosamente,<br>
+RBP Eletrônicos<br>
+www.rbpimports.com<br>
 ';
 
 	#envio a notificação para o lojista
