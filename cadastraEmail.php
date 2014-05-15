@@ -28,7 +28,7 @@ www.rbpimports.com<br>
 	#envio a notificação para o lojista
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
-    $headers .= 'From: Pedidos Fashionera <alerta@rbpimports.com.br>' . "\r\n";;
+    $headers .= 'From: Alerta RBP Imports <alerta@rbpimports.com.br>' . "\r\n";;
    
     mail($email, '[RBP Imports] Avise-me quando disponivel', $html ,$headers);
 
