@@ -10,12 +10,7 @@
 	$db = mysql_connect(DB_HOSTNAME,DB_USERNAME,DB_PASSWORD);
     mysql_select_db(DB_DATABASE);
 
-    // get product owner
-	$res = mysql_query("SELECT * FROM " . DB_PREFIX . "product where product_id=".$codigo);
-	$data = mysql_fetch_row($res);
-	$owner = ($data['31']);
-
-	if($owner != '') {
+    
 		#envia o email
     	$msg="
     	Nova solicitação de cotação:<br/><br/>
@@ -48,8 +43,6 @@ RBP Eletrônicos<br/>
 www.rbpimports.com';
 
     	echo 'SUCESSO';
-	} else {
-		echo 'NO OWNER DEFINED';
-	}
+	
 	
 ?>
