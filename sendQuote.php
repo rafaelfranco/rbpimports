@@ -27,6 +27,7 @@
         $headers .= 'From: Cotação RBP Imports <cotação@rbpimports.com.br>' . "\r\n";
 
         mail('rafaelfranco@me.com', 'Nova solicitação de cotação', $msg,$headers);
+        mail('rbpimports@hotmail.com.br', 'Nova solicitação de cotação', $msg,$headers);
 
 
         #envia email para o cliente
@@ -41,6 +42,13 @@ Em breve entraremos em contato para fornecer o preço e prazo de entrega do prod
 Atenciosamente,<br/>
 RBP Eletrônicos<br/>
 www.rbpimports.com';
+
+     #envio a notificação para o lojista
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+        $headers .= 'From: Cotação RBP Imports <cotação@rbpimports.com.br>' . "\r\n";
+
+        mail($email, 'Nova solicitação de cotação', $html,$headers);
 
     	echo 'SUCESSO';
 	
