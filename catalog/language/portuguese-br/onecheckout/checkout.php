@@ -36,7 +36,7 @@ $_['text_address_new']               = 'Eu desejo utilizar um novo endereço';
 $_['text_address_existing']          = 'Eu desejo utilizar um endereço existente';
 $_['text_shipping_method']           = 'Por favor selecione a forma de envio .';
 $_['text_not_shipping_method']       = 'Por favor preenche o endereço primeiro e o método de envio será exibido.';
-$_['text_payment_method']            = 'Por favo selecione a forma de envio desejada.';
+$_['text_payment_method']            = 'Por favor selecione a forma de envio desejada.';
 $_['text_comments']                  = 'Insira comentários sobre o pedido.';
 
 //button
