@@ -69,7 +69,7 @@
   </div>
   <div class="right">
   	<span id="payment-postcode-required" class="required">*</span> <?php echo $entry_postcode; ?><br />
-  	<input type="text" name="postcode" value="<?php echo $postcode; ?>" class="small-field" /><br />
+  	<input type="text" name="postcode" onchange="javascript:preencheEndereco($(this).val())" value="<?php echo $postcode; ?>" class="small-field" /><br />
   </div>
   
   <div class="divclear">

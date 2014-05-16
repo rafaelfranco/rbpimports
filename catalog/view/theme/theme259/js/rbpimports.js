@@ -1,12 +1,53 @@
 jQuery(document).ready(function($) {
 	$('input[name=postcode]').change(function() {
-		$.ajax({
+        preencheEndereco($(this).val());
+	});
+
+
+    $('.button-email').click(function() {
+        if($('#email').val() === '') {
+            alert('Insira seu e-mail');
+        } else {
+            $.ajax({
+                url: '/cadastraEmail.php',
+                type: 'POST',
+                data: "email="+$('#email').val()+"&produto="+$('input[name=product_id]').val(),
+            success: function(json) {
+                
+                $('#email').attr('value','');
+                alert('E-mail cadastrado com sucesso');
+                }
+            });
+        }
+    });
+
+    $('#simulaFrete').click(function() {
+        if($('#cep').val() === '') {
+            alert('Preencha o CEP');
+        } else {
+            $.ajax({
+                url: '/index.php?route=checkout/shipping_simulate',
+                type: 'POST',
+                data: "cep="+$('#cep').val()+"&produto="+$('input[name=product_id]').val(),
+            success: function(json) {
+                    $('#freteSimulado').html(json);
+                }
+            });
+        }
+    });
+
+    console.log($('.price').html());
+
+});
+function preencheEndereco(cependereco) {
+console.log(cependereco);
+    $.ajax({
             url: '/index.php?route=module/cep',
             type: 'POST',
-            data: "CEP="+$(this).val(),
+            data: "CEP="+cependereco,
             success: function(json) {
-            	console.log(json);
-				dados = json.split(";");
+                console.log(json);
+                dados = json.split(";");
                 $('input[name=address_1]').val(dados[0]);
                 $('input[name=address_2]').val(dados[1]);
                 $('input[name=city]').val(dados[2]);
@@ -97,41 +138,4 @@ jQuery(document).ready(function($) {
                 }
              }
         });
-	});
-
-
-    $('.button-email').click(function() {
-        if($('#email').val() === '') {
-            alert('Insira seu e-mail');
-        } else {
-            $.ajax({
-                url: '/cadastraEmail.php',
-                type: 'POST',
-                data: "email="+$('#email').val()+"&produto="+$('input[name=product_id]').val(),
-            success: function(json) {
-                
-                $('#email').attr('value','');
-                alert('E-mail cadastrado com sucesso');
-                }
-            });
-        }
-    });
-
-    $('#simulaFrete').click(function() {
-        if($('#cep').val() === '') {
-            alert('Preencha o CEP');
-        } else {
-            $.ajax({
-                url: '/index.php?route=checkout/shipping_simulate',
-                type: 'POST',
-                data: "cep="+$('#cep').val()+"&produto="+$('input[name=product_id]').val(),
-            success: function(json) {
-                    $('#freteSimulado').html(json);
-                }
-            });
-        }
-    });
-
-    console.log($('.price').html());
-
-});
+}
