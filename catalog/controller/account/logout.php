@@ -20,6 +20,8 @@ class ControllerAccountLogout extends Controller {
 			unset($this->session->data['comment']);
 			unset($this->session->data['order_id']);
 			unset($this->session->data['coupon']);
+			// OneCheckOut fix tax.php bug
+			unset($this->session->data['guest']);
 			unset($this->session->data['reward']);			
 			unset($this->session->data['voucher']);
 			unset($this->session->data['vouchers']);

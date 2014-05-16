@@ -227,6 +227,9 @@ $controller = new Front($registry);
 // Maintenance Mode
 $controller->addPreAction(new Action('common/maintenance'));
 
+// OneCheckOut
+$controller->addPreAction(new Action('onecheckout/checkout/ini'));
+
 // SEO URL's
 $controller->addPreAction(new Action('common/seo_url'));	
 	
