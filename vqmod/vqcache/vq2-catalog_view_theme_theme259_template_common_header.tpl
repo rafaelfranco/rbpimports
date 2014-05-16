@@ -462,13 +462,14 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
 
 			<style>
 				#blackBox {
-					display:none;
+					display:none;   
 					width:100%;
-					height:100%;
+					height:2000px ;
 					background-color:#000;
 					position:absolute;
 					z-index:1000;
 					opacity:0.8;
+					top:0px;
 				}
 				#modalBox {
 					display:none;
@@ -487,7 +488,7 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
 					text-align:center;
 					z-index:2000;
 					position:absolute;
-					padding-top:130px;
+					padding-top:0px;
 				}
 				#modalBox input {
 					width:370px;

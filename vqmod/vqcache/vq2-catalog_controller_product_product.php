@@ -260,11 +260,13 @@ class ControllerProductProduct extends Controller {
 
 			$this->data['button_cart'] = $this->language->get('button_cart');
 
-			$this->data['button_carts'] = $this->config->get('rfq_zero_button');
+			
 			if ($product_info['price'] <= 0) {
 				$this->data['button_cart_main'] = $this->config->get('rfq_zero_button');
+				$this->data['button_carts'] = $this->config->get('rfq_zero_button');
 			} else {
 				$this->data['button_cart_main'] = $this->language->get('button_cart');
+				$this->data['button_carts'] = 'Comprar';
 			}
 			
 			$this->data['button_wishlist'] = $this->language->get('button_wishlist');
