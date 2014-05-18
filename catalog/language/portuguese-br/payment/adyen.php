@@ -1,7 +1,7 @@
 <?php
 
 // Text
-$_['text_title'] = 'Cartão de Crédito';
+$_['text_title'] = 'Cartão de Crédito <img src="/admin/view/image/payment/Cielo.jpg" />';
 $_['text_barra'] = 'INFORMAÇÕES DO PAGAMENTO';
 $_['text_teste'] = 'ATENÇÃO! O Gateway de Pagamento está em "Modo de Teste". Sua conta não será cobrada.';
 $_['text_pagamento'] = 'Efetuar Pagamento';
