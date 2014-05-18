@@ -21,19 +21,19 @@ $valor_total = str_replace(".","",$valor_total);
                 </div>
                 <? }?>
                 <? if ($this->config->get('adyen_cartao_visa') == 1) { ?>
-                <div style="width:55px;height:80px;text-align:center;display:inline-table">
+                <div style="width:55px;height:80px;text-align:center;display:inline-block">
                     <img width="55" src="image/adyen/visa.jpg" /><br />
                     <input onchange="javascript:fn_pagamento(this.value,'<?php echo $this->config->get('adyen_visa_parcelas');?>');" type="radio" id="bandeira" name="bandeira" value="visa"  />
                 </div>
                 <? }?>
                 <? if ($this->config->get('adyen_cartao_mastercard') == 1) { ?>
-                <div style="width:55px;height:80px;text-align:center;display:inline-table">
+                <div style="width:55px;height:80px;text-align:center;display:inline-block">
                     <img width="55" src="image/adyen/mastercard.jpg" /><br />
                     <input onchange="javascript:fn_pagamento(this.value,'<?php echo $this->config->get('adyen_mastercard_parcelas');?>');" type="radio" id="bandeira" name="bandeira" value="mastercard" />
                 </div>
                 <? }?>
                 <? if ($this->config->get('adyen_cartao_diners') == 1) { ?>
-                <div style="width:55px;height:80px;text-align:center;display:inline-table">
+                <div style="width:55px;height:80px;text-align:center;display:inline-block">
                     <img width="55" src="image/adyen/diners.jpg" /><br />
                     <input onchange="javascript:fn_pagamento(this.value,'<?php echo $this->config->get('adyen_diners_parcelas');?>');" type="radio" id="bandeira" name="bandeira" value="diners" />
                 </div>
@@ -45,13 +45,13 @@ $valor_total = str_replace(".","",$valor_total);
                 </div>
                 <? }?>
                 <? if ($this->config->get('adyen_cartao_discover') == 1) { ?>
-                <div style="width:55px;height:80px;text-align:center;display:inline-table">
+                <div style="width:55px;height:80px;text-align:center;display:inline-block">
                     <img width="55" src="image/adyen/discover.jpg" /><br />
                     <input onchange="javascript:fn_pagamento(this.value,'<?php echo $this->config->get('adyen_discover_parcelas');?>');" type="radio" id="bandeira" name="bandeira" value="discover" />
                 </div>
                 <? }?>
                 <? if ($this->config->get('adyen_cartao_elo') == 1) { ?>
-                <div style="width:55px;height:80px;text-align:center;display:inline-table">
+                <div style="width:55px;height:80px;text-align:center;display:inline-block">
                     <img width="55" src="image/adyen/elo.jpg" /><br />
                     <input onchange="javascript:fn_pagamento(this.value,'<?php echo $this->config->get('adyen_elo_parcelas');?>');" type="radio" id="bandeira" name="bandeira" value="elo" />
                 </div>
