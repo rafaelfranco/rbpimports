@@ -60,16 +60,10 @@
 					</div>
 					<div class="extra-wrap">
 						<div>11 4824 8248</div>
-						<div><?php echo $fax; ?></div>
+						<div>Atendimento de seg a sex das 9 as 18</div>
 						<div class="payments_types">
 
 <a id="seloEbit" href="http://www.ebit.com.br/#RBP-Materiais-Eletricos-e-Eletronicos/selo" target="_blank" onclick="redir(this.href);" title="Avaliado pelos consumidores" oncontextmenu="alert(&quot;Cópia proibida – A certificação e-bit é de uso exclusivo de lojas conveniadas à e-bit.&quot;);return false;" style="display: block; overflow: hidden; position: relative;"><img src="https://a248.e.akamai.net/f/248/52872/0s/img.ebit.com.br/ebitBR/selo/img_49172.png" style="border: 0px;"></a> <script type="text/javascript" id="getSelo" src="https://558701205.r.anankecdn.com.br/ebitBR/static/getSelo.js?49172"></script>
-
-<span id="siteseal"><img style="cursor:pointer;cursor:hand" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();"></span>
-
-<img src="catalog/view/theme/default/image/payment_paypal.png" alt="paypal" title="PayPal">
-<img src="catalog/view/theme/default/image/payment_mastercard.png" alt="mastercard" title="MasterCard"><img src="catalog/view/theme/default/image/payment_visa.png" alt="visa" title="Visa">
-<img src="catalog/view/theme/default/image/payment_sedex.png" alt="Sedex" title="Sedex"><img src="catalog/view/theme/default/image/payment_bcash.png" alt="BCash" title="BCash">
 </div>
 					</div>
 				</div>
@@ -79,6 +73,14 @@
 			</div>
 		</div>
 		
+<span id="siteseal"><img style="cursor:pointer;cursor:hand" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();"></span>
+
+<img src="catalog/view/theme/default/image/payment_paypal.png" alt="paypal" title="PayPal">
+<img src="catalog/view/theme/default/image/payment_mastercard.png" alt="mastercard" title="MasterCard">
+<img src="catalog/view/theme/default/image/payment_visa.png" alt="visa" title="Visa">
+<img src="catalog/view/theme/default/image/payment_sedex.png" alt="Sedex" title="Sedex">
+<img src="catalog/view/theme/default/image/payment_bcash.png" alt="BCash" title="BCash">
+
 	</div>
 	<div id="powered">
 		<div class="container">
