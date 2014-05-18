@@ -11,10 +11,6 @@
   	<span class="required">*</span> <?php echo $entry_email; ?><br />
   	<input type="text" name="email" value="<?php echo $email; ?>" class="large-field" />
 	<br />
-	<br />
-	<?php echo $entry_company; ?><br />
-  	<input type="text" name="company" value="<?php echo $company; ?>" class="large-field" />
-  	<br />
 	
 	<?php if($version_int >= 1530) { ?>
 	<div style="display: <?php echo (count($customer_groups) > 1 ? 'block' : 'none'); ?>;">
@@ -30,11 +26,7 @@
       	<?php } ?>
     	</select><br />    	
   	</div>
-  	<div id="company-id-display">
-    	<br />
-		<span id="company-id-required" class="required">*</span> <?php echo $entry_company_id; ?><br />
-		<input type="text" name="company_id" value="<?php echo $company_id; ?>" class="large-field" /><br />
-  	</div>
+  
   	<div id="tax-id-display">
     	<br />
 		<span id="tax-id-required" class="required">*</span> <?php echo $entry_tax_id; ?><br />
@@ -43,11 +35,11 @@
   	<?php } ?>
 	
   	<br />
-	<span class="required">*</span> <?php echo $entry_address_1; ?><br />
+	<span class="required">*</span> Endereço<br />
   	<input type="text" name="address_1" value="<?php echo $address_1; ?>" class="large-field" />
   	<br />
   	<br />
-  	<?php echo $entry_address_2; ?><br />
+  	Complemento<br />
   	<input type="text" name="address_2" value="<?php echo $address_2; ?>" class="large-field" />
 	<br />
   </div>
