@@ -33,7 +33,12 @@
 		<input type="text" name="tax_id" value="<?php echo $tax_id; ?>" class="large-field" /><br />    	
   	</div>
   	<?php } ?>
-	
+	<br /> 
+	<span class="required">*</span>    
+  	<span id="payment-postcode-required" class="required">*</span> <?php echo $entry_postcode; ?><br />
+  	<input type="text" name="postcode" onchange="javascript:preencheEndereco($(this).val())" value="<?php echo $postcode; ?>" class="large-field" /><br />
+  
+
   	<br />
 	<span class="required">*</span> Endereço<br />
   	<input type="text" name="address_1" value="<?php echo $address_1; ?>" class="large-field" />
@@ -58,10 +63,6 @@
   <div class="left">
   	<span class="required">*</span> <?php echo $entry_city; ?><br />
   	<input type="text" name="city" value="<?php echo $city; ?>" class="small-field" /><br />
-  </div>
-  <div class="right">
-  	<span id="payment-postcode-required" class="required">*</span> <?php echo $entry_postcode; ?><br />
-  	<input type="text" name="postcode" onchange="javascript:preencheEndereco($(this).val())" value="<?php echo $postcode; ?>" class="small-field" /><br />
   </div>
   
   <div class="divclear">
