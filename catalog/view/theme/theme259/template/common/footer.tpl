@@ -108,4 +108,5 @@ $.src='//v2.zopim.com/?27hUfCvv9HdSOH5Kv08k7mXiSmP8rl5S';z.t=+new Date;$.
 type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
 </script>
 <!--End of Zopim Live Chat Script-->
+<?php echo $google_analytics; ?>
 </body></html>
