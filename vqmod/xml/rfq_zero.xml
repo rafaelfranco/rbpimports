@@ -19,7 +19,7 @@
 				$this->data['button_cart_main'] = $this->config->get('rfq_zero_button');
 				$this->data['button_carts'] = $this->config->get('rfq_zero_button');
 			} else {
-				$this->data['button_cart_main'] = $this->language->get('button_cart');
+				$this->data['button_cart_main'] =  'Comprar';
 				$this->data['button_carts'] = 'Comprar';
 			}
 			]]></add>
@@ -289,6 +289,7 @@
 			<add><![CDATA[
 			if ($product_info['price'] <= 0) {
 				$price = $this->config->get('rfq_zero_phrase');
+				
 			} else
 			]]></add>
 		
@@ -412,11 +413,11 @@
 
 			<add><![CDATA[
 			
-			
-			$('#blackBox').show();
-			$('#modalBox').show();
-			$('#containerModal').show();
-
+			if($.trim($('#button-cart span').html()) == 'Cotar' ) {
+				$('#blackBox').show();
+				$('#modalBox').show();
+				$('#containerModal').show();
+			}
 			//if (json['redirect']) {
        		//	location = json['redirect'];
       		//}
