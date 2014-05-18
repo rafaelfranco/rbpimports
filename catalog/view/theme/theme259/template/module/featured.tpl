@@ -159,7 +159,7 @@
 							<?php } ?>
 						</div>
 						<?php } ?>
-						
+						 
 					</div>
 					<div class="cart-button">
 					
