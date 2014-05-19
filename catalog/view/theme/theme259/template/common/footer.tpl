@@ -52,6 +52,7 @@
 					<li><a href="http://youtube.com"><?php echo $text_yt; ?></a></li>
 				</ul>
 			</div>
+
 			<div class="span2">
 				<h3><?php echo $text_support; ?></h3>
 				<div class="foot-phone">
@@ -64,6 +65,7 @@
 						<div class="payments_types">
 
 <a id="seloEbit" href="http://www.ebit.com.br/#RBP-Materiais-Eletricos-e-Eletronicos/selo" target="_blank" onclick="redir(this.href);" title="Avaliado pelos consumidores" oncontextmenu="alert(&quot;Cópia proibida – A certificação e-bit é de uso exclusivo de lojas conveniadas à e-bit.&quot;);return false;" style="display: block; overflow: hidden; position: relative;"><img src="https://a248.e.akamai.net/f/248/52872/0s/img.ebit.com.br/ebitBR/selo/img_49172.png" style="border: 0px;"></a> <script type="text/javascript" id="getSelo" src="https://558701205.r.anankecdn.com.br/ebitBR/static/getSelo.js?49172"></script>
+
 </div>
 					</div>
 				</div>
@@ -74,7 +76,9 @@
 		</div>
 		
 <span id="siteseal"><img style="cursor:pointer;cursor:hand" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();"></span>
-
+<div>
+	
+</div>
 <img src="catalog/view/theme/default/image/payment_paypal.png" alt="paypal" title="PayPal">
 <img src="catalog/view/theme/default/image/payment_mastercard.png" alt="mastercard" title="MasterCard">
 <img src="catalog/view/theme/default/image/payment_visa.png" alt="visa" title="Visa">
@@ -85,10 +89,15 @@
 	<div id="powered">
 		<div class="container">
 			<div class="row">
-				<div class="span12">
+				<div class="span12" style="display: inline-block;
+width: 800px;">
 					
 					RBP Materiais Elétricos e Eletrónicos Rua Uirapuru 105 - Ribeirão Pires, SP CNPJ: 14.343.153/0001-46 <br><br>
 					<b>Prezados Clientes, Não mantemos estoque neste endereço, nem mostruário. Nossas entregas são feitas via correio ou entregador</b>
+				</div>
+				<div style="background-color:#FFF;
+display: inline-block;">
+					<iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FRBP-Imports%2F535874159795250%3Ffref%3Dts&amp;width=300&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true&amp;appId=557884177629752" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:290px;" allowtransparency="true"></iframe>
 				</div>
 			</div>
 		</div>
