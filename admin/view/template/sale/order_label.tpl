@@ -41,9 +41,10 @@
     width:445px;;
     display: inline-block;
     padding-left: 30px;
-    height: 380px;
+    height: 390px;
     font-size: 14px;
     font-weight: bold;
+    margin-bottom: 20px;
   }
   .selo {
     padding-left: 200px;
