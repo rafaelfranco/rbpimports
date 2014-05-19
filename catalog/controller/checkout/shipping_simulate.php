@@ -27,8 +27,16 @@ class ControllerCheckoutShippingSimulate extends Controller {
 			$quote_data = array();
 
 			$this->load->model('setting/extension');
-
 			$results = $this->model_setting_extension->getExtensions('shipping');
+
+			// Validate Free Shipping
+			$products = $this->cart->getProducts();
+			foreach ($products as $product) {
+				if($product['tax_class_id'] != 11)  {
+					unset($results[1]);
+				}
+			}
+
 
 			foreach ($results as $result) {
 				if ($this->config->get($result['code'] . '_status')) {
