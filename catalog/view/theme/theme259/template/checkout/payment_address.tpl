@@ -133,24 +133,7 @@
 				<input type="text" name="lastname" value="" class="large-field" />
 			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="company"><?php echo $entry_company; ?></label>
-			<div class="controls">
-				<input type="text" name="company" value="" class="large-field" />
-			</div>
-		</div>
-		<?php if ($company_id_display) { ?>
-		<div class="control-group">
-			<label class="control-label" for="company_id">
-				<?php if ($company_id_required) { ?>
-					<span class="required">*</span>
-				<?php } ?>
-			<?php echo $entry_company_id; ?></label>
-			<div class="controls">
-				<input type="text" name="company_id" value="" class="large-field" />
-			</div>
-		</div>
-		<?php } ?>
+		
 		<?php if ($tax_id_display) { ?>
 		<div class="control-group">
 			<label class="control-label" for="tax_id">
@@ -164,6 +147,12 @@
 			</div>
 		</div>
 		<?php } ?>
+		<div class="control-group">
+			<label class="control-label" for="postcode"><span id="payment-postcode-required" class="required">*</span> <?php echo $entry_postcode; ?></label>
+			<div class="controls">
+				<input type="text" name="postcode" value="" class="large-field" />
+			</div>
+		</div>
 		<div class="control-group">
 			<label class="control-label" for="address_1"><span class="required">*</span> <?php echo $entry_address_1; ?></label>
 			<div class="controls">
@@ -182,12 +171,7 @@
 				<input type="text" name="city" value="" class="large-field" />
 			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="postcode"><span id="payment-postcode-required" class="required">*</span> <?php echo $entry_postcode; ?></label>
-			<div class="controls">
-				<input type="text" name="postcode" value="" class="large-field" />
-			</div>
-		</div>
+		
 		<div class="control-group">
 			<label class="control-label" for="country_id"><span class="required">*</span> <?php echo $entry_country; ?></label>
 			<div class="controls">
