@@ -1,0 +1,36 @@
+<modification>
+	
+	<id>módulo de desconto por forma de pagamento</id>
+	<version>1.1.1</version>
+	<vqmver>2.1.5</vqmver>
+	<author>Jeann </author>
+     
+	<file name="catalog/view/theme/*/template/checkout/payment_method.tpl">	
+		<operation>
+			<search position="replace" ><![CDATA[
+			<td><label for="<?php echo $payment_method['code']; ?>"><?php echo $payment_method['title']; ?></label></td>
+			]]></search>
+			<add><![CDATA[
+			<td><label for="<?php echo $payment_method['code']; ?>"><?php echo $payment_method['title']; ?>
+			<?php
+
+			if ($this->config->get('desconto_status')) {
+				if (is_array($this->config->get('desconto_module'))){
+					$dados = $this->config->get('desconto_module');
+					foreach ($dados as $dado) { 
+						if ($dado["forma_status"]==$payment_method['code']){      
+							if ($dado["minimo"]<$this->cart->getSubTotal()){
+								echo "<span style='color:#FF0000;'><strong>".$dado["porcentagem"]."% de desconto </strong></span>";
+							}    
+						}
+					}
+				}		
+			}
+			?>
+			</label></td>
+			]]></add>  
+		</operation>
+		
+	</file>		
+	 
+</modification>
