@@ -284,7 +284,7 @@
 			<?php 
 				if($tax_class_id == 11) {
 ?>
-<img src="/image/fretegratis.jpg" alt="" width="80"> <br><br><br><br>
+<img src="/image/fretegratis.jpg" alt="" width="40"> <br><br><br><br>
 <?php
 				} else {
 ?>
