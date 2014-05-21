@@ -453,7 +453,8 @@ class ControllerProductProduct extends Controller {
 
 			$this->data['text_payment_profile'] = $this->language->get('text_payment_profile');
 			$this->data['profiles'] = $this->model_catalog_product->getProfiles($product_info['product_id']);
-
+			$this->data['tax_class_id'] = $product_info['tax_class_id'];
+			
 			$this->model_catalog_product->updateViewed($this->request->get['product_id']);
 
 			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/product/product.tpl')) {

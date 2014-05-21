@@ -281,9 +281,20 @@
 		</div>
 		</div>
 		<div class="simulaFrete review">
-			<b>Simule o valor do frete</b><br>
+			<?php 
+				if($tax_class_id == 11) {
+?>
+<img src="/image/fretegratis.jpg" alt="" width="80"> <br><br><br><br>
+<?php
+				} else {
+?>
+<b>Simule o valor do frete</b><br>
 			CEP: <input type="text" id="cep"><input type="button" id="simulaFrete" value="Calcular">
-			<div id="freteSimulado"></div>
+			<div id="freteSimulado">
+<?php
+				}
+			 ?>
+			</div>
 			
 		</div>
 		<div class="clear"></div>
