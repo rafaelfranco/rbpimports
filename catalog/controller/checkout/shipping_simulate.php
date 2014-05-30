@@ -20,8 +20,10 @@ class ControllerCheckoutShippingSimulate extends Controller {
 		$shipping_address['postcode'] = $_POST['cep'];
 
 		if (!empty($shipping_address)) {
+			$_POST['opcoes'] = substr($_POST['opcoes'], 0,strlen($_POST['opcoes'])-1);
 
-			$this->cart->add($_POST['produto'], 1);
+
+			$this->cart->add($_POST['produto'], 1,array($_POST['opcoes']));
 
 			// Shipping Methods
 			$quote_data = array();

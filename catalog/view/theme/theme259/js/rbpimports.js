@@ -25,10 +25,16 @@ jQuery(document).ready(function($) {
         if($('#cep').val() === '') {
             alert('Preencha o CEP');
         } else {
+            opcoes = '';
+            $("input[type=checkbox]").each(function( index ) {
+                if($(this).attr('checked') == 'checked') {
+                   opcoes = opcoes + $(this).val()+',';
+                }
+            });
             $.ajax({
                 url: '/index.php?route=checkout/shipping_simulate',
                 type: 'POST',
-                data: "cep="+$('#cep').val()+"&produto="+$('input[name=product_id]').val(),
+                data: "cep="+$('#cep').val()+"&produto="+$('input[name=product_id]').val()+'&opcoes='+opcoes,
             success: function(json) {
                     $('#freteSimulado').html(json);
                 }
