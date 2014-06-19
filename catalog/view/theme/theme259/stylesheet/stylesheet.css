@@ -3923,3 +3923,7 @@ margin-top: -10px;
 padding-top: 7px;
 cursor: pointer;
 }
+
+select#parcelas.selecto{
+	width: 400px;
+}
