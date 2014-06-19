@@ -27,9 +27,9 @@
     	</select><br />    	
   	</div>
   
-  	<div id="tax-id-display">
+  	<div id="tax-id">
     	<br />
-		<span id="tax-id-required" class="required">*</span> <?php echo $entry_tax_id; ?><br />
+		<span id="tax-id-required" class="required">*</span> CPF (Para emissão da Nota Fiscal):<br />
 		<input type="text" name="tax_id" value="<?php echo $tax_id; ?>" class="large-field" /><br />    	
   	</div>
   	<?php } ?>
