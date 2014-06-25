@@ -387,10 +387,11 @@ class ControllerAccountRegister extends Controller {
 				$this->error['company_id'] = $this->language->get('error_company_id');
 			}
 
-			// Tax ID 
-			if ($customer_group['tax_id_display'] && $customer_group['tax_id_required'] && empty($this->request->post['tax_id'])) {
-				$this->error['tax_id'] = $this->language->get('error_tax_id');
-			}						
+									
+		}
+		// Tax ID 
+		if (empty($this->request->post['tax_id'])) {
+			$this->error['tax_id'] = $this->language->get('error_tax_id');
 		}
 
 		if ((utf8_strlen($this->request->post['address_1']) < 3) || (utf8_strlen($this->request->post['address_1']) > 128)) {
@@ -417,6 +418,7 @@ class ControllerAccountRegister extends Controller {
 				$this->error['tax_id'] = $this->language->get('error_vat');
 			}
 		}
+
 
 		if ($this->request->post['country_id'] == '') {
 			$this->error['country'] = $this->language->get('error_country');

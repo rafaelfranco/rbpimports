@@ -134,14 +134,14 @@
 					</div>
 				</td>
 			</tr>
-			<tr id="tax-id-display">
+			<tr id="tax-id">
 				<td>
 					<div class="control-group">
-						<label class="control-label" for="tax_id"><span id="tax-id-required" class="required">*</span> <?php echo $entry_tax_id; ?></label>
+						<label class="control-label" for="tax_id"><span id="tax-id-required" class="required">*</span> CPF:</label>
 						<div class="controls">
 							<input class="q1" type="text" name="tax_id" value="<?php echo $tax_id; ?>" />
 							<?php if ($error_tax_id) { ?>
-							<span class="error help-inline"><?php echo $error_tax_id; ?></span>
+							<span class="error help-inline">Preencha o CPF</span>
 							<?php } ?>
 						</div>
 					</div>

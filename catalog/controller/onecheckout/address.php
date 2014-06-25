@@ -49,9 +49,10 @@ class ControllerOneCheckoutAddress extends Controller {
 							}					
 						
 							// Tax ID
-							if ($customer_group_info['tax_id_display'] && $customer_group_info['tax_id_required'] && !$existaddress['tax_id']) {
+												
+						}	
+						if (!$existaddress['tax_id']) {
 								$json['error']['warning'] = $this->language->get('error_tax_id');
-							}						
 						}	
 					}				
 
@@ -106,10 +107,11 @@ class ControllerOneCheckoutAddress extends Controller {
 							}
 					
 							// Tax ID
-							if ($customer_group['tax_id_display'] && $customer_group['tax_id_required'] && empty($this->request->post['tax_id'])) {
+													
+						}	
+						if (empty($this->request->post['tax_id'])) {
 								$json['error']['tax_id'] = $this->language->get('error_tax_id');
-							}						
-						}		
+						}	
 					}
 
 					if ((strlen(utf8_decode($this->request->post['address_1'])) < 3) || (strlen(utf8_decode($this->request->post['address_1'])) > 64)) {
