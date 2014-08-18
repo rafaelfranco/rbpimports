@@ -63,8 +63,35 @@
 						<div>11 4824 8248</div>
 						<div>Atendimento de seg a sex das 9 as 18</div>
 						<div class="payments_types">
+<table cellpadding="5">
+	<tr>
+<td><a id="seloEbit" href="http://www.ebit.com.br/#RBP-Materiais-Eletricos-e-Eletronicos/selo" target="_blank" onclick="redir(this.href);" title="Avaliado pelos consumidores" oncontextmenu="alert(&quot;Cópia proibida – A certificação e-bit é de uso exclusivo de lojas conveniadas à e-bit.&quot;);return false;" style="display: block; overflow: hidden; position: relative;"><img src="https://a248.e.akamai.net/f/248/52872/0s/img.ebit.com.br/ebitBR/selo/img_49172.png" style="border: 0px;"></a> <script type="text/javascript" id="getSelo" src="https://558701205.r.anankecdn.com.br/ebitBR/static/getSelo.js?49172"></script></td>
+<td>					<!-- Acrescente esta div em um local desejado desde que esteja dentro da tag <body></body> -->
+					<div id="cliqueeconfie"></div>
+					<!-- Inicio Selo cliqueeconfie.com.br -->
+					<script>
+						(function(d, w) {
+							p = (/^http:/.test(d.location)? "http" : "https" ) + "://";
+							
+							var a = d.createElement("a");
+								a.href = p + "cliqueeconfie.com.br/verifica/" + w.location.href.split("//")[1].split("/")[0];
+								a.id = "selo_cliqueeconfie";
+								a.target = "_blank";
+								a.title = "Clique e saiba mais";
+							
+							var i = d.createElement("img");
+								i.src = p + "cliqueeconfie.com.br/selo/index.php?t=" + Math.random();
+						
+							d.getElementById('cliqueeconfie').appendChild(a);
+							d.getElementById(a.id).appendChild(i);
+						
+						}(document, window));
+					</script>
+					<!-- Fim do Selo cliqueeconfie.com.br -->				
+					</td>
+	</tr>
+</table>
 
-<a id="seloEbit" href="http://www.ebit.com.br/#RBP-Materiais-Eletricos-e-Eletronicos/selo" target="_blank" onclick="redir(this.href);" title="Avaliado pelos consumidores" oncontextmenu="alert(&quot;Cópia proibida – A certificação e-bit é de uso exclusivo de lojas conveniadas à e-bit.&quot;);return false;" style="display: block; overflow: hidden; position: relative;"><img src="https://a248.e.akamai.net/f/248/52872/0s/img.ebit.com.br/ebitBR/selo/img_49172.png" style="border: 0px;"></a> <script type="text/javascript" id="getSelo" src="https://558701205.r.anankecdn.com.br/ebitBR/static/getSelo.js?49172"></script>
 
 </div>
 					</div>
