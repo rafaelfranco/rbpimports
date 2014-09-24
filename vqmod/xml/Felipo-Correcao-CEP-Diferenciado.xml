@@ -1,0 +1,36 @@
+<modification>
+	<id><![CDATA[<a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Correção CEP Diferenciado</b> <img style="vertical-align: middle;" alt="Code Market - Primeiro Markteplace de TI" src="data:image/jpeg;base64,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" /></a>]]></id>
+	<version><![CDATA[1]]></version>
+	<vqmver><![CDATA[2.4.1]]></vqmver>
+	  <author>
+        <![CDATA[<b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>]]>
+    </author>
+
+	<file path="catalog/model/shipping/" name="correios.php">
+		<operation>
+			<search position="replace">
+				<![CDATA[if($servico['Erro'] == 0 && $valor_frete_sem_adicionais > 0) {]]>
+			</search>
+			<add>
+				<![CDATA[
+				if(((int)$servico['Erro'] == 0 || (int)$servico['Erro'] == 10) && $valor_frete_sem_adicionais > 0) {
+                if((int)$servico['Erro'] == 10) {
+                $this->s = "<br><div class='attention'>Área com entrega temporariamente sujeita a prazo diferenciado.</div>";
+                } else {
+                $this->s = '';
+                }
+                ]]>
+			</add>
+		</operation>
+        
+            <operation>
+			<search position="replace">
+				<![CDATA['title'      => $this->language->get('text_title'),]]>
+			</search>
+			<add>
+				<![CDATA[
+                'title'      => $this->language->get('text_title').$this->s,]]>
+			</add>
+		</operation>    
+	</file>
+</modification>
