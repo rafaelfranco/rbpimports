@@ -16,22 +16,22 @@
 	background-image: -moz-linear-gradient(bottom, #e2e2e2 0%, #f1f1f1 100%);
 	background-image: -webkit-linear-gradient(bottom, #e2e2e2 0%, #f1f1f1 100%);
 	background-image: -ms-linear-gradient(bottom, #e2e2e2 0%, #f1f1f1 100%);
-	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e2e2e2),color-stop(1,#f1f1f1));-webkit-box-shadow: 0 10px 3px -8px #f7981e;
-	-moz-box-shadow: 0 10px 3px -8px #f7981e;
-	box-shadow: 0 10px 3px -8px #f7981e;
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e2e2e2),color-stop(1,#f1f1f1));-webkit-box-shadow: 0 10px 3px -8px #172b92;
+	-moz-box-shadow: 0 10px 3px -8px #172b92;
+	box-shadow: 0 10px 3px -8px #172b92;
 	}
 #menu{
 	position:relative;
 	z-index:5;
 	display:block;
 	border-radius:8px 8px 6px 6px;
-	background-color:#f6881a;
-	background-image: linear-gradient(bottom, #f6881a 0%, #f8a823 10%);
-	background-image: -o-linear-gradient(bottom, #f6881a 0%, #f8a823 10%);
-	background-image: -moz-linear-gradient(bottom, #f6881a 0%, #f8a823 10%);
-	background-image: -webkit-linear-gradient(bottom, #f6881a 0%, #f8a823 10%);
-	background-image: -ms-linear-gradient(bottom, #f6881a 0%, #f8a823 10%);
-	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #f6881a),color-stop(.1,#f8a823));
+	background-color:#172b92;
+	background-image: linear-gradient(bottom, #172b92 0%, #3540bd 10%);
+	background-image: -o-linear-gradient(bottom, #172b92 0%, #3540bd 10%);
+	background-image: -moz-linear-gradient(bottom, #172b92 0%, #3540bd 10%);
+	background-image: -webkit-linear-gradient(bottom, #172b92 0%, #3540bd 10%);
+	background-image: -ms-linear-gradient(bottom, #172b92 0%, #3540bd 10%);
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #172b92),color-stop(.1,#3540bd));
 	padding-bottom:10px;	
 	}
 
@@ -146,10 +146,10 @@
 	display: table;
 }
 #menu > ul > li ul > li > a:hover, #menu > ul > li ul > li.active > a, #menu > ul > li ul > li.sfHover > a {
-	color:#f7941d;
+	color:#030261;
 	}
 #menu > ul > li ul > li > a:hover span.sf-sub-indicator:after, #menu > ul > li ul > li.active > a span.sf-sub-indicator:after, #menu > ul > li ul > li.sfHover > a span.sf-sub-indicator:after{
-	color:#f7941d;
+	color:#030261;
 }
 #menu > ul > li > ul  li:first-child {border-top:0px;}
 #menu > ul > li > ul  li { 
@@ -176,11 +176,11 @@
 }
 
 #menu ul > ul > li ul li a:hover, #menu > ul > li > ul > li a.active { 
-	color:#f7941d; 
+	color:#030261; 
 	}
 /*****************************************************/
 #menu-icon {
-    background: #f7941d;
+    background: #030261;
     color: #FFFFFF;
     cursor: pointer;
     display: block;
@@ -225,7 +225,7 @@
 	padding:0;
 }
 #menu ul > ul > li ul li a:hover, #menu > ul  li  ul  li a.active { 
-		color:#F7941D; 
+		color:#030261; 
 	}
 #menu-icon.active:after {
 	content:"\f0d8";
@@ -252,7 +252,7 @@
     height: 24px;
     width: 24px;
   }
-  .sf-menu-phone  li  i {top: 12px;color:#f7941d; font-size:17px; padding:0 20px; right:5px}
+  .sf-menu-phone  li  i {top: 12px;color:#030261; font-size:17px; padding:0 20px; right:5px}
   .sf-menu-phone  li i.icon-angle-up:before {content:'\f0d8' !important}
   .sf-menu-phone li i:hover { cursor: pointer; color:#fff;}
   .sf-menu-phone li i.opened { background-position: center 7px; }

@@ -149,7 +149,7 @@ and (orientation:landscape) {
 }
 @media (max-width: 767px) {
 	.swipe-control:hover i, .top-search:hover i{
-		color:#F7941D;
+		color:#030261;
 	}
 	.product-grid .cart-button .cart a.button i{
 		display:inline-block !important;
@@ -338,7 +338,7 @@ header #logo {margin:78px 0 29px 10px}
 	border:0;
 	padding:0px;
 	background-image:none;
-	color:#f7941d
+	color:#030261
 	}
 #search .button-search:hover {color:#7e7e7e}
 /******************* Cart *******************************/
@@ -628,7 +628,7 @@ html[lang="de"] .box li .inner, html[lang="de"] .product-grid li .left{
 	}
 	.box-product .cart-button .cart a.button span, .product-grid .cart-button .cart a.button span{
 		border-radius: 0 8px 8px 0;
-		border-left:1px solid #fbcb30;
+		border-left:1px solid #FFF;
 	}
 	.box-product .cart-button .cart a.button:hover span, .product-grid .cart-button .cart a.button:hover span{
 		border-left-color:#cfcfcf;

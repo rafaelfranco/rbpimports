@@ -20,7 +20,7 @@
 			minHeight: '90px',
 			hover: true,
 			pagination: false,
-			loaderColor			: '#f7941d', 
+			loaderColor			: '#030261', 
 			loaderBgColor		: 'transparent',
 			loaderOpacity		: 1,
 			loaderPadding		: 0,
