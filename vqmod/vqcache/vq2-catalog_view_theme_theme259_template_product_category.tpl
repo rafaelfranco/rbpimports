@@ -117,7 +117,20 @@
 			} else {
 			echo $button_carts;
 			} ?>"
-			><i class="icon-shopping-cart"></i><span><?php echo $button_cart; ?></span></a></div>
+			>
+
+				
+				<i class="icon-shopping-cart"></i><span>
+							<?php 
+								if($product['price'] == 'Preço sob consulta') {
+									echo 'Cotar'; 
+								} else {
+									echo $button_cart; 
+								}
+							?></span>
+
+
+			</a></div>
 			<div class="wishlist"><a class="tooltip-2 " title="<?php echo $button_wishlist; ?>"  onclick="addToWishList('<?php echo $product['product_id']; ?>');"><i class="icon-star"></i></a></div>
 			<div class="compare"><a class="tooltip-2" title="<?php echo $button_compare; ?>"  onclick="addToCompare('<?php echo $product['product_id']; ?>');"><i class="icon-bar-chart"></i></a></div>
 			<div class="clear"></div>

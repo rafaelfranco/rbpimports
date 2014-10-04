@@ -287,9 +287,20 @@
 		</div>
 		</div>
 		<div class="simulaFrete review">
-			<b>Simule o valor do frete</b><br>
+			<?php 
+				if($tax_class_id == 11) {
+?>
+<img src="/image/fretegratis.jpg" alt="" width="40"> <br><br><br><br>
+<?php
+				} else {
+?>
+<b>Simule o valor do frete</b><br>
 			CEP: <input type="text" id="cep"><input type="button" id="simulaFrete" value="Calcular">
-			<div id="freteSimulado"></div>
+			<div id="freteSimulado">
+<?php
+				}
+			 ?>
+			</div>
 			
 		</div>
 		<div class="clear"></div>
@@ -491,11 +502,11 @@ $('#button-cart').bind('click', function() {
 		success: function(json) {
 			
 			
-			
-			$('#blackBox').show();
-			$('#modalBox').show();
-			$('#containerModal').show();
-
+			if($.trim($('#button-cart span').html()) == 'Cotar' ) {
+				$('#blackBox').show();
+				$('#modalBox').show();
+				$('#containerModal').show();
+			}
 			//if (json['redirect']) {
        		//	location = json['redirect'];
       		//}

@@ -37,6 +37,7 @@ class ControllerModuleFeatured extends Controller {
 
 			if ($product_info['price'] <= 0) {
 				$price = $this->config->get('rfq_zero_phrase');
+				
 			} else
 			
 				if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
