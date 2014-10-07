@@ -325,22 +325,24 @@
 	</div>
   </div>
   </div>
+	
+
 	<div class="tabs">
-		<div class="tab-heading">
+		<section>
+		<div id="conteudo" class="tab-heading tab-enabled">
 			<?php echo $tab_description; ?>
 		</div>
-		<div class="tab-content">
-			<?php echo $description; ?>
-		</div>
-	</div>
-	<?php if ($attribute_groups) { ?>
-	<div class="tabs">
-		<div class="tab-heading">
+		<div id="atributos" class="tab-heading tab-disabled">
 			<?php echo $tab_attribute; ?>
 		</div>
-			
-			<div class="tab-content">
-				<table class="attribute table table-bordered" >
+		</section>
+
+		<section>
+		<div id="box-conteudo" class="tab-content">
+			<?php echo $description; ?>
+		</div>
+		<div id="box-atributos" class="tab-content">
+			<table class="attribute table table-bordered" >
 				<?php foreach ($attribute_groups as $attribute_group) { ?>
 				<thead>
 					<tr>
@@ -356,11 +358,15 @@
 					<?php } ?>
 				</tbody>
 				<?php } ?>
-				</table>
-			
+			</table>
 		</div>
+		</section>
 	</div>
+
+	<?php if ($attribute_groups) { ?>
 	<?php } ?>
+	
+
 	<?php if ($review_status) { ?>
 	<div class="tabs" id="tab-review">
 		<div class="tab-heading">
@@ -423,8 +429,11 @@
 		</div>
 	</div>
 	<?php } ?>
-  
+
+	 
   </div>
+
+
   <?php if ($products) { ?>
   <h1 class="style-1 mt0"><?php echo $tab_related;?></h1>
   <div  class="related">
@@ -608,6 +617,26 @@ $(document).ready(function() {
 		timeFormat: 'h:m'
 	});
 	$('.time').timepicker({timeFormat: 'h:m'});
+
+
+	$('.tab-heading').click(function(){
+		$('.tab-enabled').attr('class','tab-heading tab-disabled');
+
+		if($(this).attr('class') == 'tab-heading tab-disabled') {
+			$(this).attr('class','tab-heading tab-enabled');
+		} else {
+			$(this).attr('class','tab-heading tab-disabled');
+		}
+
+		if($(this).attr('id') != 'conteudo') {
+			$('#box-atributos').show();
+			$('#box-conteudo').hide();
+		} else {
+			$('#box-atributos').hide();
+			$('#box-conteudo').show();
+		}
+	})
+
 });
 //--></script> 
 <?php echo $footer; ?>

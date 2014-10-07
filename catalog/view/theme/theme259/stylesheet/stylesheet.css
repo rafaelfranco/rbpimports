@@ -2570,8 +2570,8 @@ a.button-prod i {
 	}
 
 .tabs .tab-heading {
-	padding:20px 20px;
-	font-size:12px;
+	padding:15px 15px;
+	font-size:16px;
 	line-height:14px;
 	font-family:'Open Sans', sans-serif;
 	color:#939393;
@@ -2586,7 +2586,27 @@ a.button-prod i {
 	background-image: -ms-linear-gradient(bottom, #e2e2e2 0%, #f1f1f1 100%);
 	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e2e2e2),color-stop(1,#f1f1f1));
 	border-radius:6px;
-	}
+	cursor: pointer;
+	
+}
+.tab-disabled {
+	color:#cccccc  !important;
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #f6f6f6),color-stop(1,#f1f1f1)) !important;
+	border-bottom-color: #ccc !important;
+	width: 45%;
+	display: inline-block;
+}
+#box-atributos {
+	display: none;
+}
+.tab-enabled {
+	color:#939393 !important;
+	border-bottom:4px solid #282d8b !important;
+	background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e2e2e2),color-stop(1,#f1f1f1)) !important;
+	width: 45%;
+	display: inline-block;
+}
+
 .tabs .tab-content {
 	padding:20px 0;
 	}
