@@ -332,9 +332,11 @@
 		<div id="conteudo" class="tab-heading tab-enabled">
 			<?php echo $tab_description; ?>
 		</div>
+		<?php if ($attribute_groups) { ?>
 		<div id="atributos" class="tab-heading tab-disabled">
 			<?php echo $tab_attribute; ?>
 		</div>
+		<?php } ?>
 		</section>
 
 		<section>
@@ -363,8 +365,8 @@
 		</section>
 	</div>
 
-	<?php if ($attribute_groups) { ?>
-	<?php } ?>
+	
+	
 	
 
 	<?php if ($review_status) { ?>
