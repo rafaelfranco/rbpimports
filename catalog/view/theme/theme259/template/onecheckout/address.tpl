@@ -1,6 +1,5 @@
 <?php if ($addresses) { ?>
-<input type="radio" name="<?php echo $type; ?>_address" value="existing" id="<?php echo $type; ?>-address-existing" checked="checked" />
-<label for="<?php echo $type; ?>-address-existing"><?php echo $text_address_existing; ?></label>
+<input style="margin:0px;" type="radio" name="<?php echo $type; ?>_address" value="existing" id="<?php echo $type; ?>-address-existing" checked="checked" />  <?php echo $text_address_existing; ?></
 <div id="<?php echo $type; ?>-existing">
   <select name="address_id" style="width: 100%; margin-bottom: 15px;" size="5">
     <?php foreach ($addresses as $address) { ?>
@@ -13,8 +12,7 @@
   </select>
 </div>
 <p>
-  <input type="radio" name="<?php echo $type; ?>_address" value="new" id="<?php echo $type; ?>-address-new" />
-  <label for="<?php echo $type; ?>-address-new"><?php echo $text_address_new; ?></label>
+  <input style="margin:0px;" type="radio" name="<?php echo $type; ?>_address" value="new" id="<?php echo $type; ?>-address-new" />  <?php echo $text_address_new; ?>  
 </p>
 <?php } ?>
 <div id="<?php echo $type; ?>-new" style="display: <?php echo ($addresses ? 'none' : 'block'); ?>;">

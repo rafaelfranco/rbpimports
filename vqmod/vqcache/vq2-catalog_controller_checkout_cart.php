@@ -3,6 +3,7 @@ class ControllerCheckoutCart extends Controller {
 	private $error = array();
 
 	public function index() {
+		
 		$this->language->load('checkout/cart');
 
 		if (!isset($this->session->data['vouchers'])) {

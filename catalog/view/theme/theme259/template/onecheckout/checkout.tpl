@@ -2,16 +2,16 @@
 
 <?php echo $column_left; ?><?php echo $column_right; ?>
 <div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb" style="width:1170px;">
+  <div class="breadcrumb" >
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
     <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
     <?php } ?>
   </div>
-  <h1><?php echo $heading_title; ?></h1>
+  
   <?php if (!$logged) { ?>
   <div id="checkout">
   	<a id="login-show" style="color:#FF0000;"><?php echo $text_checkout_option; ?></a>
-  	<div id="login"></div>
+  	 <img src="/image/login.png"><div id="login"></div>
   </div>
   <?php } ?>
   <div class="slider-left">
@@ -27,11 +27,17 @@
     </div>
     <?php } ?>
     <?php if ($shipping_required) { ?>
+    <div id="shipping-address-box">
+
     <div id="shipping-address">
       <div class="onecheckout-heading"><?php echo $text_checkout_shipping_address; ?></div>
       <div class="onecheckout-content"></div>
     </div>
+    </div>
 	<?php } ?>
+
+	<div id="newaddres" onclick="showNewaddress()">
+	<img src="/image/login.png"> Deseja Cadastrar endereço de entrega diferente?</div>
   </div>
   
   <div class="slider-mid">
@@ -45,6 +51,7 @@
       <div class="onecheckout-heading"><?php echo $text_checkout_payment_method; ?></div>
       <div class="onecheckout-content"></div>
     </div>
+
   </div>
   
   <div class="slider-right">
@@ -69,10 +76,77 @@
 .slider-left{width:100%;}
 .slider-mid{width:100%;margin-left:0;}
 .slider-right{width:100%;}
+
 <?php } ?>
+
+#content {
+	width: 1170px;
+	margin: auto;
+	padding-left: 30px;
+}
+#checkout {
+	text-align: center;
+	font-weight: bold;
+	background-color: rgba(40, 36, 96, 0.06);
+	padding: 10px;
+	border: solid 1px #d0d0d0;
+	border-radius: 20px;
+	text-transform: uppercase;
+	margin-top: -10px;
+	margin-bottom: 20px
+}
+#payment-address {
+	border: solid 1px rgba(102, 102, 102, 0.39);
+	padding: 20px;
+	border-radius: 20px;
+	background-color: #fcfcfc;
+	margin-bottom: 10px;
+}
+#shipping-address {
+	border: solid 1px rgba(102, 102, 102, 0.39);
+	padding: 20px;
+	border-radius: 20px;
+	background-color: #fcfcfc;
+	margin-bottom: 10px;
+	
+}
+#shipping-method {
+	border: solid 1px rgba(102, 102, 102, 0.39);
+	padding: 20px;
+	border-radius: 20px;
+	background-color: #fcfcfc;
+	margin-bottom: 10px;
+}
+#payment-method {
+	border: solid 1px rgba(102, 102, 102, 0.39);
+	padding: 20px;
+	border-radius: 20px;
+	background-color: #fcfcfc;
+	margin-bottom: 10px;
+}
+#newaddres {
+	border: solid 1px rgba(102, 102, 102, 0.39);
+	padding: 10px;
+	border-radius: 20px;
+	background-color: #fcfcfc;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	font-weight: bold;
+	cursor: pointer;
+}
+#shipping-address-box {
+	display: none;
+}
 </style> 
 <script type="text/javascript" src="catalog/view/javascript/jquery/onecolorbox/jquery.colorbox.js"></script>
 <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/onecolorbox/colorbox.css" media="screen" /> 
+<script type="text/javascript">
+	function showNewaddress() {
+		$('#shipping-address-box').show();
+		$('#newaddres').hide();
+	}
+
+</script>
 <script type="text/javascript"><!--
 $(document).ready(function() {	
 <?php if (!$logged) { ?> 
