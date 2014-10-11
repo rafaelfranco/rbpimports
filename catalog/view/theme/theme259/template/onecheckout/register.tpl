@@ -19,6 +19,9 @@
 </div>
 <?php } ?>
 
+<div style="margin-left: 400px;
+margin-top: -40px;"><a id="button-confirmorder" class="button"><span>Cadastrar</span></a></div>
+
 
 <script type="text/javascript"><!--
 $('.colorbox').colorbox({

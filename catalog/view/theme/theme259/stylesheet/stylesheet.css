@@ -1624,8 +1624,8 @@ html[lang="ru"] .box .box-heading , html[lang="ru"] .breadcrumb {
 	font-size:15px;
 	}
 .breadcrumb a{
-	font-size:18px;
-	line-height:22px;
+	font-size:12px;
+	line-height:12px;
 	font-weight:600;	
 	text-transform:uppercase;
 	color:#fff;

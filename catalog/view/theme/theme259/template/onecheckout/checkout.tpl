@@ -10,7 +10,7 @@
   
   <?php if (!$logged) { ?>
   <div id="checkout">
-  	<a id="login-show" style="color:#FF0000;"><?php echo $text_checkout_option; ?></a>
+  	<a id="login-show" style="color:#FF0000;font-size: 18px;"><?php echo $text_checkout_option; ?></a>
   	 <img src="/image/login.png"><div id="login"></div>
   </div>
   <?php } ?>

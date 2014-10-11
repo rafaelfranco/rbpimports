@@ -66,7 +66,9 @@
   </div>
   
   <div class="divclear">
+  	<section style="display:none;">
   	<br />
+
   	<span class="required">*</span> <?php echo $entry_country; ?><br />
   	<select name="country_id" class="large-field">
     	<option value=""><?php echo $text_select; ?></option>
@@ -78,7 +80,8 @@
     	<?php } ?>
     	<?php } ?>
   	</select>
-  	<br />
+  	</section>
+  	
   	<br />
   	<span class="required">*</span> <?php echo $entry_zone; ?><br />
   	<select name="zone_id" class="large-field">
