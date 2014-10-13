@@ -2529,6 +2529,7 @@ a.button-prod i {
 	width: 77px;
 	border:0px;
 	margin-top: -12px;
+	background-color: rgb(35, 26, 167);
 }
 .product-info .simulaFrete b {
 	color: #282d8b;
