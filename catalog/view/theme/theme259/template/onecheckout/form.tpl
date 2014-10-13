@@ -38,15 +38,19 @@
   	<span id="payment-postcode-required" class="required">*</span> <?php echo $entry_postcode; ?><br />
   	<input type="text" name="postcode" onchange="javascript:preencheEndereco($(this).val())" value="<?php echo $postcode; ?>" class="large-field" /><br />
   
-
   	<br />
 	<span class="required">*</span> Endereço<br />
   	<input type="text" name="address_1" value="<?php echo $address_1; ?>" class="large-field" />
-  	<br />
-  	<br />
-  	Complemento<br />
-  	<input type="text" name="address_2" value="<?php echo $address_2; ?>" class="large-field" />
+  	<br /><br />
+
+	<span class="required">*</span> Numero<br />
+  	<input type="text" name="numero" value="<?php echo $numero; ?>" class="large-field" />
+  	<br /><br />
+
+	 Complemento<br />
+	<input type="text" name="complemento" value="" class="large-field" />
 	<br />
+	
   </div>
   <br />
   <div class="left">
@@ -203,6 +207,14 @@ $('#payment-address input[name=\'address_1\']').live('blur', function() {
 
 $('#payment-address input[name=\'address_1\']').live('focus', function() {
 	errorremove("payment","address_1");
+});
+
+$('#payment-address input[name=\'numero\']').live('blur', function() {
+	valiform("payment","numero","");
+});
+
+$('#payment-address input[name=\'numero\']').live('focus', function() {
+	errorremove("payment","numero");
 });
 
 $('#payment-address input[name=\'telephone\']').live('blur', function() {

@@ -1,0 +1,373 @@
+<modification>
+	<id><![CDATA[<a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Número e Complemento - Cadastro e Checkout</b></a>]]></id>
+	<version><![CDATA[1.0]]></version>
+	<vqmver><![CDATA[2.4.1]]></vqmver>
+	  <author>
+        <![CDATA[<b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>]]>
+    </author>
+     
+     <!-- CONTROLLER -->
+
+     <file path="catalog/controller/account/" name="register.php,address.php">		      
+         <operation info="Texto">
+			<search position="before"><![CDATA[    	$this->data['entry_address_1'] = $this->language->get('entry_address_1');
+]]></search>
+			<add><![CDATA[
+				$this->data['entry_numero'] = 'Número';
+				$this->data['entry_complemento'] = 'Complemento';
+				]]></add>
+		</operation> 
+		 <operation info="Mensagem de erro Número">
+			<search position="before"><![CDATA[   if (isset($this->error['address_1'])) {
+]]></search>
+			<add><![CDATA[
+					if (isset($this->error['numero'])) {
+						$this->data['error_numero'] = "Atenção: Informe um número!";
+					} else {
+						$this->data['error_numero'] = '';
+					}
+				]]></add>
+		</operation> 
+		 <operation info="Pegando os Campos (número e complemento)">
+			<search position="before"><![CDATA[ if (isset($this->request->post['address_1'])) {
+]]></search>
+			<add><![CDATA[
+				if (isset($this->request->post['numero'])) {
+					$this->data['numero'] = $this->request->post['numero'];
+				} else {
+					$this->data['numero'] = '';
+				}
+				if (isset($this->request->post['complemento'])) {
+					$this->data['complemento'] = $this->request->post['complemento'];
+				} else {
+					$this->data['complemento'] = '';
+				}
+				]]></add>
+		</operation> 
+		 <operation info="Validando o número">
+			<search position="before"><![CDATA[    	if ((utf8_strlen($this->request->post['address_1']) < 3) || (utf8_strlen($this->request->post['address_1']) > 128)) {
+]]></search>
+			<add><![CDATA[
+				if ((utf8_decode($this->request->post['numero']) < 1) || (utf8_decode($this->request->post['numero']) > 100000)) {
+					$this->error['numero'] = "Atenção: Informe um número!";
+				}
+				]]></add>
+		</operation> 
+	</file>
+
+	    <file path="catalog/controller/onecheckout/" name="register.php">		      
+         <operation info="Texto">
+			<search position="before"><![CDATA[    	if ($this->request->post['country_id'] == '') {
+]]></search>
+			<add><![CDATA[
+				$this->data['entry_numero'] = 'Número';
+				$this->data['entry_complemento'] = 'Complemento';
+				]]></add>
+		</operation> 
+	 <operation info="Validando o número">
+			<search position="before"><![CDATA[   	if ($this->request->post['country_id'] == '') {
+]]></search>
+			<add><![CDATA[
+				if ((utf8_decode($this->request->post['numero']) < 1) || (utf8_decode($this->request->post['numero']) > 100000)) {
+					$json['error']['numero'] = "Informe um número!";
+				}
+				]]></add>
+		</operation> 
+	</file>
+
+	 <file path="catalog/controller/onecheckout/" name="guest.php">		      
+         <operation info="Texto">
+			<search position="before"><![CDATA[    	$this->data['entry_address_1'] = $this->language->get('entry_address_1');
+]]></search>
+			<add><![CDATA[
+				$this->data['entry_numero'] = 'Número';
+				$this->data['entry_complemento'] = 'Complemento';
+				]]></add>
+		</operation> 
+	 <operation info="Pegando os Campos (número e complemento)">
+			<search position="before"><![CDATA[   	if (isset($this->session->data['guest']['payment']['address_1'])) {
+]]></search>
+			<add><![CDATA[
+				if (isset($this->session->data['guest']['payment']['numero'])) {
+					$this->data['numero'] = $this->session->data['guest']['payment']['numero'];			
+				} else {
+					$this->data['numero'] = '';
+				}
+
+				if (isset($this->session->data['guest']['payment']['complemento'])) {
+					$this->data['complemento'] = $this->session->data['guest']['payment']['complemento'];			
+				} else {
+					$this->data['complemento'] = '';
+				}
+				]]></add>
+		</operation> 
+		 <operation info="Validando o número">
+			<search position="before"><![CDATA[    	if ((utf8_strlen($this->request->post['address_1']) < 3) || (utf8_strlen($this->request->post['address_1']) > 128)) {
+]]></search>
+			<add><![CDATA[
+				if ((utf8_decode($this->request->post['numero']) < 1) || (utf8_decode($this->request->post['numero']) > 100000)) {
+					$json['error']['numero'] = "Atenção: Informe um número!";
+				}
+				]]></add>
+		</operation> 
+		 <operation info="">
+			<search position="before"><![CDATA[			$this->session->data['guest']['payment']['address_1'] = $this->request->post['address_1'];
+
+]]></search>
+			<add><![CDATA[
+					$this->session->data['guest']['payment']['numero'] = $this->request->post['numero'];
+					$this->session->data['guest']['payment']['complemento'] = $this->request->post['complemento'];
+
+				]]></add>
+		</operation> 
+		 <operation info="">
+			<search position="before"><![CDATA[$this->session->data['guest']['payment']['address_1'] = $this->request->post['address_1'];
+
+]]></search>
+			<add><![CDATA[
+					$this->session->data['guest']['shipping']['numero'] = $this->request->post['numero'];
+					$this->session->data['guest']['shipping']['complemento'] = $this->request->post['complemento'];
+
+				]]></add>
+		</operation> 
+	</file>
+
+	 <file path="catalog/controller/onecheckout/" name="guest_shipping.php">		      
+         <operation info="Texto">
+			<search position="before"><![CDATA[    	$this->data['entry_address_1'] = $this->language->get('entry_address_1');
+]]></search>
+			<add><![CDATA[
+				$this->data['entry_numero'] = 'Número';
+				$this->data['entry_complemento'] = 'Complemento';
+				]]></add>
+		</operation> 
+	 <operation info="Pegando os Campos (número e complemento)">
+			<search position="before"><![CDATA[   		if (isset($this->session->data['guest']['shipping']['address_1'])) {
+]]></search>
+			<add><![CDATA[
+				if (isset($this->session->data['guest']['shipping']['numero'])) {
+					$this->data['numero'] = $this->session->data['guest']['shipping']['numero'];			
+				} else {
+					$this->data['numero'] = '';
+				}
+				if (isset($this->session->data['guest']['shipping']['complemento'])) {
+					$this->data['complemento'] = $this->session->data['guest']['shipping']['complemento'];			
+				} else {
+					$this->data['complemento'] = '';
+				}
+				]]></add>
+		</operation> 
+		 <operation info="Validando o número">
+			<search position="before"><![CDATA[    	if ((utf8_strlen($this->request->post['address_1']) < 3) || (utf8_strlen($this->request->post['address_1']) > 128)) {
+]]></search>
+			<add><![CDATA[
+				if ((utf8_decode($this->request->post['numero']) < 1) || (utf8_decode($this->request->post['numero']) > 100000)) {
+					$json['error']['numero'] = "Atenção: Informe um número!";
+				}
+				]]></add>
+		</operation> 
+			 <operation info="">
+			<search position="before"><![CDATA[  			$this->session->data['guest']['shipping']['address_1'] = $this->request->post['address_1'];
+
+]]></search>
+			<add><![CDATA[
+					$this->session->data['guest']['shipping']['numero'] = $this->request->post['numero'];
+					$this->session->data['guest']['shipping']['complemento'] = $this->request->post['complemento'];
+				]]></add>
+		</operation> 
+	</file>
+
+	 <file path="catalog/controller/onecheckout/" name="payment_address.php,shipping_address.php">		      
+         <operation info="Texto">
+			<search position="before"><![CDATA[    	$this->data['entry_address_1'] = $this->language->get('entry_address_1');
+]]></search>
+			<add><![CDATA[
+				$this->data['entry_numero'] = 'Número';
+				$this->data['entry_complemento'] = 'Complemento';
+				]]></add>
+		</operation> 
+		 <operation info="Validando o número">
+			<search position="before"><![CDATA[    	if ((utf8_strlen($this->request->post['address_1']) < 3) || (utf8_strlen($this->request->post['address_1']) > 128)) {
+]]></search>
+			<add><![CDATA[
+				if ((utf8_decode($this->request->post['numero']) < 1) || (utf8_decode($this->request->post['numero']) > 100000)) {
+					$json['error']['numero']  = "Atenção: Informe um número!";
+				}
+				]]></add>
+		</operation> 
+	</file>
+
+	<!-- VIEW -->
+	  <file path="catalog/view/theme/*/template/account/" name="address_form.tpl">		      
+         <operation info="Texto">
+			<search position="after"><![CDATA[<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
+]]></search>
+			<add><![CDATA[
+				<?php $end = explode(',',$address_1); $address_1 = $end[0]; ?>
+				]]></add>
+		</operation> 
+    
+         <operation info="Texto">
+			<search position="after" offset="2"><![CDATA[<span class="error"><?php echo $error_address_1; ?></span>
+]]></search>
+			<add><![CDATA[
+				<tr>
+					<td class="labelcel"><span class="required">*</span> <?php echo $entry_numero; ?></td>
+					<td class="inputcell"><input type="text" name="numero" value="<?php if (!empty($end[1])) { echo $end[1]; } ?>" />
+					<?php if ($error_numero) { ?>
+						<span class="error"><?php echo $error_numero; ?></span>
+					<?php } ?></td>
+				</tr>
+				<tr>
+					<td class="labelcel"><?php echo $entry_complemento; ?></td>
+					<td class="inputcell"><input type="text" name="complemento" value="<?php if (!empty($end[2])) { echo $end[2]; } ?>" /></td>
+				</tr>
+				]]></add>
+		</operation> 
+	</file>
+
+	  <file path="catalog/view/theme/*/template/account/" name="register.tpl">		      
+         <operation info="Texto">
+			<search position="after" offset="2"><![CDATA[<span class="error"><?php echo $error_address_1; ?></span>
+]]></search>
+			<add><![CDATA[
+				<tr>
+					<td class="labelcel"><span class="required">*</span> <?php echo $entry_numero; ?></td>
+					<td class="inputcell"><input type="text" name="numero" value="<?php echo $numero; ?>" />
+					<?php if ($error_numero) { ?>
+						<span class="error"><?php echo $error_numero; ?></span>
+					<?php } ?></td>
+				</tr>
+				<tr>
+					<td class="labelcel"><?php echo $entry_complemento; ?></td>
+					<td class="inputcell"><input type="text" name="complemento" value="<?php echo $complemento; ?>" /></td>
+				</tr>
+				]]></add>
+		</operation> 
+	</file>
+
+	  <file path="catalog/view/theme/*/template/onecheckout/" name="register.tpl">		      
+         <operation info="Texto">
+			<search position="before"><![CDATA[<?php echo $entry_address_2; ?><br />
+]]></search>
+			<add><![CDATA[
+				<span class="required">*</span> <?php echo $entry_numero; ?><br />
+				<input type="text" name="numero" value="" class="large-field" />
+				<br />
+				<br />
+
+				<?php echo $entry_complemento; ?><br />
+				<input type="text" name="complemento" value="" class="large-field" />
+				<br />
+				<br />
+				]]></add>
+		</operation> 
+	</file>
+
+	 <file path="catalog/view/theme/*/template/onecheckout/" name="shipping_address.tpl,payment_address.tpl">		      
+         <operation info="Texto">
+			<search position="after" offset="2"><![CDATA[      <td class="inputcell"><input type="text" name="address_1" value="" class="large-field" /></td>
+]]></search>
+			<add><![CDATA[
+				<tr>
+					<td class="labelcel"><span class="required">*</span> <?php echo $entry_numero; ?></td>
+					<td class="inputcell"><input type="text" name="numero" value="" class="large-field" /></td>
+				</tr>
+				<tr>
+					<td class="labelcel"><?php echo $entry_complemento; ?></td>
+					<td class="inputcell"><input type="text" name="complemento" value="" class="large-field" /></td>
+				</tr>
+				]]></add>
+		</operation> 
+	</file>
+
+
+	  <file path="catalog/view/theme/*/template/onecheckout/" name="guest.tpl">		      
+         <operation info="Texto">
+			<search position="before"><![CDATA[  <?php echo $entry_address_2; ?><br />
+]]></search>
+			<add><![CDATA[
+				<span class="required">*</span> <?php echo $entry_numero; ?><br />
+				<input type="text" name="numero" value="<?php echo $numero; ?>" class="large-field" />
+				<br />
+				<br />
+				<?php echo $entry_complemento; ?><br />
+				<input type="text" name="complemento" value="<?php echo $complemento; ?>" class="large-field" />
+				<br />
+				<br />
+				]]></add>
+		</operation> 
+	</file>
+
+	  <file path="catalog/view/theme/*/template/onecheckout/" name="guest_shipping">		      
+         <operation info="Texto">
+			<search position="after" offset="2"><![CDATA[  <td class="inputcell"><input type="text" name="address_1" value="<?php echo $address_1; ?>" class="large-field" /></td>
+]]></search>
+			<add><![CDATA[
+				<tr>
+					<td class="labelcel"><span class="required">*</span> <?php echo $entry_numero; ?></td>
+					<td class="inputcell"><input type="text" name="numero" value="<?php echo $numero; ?>" class="large-field" /></td>
+				</tr>
+				<tr>
+					<td class="labelcel"><?php echo $entry_complemento; ?></td>
+					<td class="inputcell"><input type="text" name="complemento" value="<?php echo $complemento; ?>" class="large-field" /></td>
+				</tr>
+				]]></add>
+		</operation> 
+	</file>
+     
+      <file path="catalog/view/theme/*/template/onecheckout/" name="checkout.tpl">		      
+         <operation info="Validação">
+			<search position="before" index="1,2,4"><![CDATA[  if (json['error']['address_1']) {
+]]></search>
+			<add><![CDATA[
+				if (json['error']['numero']) {
+					$('#payment-address input[name=\'numero\']').after('<span class="error">' + json['error']['numero'] + '</span>');
+				}	
+				]]></add>
+		</operation> 
+		 <operation info="Validação">
+			<search position="before" index="3,5"><![CDATA[  if (json['error']['address_1']) {
+]]></search>
+			<add><![CDATA[
+				if (json['error']['numero']) {
+					$('#shipping-address input[name=\'numero\']').after('<span class="error">' + json['error']['numero'] + '</span>');
+				}	
+				]]></add>
+		</operation> 
+	</file>
+
+	<!-- MODEL -->
+	<file path="catalog/model/account/customer.php">
+		<operation info="Adicinando Número">
+			<search position="after"><![CDATA[  	
+			      		$this->load->model('account/customer_group');
+ ]]></search>
+				<add><![CDATA[ 
+						$data['address_1'] = $data['address_1'].', '.$data['numero'].', '.$data['complemento'];
+ ]]></add>
+		</operation>
+
+	</file>	
+	
+
+	<file path="catalog/model/account/address.php">
+	<operation info="Adicinando Número">
+		<search position="after"><![CDATA[ public function addAddress($data) {
+		]]></search>
+			<add><![CDATA[ 								$data['address_1'] = $data['address_1'].', '.$data['numero'].', '.$data['complemento'];
+
+		]]></add>
+		</operation>
+
+		<operation info="Adicinando Número">
+		<search position="after"><![CDATA[ public function editAddress($address_id, $data) {
+
+		]]></search>
+			<add><![CDATA[ 							$data['address_1'] = $data['address_1'].', '.$data['numero'].', '.$data['complemento'];
+
+		]]></add>
+		</operation>
+	</file>	
+
+</modification>
