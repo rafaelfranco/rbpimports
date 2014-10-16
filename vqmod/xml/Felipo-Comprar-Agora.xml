@@ -1,0 +1,115 @@
+<modification>
+	<id><![CDATA[<a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Comprar Agora</b></a>]]></id>
+	<version><![CDATA[1.1]]></version>
+	<vqmver><![CDATA[2.4.1]]></vqmver>
+	  <author>
+        <![CDATA[<b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>]]>
+    </author>
+     
+     <file path="catalog/view/theme/*/template/product/" name="product.tpl">		
+		<operation>
+			<search position="replace"><![CDATA[	<a id="button-cart" class="button-prod" ><i class="icon-shopping-cart"></i><span><?php echo $button_cart; ?></span></a>
+
+]]></search>
+			<add><![CDATA[
+<?php $ca =  $this->config->get('felipo_comprar_agora'); ?>
+<style>
+#button-comprar-agora {
+	<?php if(!empty($ca['cor_comprar'])) { ?> background:<?php echo $ca['cor_comprar']; ?> <?php } ?>
+}
+
+#button-carrinho-comprar {
+	<?php if(!empty($ca['cor_carrinho'])) { ?> background:<?php echo $ca['cor_carrinho']; ?>  <?php } ?>
+}
+
+#button-comprar-agora:hover {
+	background: rgb(0, 226, 129);  
+}
+
+#button-carrinho-comprar:hover {
+	background:#00C2FF; 
+}
+</style>
+<?php 
+
+//Se Ativo
+if(!empty($ca['ativo']) ){
+
+//Se Tirar Carrinho Ativo
+if(!empty($ca['tirar'])){ ?>
+<input type="button" value="<?php if(!empty($ca['comprar'])) { echo $ca['comprar']; } else { echo $button_cart; } ?>" id="button-comprar-agora" class="button" />
+<?php } else {
+//Primeiro Comprar Agora
+if(!empty($ca['ordem'])){ ?>
+
+<input style="margin-right: 8px;" type="button" value="<?php if(!empty($ca['comprar'])) { echo $ca['comprar']; } else { echo $button_cart; } ?>" id="button-comprar-agora" class="button" />
+<input type="button" value="<?php if(!empty($ca['carrinho'])) { echo $ca['carrinho']; } else { echo $button_cart; } ?>" id="<?php if(!empty($ca['red'])) { echo 'button-carrinho-comprar'; } else { echo 'button-cart'; } ?>" class="button" />
+
+<?php }else { ?>
+
+<input style="margin-right: 8px;" type="button" value="<?php if(!empty($ca['carrinho'])) { echo $ca['carrinho']; } else { echo $button_cart; } ?>" id="<?php if(!empty($ca['red'])) { echo 'button-carrinho-comprar'; } else { echo 'button-cart'; } ?>" class="button" />
+<input type="button" value="<?php if(!empty($ca['comprar'])) { echo $ca['comprar']; } else { echo $button_cart; } ?>" id="button-comprar-agora" class="button" />
+<?php }
+
+}//Fim Tirar
+}//Fim Ativo
+?>			]]></add>
+		</operation> 
+         
+         <operation>
+			<search position="before"><![CDATA[	$('#button-cart').bind('click', function() {
+]]></search>
+			<add><![CDATA[
+               $('#button-comprar-agora').bind('click', function() {
+	$.ajax({
+		url: 'index.php?route=checkout/cart/add',
+		type: 'post',
+		data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
+		dataType: 'json',
+		success: function(json) {
+			$('.success, .warning, .attention, information, .error').remove();
+			
+			if (json['error']) {
+				if (json['error']['option']) {
+					for (i in json['error']['option']) {
+						$('#option-' + i).after('<span class="error">' + json['error']['option'][i] + '</span>');
+					}
+				}
+			} 
+			
+			if (json['success']) {
+						window.location = "<?php echo  $this->url->link('checkout/checkout', '', 'SSL'); ?>";
+			}	
+		}
+	});
+});
+
+$('#button-carrinho-comprar').bind('click', function() {
+	$.ajax({
+		url: 'index.php?route=checkout/cart/add',
+		type: 'post',
+		data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
+		dataType: 'json',
+		success: function(json) {
+			$('.success, .warning, .attention, information, .error').remove();
+			
+			if (json['error']) {
+				if (json['error']['option']) {
+					for (i in json['error']['option']) {
+						$('#option-' + i).after('<span class="error">' + json['error']['option'][i] + '</span>');
+					}
+				}
+			} 
+			
+			if (json['success']) {
+							window.location = "index.php?route=checkout/cart";
+
+			}	
+		}
+	});
+});
+				]]></add>
+		</operation> 
+	</file>
+     
+</modification>

@@ -3967,3 +3967,56 @@ select#parcelas.selecto{
 	display: inline-block;
 	padding-bottom: 20px;
 }
+
+input#button-carrinho-comprar.button {
+	border-radius:6px;
+	border-left-color: #172b92;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-top-right-radius: 6px;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	height: 14px;
+	line-height: 14px;
+	padding-bottom: 12px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 21px;
+	position: relative;
+	text-align: left;
+	text-decoration: none;
+	text-transform: uppercase;
+	border:0px;
+	background-color: rgb(35, 26, 167);
+}
+input#button-comprar-agora.button{
+	border-radius:6px;
+	border-left-color: #172b92;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-top-right-radius: 6px;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	height: 14px;
+	line-height: 14px;
+	padding-bottom: 12px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 21px;
+	position: relative;
+	text-align: left;
+	text-decoration: none;
+	text-transform: uppercase;
+	border:0px;
+	background-color: rgb(75, 167, 61);
+}
