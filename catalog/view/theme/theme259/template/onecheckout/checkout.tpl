@@ -919,6 +919,7 @@ function createorder(){
 		data: $('#payment-address input[type=\'text\'], #payment-address input[type=\'password\'], #payment-address input[type=\'checkbox\']:checked, #payment-address input[type=\'radio\']:checked, #payment-address select'),
 		dataType: 'json',
 		success: function(json) {
+			window.location.reload();
 			$('.success, .warning').remove();
 			$('.error').remove();
 						
