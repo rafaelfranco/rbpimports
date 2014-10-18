@@ -165,6 +165,7 @@ $('#button-confirm').bind('click', function() {
                 data: $('#pag').serialize(),
                 dataType: 'json',		
                 beforeSend: function() {
+                    $('.information_adyen').remove();
                     $('#button-confirm').attr('disabled', 'disabled');
                     $('#payment').before('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" /> <?php echo $text_wait; ?></div>');
                 },
@@ -178,7 +179,19 @@ $('#button-confirm').bind('click', function() {
                     }
 
                     if (json['success']) {
-                        location = json['success'];
+                        console.log();
+
+                        if(json['status_pagamento'] == 'erro') {
+                            $('#payment').before('<div class="information_adyen">Dados inválidos! Por favor verifique os dados e tente novamente</div>');
+                        } 
+
+                        if(json['status_pagamento'] == 'negado') {
+                             $('#payment').before('<div class="information_adyen">Pagamento não aprovado por favor entre em contato com sua operadora ou utilize outro cartão</div>');
+                        }
+                        if(json['status_pagamento'] == 'sucesso') {
+                            location = json['success'];
+                        }
+                        //
                     }
                 }
             });

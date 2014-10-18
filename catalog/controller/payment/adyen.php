@@ -167,6 +167,7 @@ class ControllerPaymentAdyen extends Controller {
             $this->model_checkout_order->update($this->session->data['order_id'], $this->config->get('adyen_aprovado_id'), $message, false);
 
             $json['success'] = $this->url->link('checkout/success', '', 'SSL');
+            $json['status_pagamento'] = 'sucesso';
 			
 	    } elseif($result->paymentResult->refusalReason) {
 			$message .= 'refusalReason: ';
@@ -178,6 +179,7 @@ class ControllerPaymentAdyen extends Controller {
 			$this->model_checkout_order->update($this->session->data['order_id'], $this->config->get('adyen_nao_aprovado_id'), $message, false);
             
             $json['success'] = $this->url->link('payment/adyen_message');
+            $json['status_pagamento'] = 'negado';
 			
 	    } else {
 			$message .= 'Erro não especificado';
@@ -189,6 +191,7 @@ class ControllerPaymentAdyen extends Controller {
 			$this->model_checkout_order->update($this->session->data['order_id'], $this->config->get('adyen_nao_aprovado_id'), $message, false);
             
             $json['success'] = $this->url->link('payment/adyen_message');
+            $json['status_pagamento'] = 'erro';
 	    }
 		
 		$this->response->setOutput(json_encode($json));    

@@ -1,5 +1,5 @@
 <?php echo $header; ?><?php // echo $column_left; ?><?php // echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
+<div id="content"><?php //echo $content_top; ?>
     <div class="box">
       <div class="box-content interna">
       <div class="conteudo">

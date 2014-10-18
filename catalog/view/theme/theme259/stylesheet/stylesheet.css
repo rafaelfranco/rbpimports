@@ -3560,10 +3560,20 @@ span.toggle {
 	padding: 10px 10px 10px 10px;
 	margin-bottom: 5px;
 	color: #555;
+	text-align: center;
 }
 .success a, .warning a, .attention a, .information a {
 	color: #333;
 }
+.information_adyen {
+	text-align: center;
+	background-color:#faff86;
+	padding: 10px;
+	color: red;
+	margin-bottom: 10px;
+
+}
+
 #cart-success {
 	position: fixed;
 	z-index:9998;
