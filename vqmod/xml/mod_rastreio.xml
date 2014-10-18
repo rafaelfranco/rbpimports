@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>Módulo para rastreio de objetos dos correrios</id>
+	<version>1.1.3</version>
+	<vqmver>2.1.5</vqmver>
+	<author><![CDATA[Cristiano Soares - <a href="http://tretasdanet.com" target="_blank">tretasdanet.com</a>]]></author>
+
+	<file name="admin/controller/sale/order.php">
+		<operation error="skip">
+			<search position="before"><![CDATA[
+			'total'         => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
+			]]></search>
+			<add><![CDATA[
+			'payment_postcode'      => $result['payment_postcode'],
+			'shipping_postcode'      => $result['shipping_postcode'],
+			'rastreio'      => $result['rastreio'],
+			]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="before"><![CDATA[
+			$results = $this->model_sale_order->getOrders($data);
+			]]></search>
+			<add><![CDATA[
+			if(isset($this->request->post['rastreio']))
+			{
+				$this->model_sale_order->updateRastreio($this->request->post['rastreio']);
+			}
+			]]></add>
+		</operation>
+   	</file>
+	
+	<file name="admin/model/sale/order.php">
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+			$sql = "SELECT o.order_id, CONCAT(o.firstname, ' ', o.lastname) AS customer, (SELECT os.name FROM " . DB_PREFIX . "order_status os WHERE os.order_status_id = o.order_status_id AND os.language_id = '" . (int)$this->config->get('config_language_id') . "') AS status, o.total, o.currency_code, o.currency_value, o.date_added, o.date_modified FROM `" . DB_PREFIX . "order` o";
+			]]></search>
+			<add><![CDATA[
+			$sql = "SELECT o.order_id, CONCAT(o.firstname, ' ', o.lastname) AS customer, (SELECT os.name FROM " . DB_PREFIX . "order_status os WHERE os.order_status_id = o.order_status_id AND os.language_id = '" . (int)$this->config->get('config_language_id') . "') AS status, o.payment_postcode, o.shipping_postcode, o.total, o.currency_code, o.currency_value, o.date_added, o.date_modified, o.rastreio FROM `" . DB_PREFIX . "order` o";
+			]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+			, o.currency_code, o.currency_value, o.date_added, o.date_modified FROM `" . DB_PREFIX . "order` o";
+			]]></search>
+			<add><![CDATA[
+			, o.currency_code, o.currency_value, o.date_added, o.date_modified, o.payment_postcode, o.shipping_postcode, o.rastreio FROM `" . DB_PREFIX . "order` o";
+			]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="before"><![CDATA[
+			public function getOrderOption($order_id, $order_option_id) {
+			]]></search>
+			<add><![CDATA[
+			public function updateRastreio($data)
+			{
+				$this->language->load('module/mod_rastreio');
+				$order_ids = array();
+				$countUsersNotify = 0;
+				if(!$this->config->get("mod_rastreio_msg_email"))
+				{
+					$this->session->data['success'] = sprintf($this->language->get('error_message_not_defined'), $this->url->link('module/mod_rastreio', 'token=' . $this->session->data['token'], 'SSL'));
+					return false;
+				}
+
+				$mod_rastreio_order_status_final = $this->config->get("mod_rastreio_order_status_final");
+				$mod_rastreio_order_statuses = $this->config->get("mod_rastreio_order_statuses");
+				foreach($data AS $order_id => $codigo)
+				{
+					$codigo = trim($codigo);
+					if(!empty($codigo) && $this->config->get('mod_rastreio_order_status_posted'))
+					{
+						$sql = "UPDATE `" . DB_PREFIX . "order` SET order_status_id = " .$this->config->get('mod_rastreio_order_status_posted'). ", rastreio = '" .$this->db->escape($codigo). "' WHERE order_id = '" . (int)$order_id . "' and order_status_id != '" . (int)$mod_rastreio_order_status_final . "'";
+					}
+					else
+					{
+						$sql = "UPDATE `" . DB_PREFIX . "order` SET rastreio = '' WHERE order_id = '" . (int)$order_id . "' and order_status_id != '" . (int)$mod_rastreio_order_status_final . "'";
+					}
+
+					$this->db->query($sql);
+					if(!empty($codigo) && $this->db->countAffected() > 0)
+					{
+						$order_ids[] = $order_id;
+					}
+				}
+
+				if($this->config->get('user_notify') && count($order_ids) && is_array($mod_rastreio_order_statuses))
+				{
+					$statuses = implode("," ,$mod_rastreio_order_statuses);
+					$order_ids = implode(",", $order_ids);
+					$sql = "SELECT o.order_id, o.store_name, o.store_url, o.firstname, o.email, o.order_status_id, o.date_modified, o.rastreio FROM `" . DB_PREFIX . "order` o WHERE o.order_id IN({$order_ids}) AND o.order_status_id IN({$statuses})";
+					$query = $this->db->query($sql);
+					if($query->num_rows)
+					{
+						$this->load->library('mod_rastreio');
+						$Modrastreio = new Modrastreio($this->registry);
+						$countUsersNotify = $Modrastreio->updateRastreio($query->rows);
+					}
+				}
+				
+				if($countUsersNotify > 0)
+				{
+					$this->session->data['success'] = sprintf($this->language->get('txt_user_notify_success'), $countUsersNotify);
+				}
+				else
+				{
+					$this->session->data['success'] = $this->language->get('txt_insert_tracking_code');
+				}
+				
+				$url = str_replace('&amp;', '&', $this->url->link('sale/order', 'token=' . $this->session->data['token'], 'SSL'));
+				$this->response->redirect($url);
+			}
+			]]></add>
+		</operation>
+   	</file>
+
+	<file name="admin/view/template/sale/order_list.tpl">
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+			<div class="buttons"><a onclick="$('#form').attr('action', '<?php echo $invoice; ?>'); $('#form').attr('target', '_blank'); $('#form').submit();" class="button"><?php echo $button_invoice; ?></a>
+			]]></search>
+			<add><![CDATA[
+			<?php
+			$ptbr = false;
+			if(defined('JPATH_MIJOSHOP_OC'))
+			{
+				$_lang = JFactory::getLanguage();
+				$ptbr = stristr($_lang->getTag(), 'pt-br');
+			}
+			else
+			{
+				$ptbr = stristr($this->config->get('config_admin_language'), 'pt-br');
+			}
+
+			if($ptbr)
+			{
+				$save_tracking = 'Salvar Rastreamento';
+				$tracking_code = 'Código de Rastreio';
+				$zip_code = 'CEP';
+			}
+			else
+			{
+				$save_tracking = 'Save Tracking';
+				$tracking_code = 'Tracking code';
+				$zip_code = 'Zip Code';
+			}
+			?>
+			<div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $save_tracking; ?></a><a onclick="$('#form').attr('action', '<?php echo $invoice; ?>'); $('#form').attr('target', '_blank'); $('#form').submit();" class="button"><?php echo $button_invoice; ?></a>
+			]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="after" offset="1"><![CDATA[
+			<a href="<?php echo $sort_status; ?>"><?php echo $column_status; ?></a>
+			]]></search>
+			<add><![CDATA[
+			<td class="left"><?php echo $tracking_code; ?></td>
+			]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="before"><![CDATA[
+			<td align="right"><input type="text" name="filter_total" value="<?php echo $filter_total; ?>" size="4" style="text-align: right;" /></td>
+			]]></search>
+			<add><![CDATA[
+			<td></td>
+			]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="after"><![CDATA[
+			<td class="left"><?php echo $order['status']; ?></td>
+			]]></search>
+			<add><![CDATA[
+			<td class="left">
+			<center>
+				<?php
+				$shipping_postcode = preg_replace('@\D@','', $order['shipping_postcode']);
+				$shipping_postcode = preg_replace('#^(\d{5})(\d{3})$#i', '$1-$2', $shipping_postcode);
+				?>
+			  <?php echo $zip_code; ?>: <?php echo $shipping_postcode; ?>
+			  <br />
+			  <input type="text" value="<?php echo $order['rastreio']; ?>" name="rastreio[<?php echo $order['order_id']; ?>]" size="15" style="text-align: right;" />
+			</center>
+			  </td>
+			]]></add>
+		</operation>
+   	</file>
+</modification>
