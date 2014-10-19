@@ -1,0 +1,331 @@
+<modification>
+    <id><![CDATA[<a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Parcelamento na Página do Produto e Extras</b> </a>]]></id>
+    <version><![CDATA[2]]></version>
+    <vqmver><![CDATA[2.4.1]]></vqmver>
+    <author>
+        <![CDATA[<b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>]]>
+    </author>
+    
+    <!-- CONTROLLER PRODUTO -->
+    <file path="catalog/controller/product/" name="product.php">
+        <operation info="Coloca as informações das Parcelas">
+            <search position="before">
+        <![CDATA[public function index() { ]]>
+            </search>
+            <add>
+        <![CDATA[
+         private function felipoParcelamento($price,$special) {
+    
+                    $dados = $this->config->get('modulo_felipo_parcelamento');
+                    
+                    $html = " <style>".$dados['css']."</style><div id='parcelamento'>";
+
+                    if((!empty($dados['ativo'])) and (!empty($dados['ativo_parcelamento']))) {
+                    if(!empty($dados['texto_cartao'])) {
+                        $html .= "<br><div id='texto_cartao'>".html_entity_decode($dados['texto_cartao'])."</div>";
+                    }
+                    if(!empty($dados['cartao'])) {
+                    $html .= "<img src='".$dados['cartao']."' alt ='Cartões aceitos'>";
+                    }
+                    }
+
+                    $maximo_parcelas = (int)$dados['maximo_parcela'];
+                    $parcela_minima = (float)$dados['parcela_minima'];
+                    $boleto_desconto = (int)$dados['boleto_desconto'];
+                    $parcelas_sem_juros = (float)$dados['parcela_sem_juros'];
+                    $juros = (float)$dados['juros'];
+                    $moeda_da_loja = $dados['moeda_loja'];
+
+                    $tipo_de_calculo = 0;
+                    if (!$special) {
+                    $preco_numero = str_replace(',','.',str_replace('.','', str_replace($moeda_da_loja,"",strip_tags($price))));
+                    } else {
+                    $preco_numero = str_replace(',','.',str_replace('.','', str_replace($moeda_da_loja,"",strip_tags($special))));
+                    }
+                    
+                    if ((!empty($dados['ativo'])) and (!empty($dados['maximo_parcela'])) and (!empty($dados['parcela_minima'])) and (!empty($dados['parcela_sem_juros']) and !empty($dados['juros']))){
+
+                    function Price($Valor, $Parcelas, $Juros) {
+
+                    $Juros = bcdiv($Juros,100,15);
+                    $E=1.0;
+                    $cont=1.0;
+
+                    for($k=1;$k<=$Parcelas;$k++)
+                    {
+                    $cont= bcmul($cont,bcadd($Juros,1,15),15);
+                    $E=bcadd($E,$cont,15);
+                    }
+                    $E=bcsub($E,$cont,15);
+
+                    $Valor = bcmul($Valor,$cont,15);
+                    return number_format((bcdiv($Valor,$E,15)), 2, ',', '');
+                    }
+
+                    if(!empty($dados['ativo_parcelamento'])) {
+                    if ($preco_numero >= $parcela_minima*2) {
+                    // Titulo
+                    $html .= '<table id="tabela_parcelas">';
+                    // Inicia a primeira coluna
+                    $html .= '<td>';
+                    // Exibicao das parcelas
+                    for ($p = 1; $p <= $maximo_parcelas; $p++) {
+
+                    // Se a parcela nao tiver juros
+                    if ($p <= $parcelas_sem_juros) {
+                    $valor_parcela = number_format(($preco_numero/$p), 2, ',', '');
+                    }
+
+                    // Se a parcela tiver juros
+                    if ($p > $parcelas_sem_juros) {
+                    if ($tipo_de_calculo == 0) {
+                    $valor_parcela = Price($preco_numero, $p, $juros);
+                    }
+                    if ($tipo_de_calculo == 1) {
+                    $valor_parcela = ($preco_numero * ($juros/100))/(1-(1/(pow(1+($juros/100), $p))));
+                    }
+                    }
+
+                    // Escreve a parcela se ela for maior do que a parcela minima
+                    if ($valor_parcela >= $parcela_minima) {
+
+                    if ($p <= $parcelas_sem_juros) {
+                    $html .= '<span class="sem_juros">' . $p . 'x de ' . $moeda_da_loja . $valor_parcela . ' sem juros</span><br />';
+                    } else {
+                    $html .= '<span  class="com_juros">' .$p . 'x de ' . $moeda_da_loja . $valor_parcela . '</span><br />';
+                    }
+                    }
+
+                    // Fecha a primeira coluna e inicia a segunda
+                    if ($p ==  round($maximo_parcelas/2)) {  $html .= '</td><td>';}
+                    }
+                    // Fecha a segunda coluna e finaliza
+                    $html .= '</td>';
+                    $html .= '</table>';
+                    // Exibe os juros utilizados
+                    if ($parcelas_sem_juros < $maximo_parcelas) {
+                    $juros = number_format($juros, 2, ',', '.');
+                    $html .= '<div id="aviso_juros">Até 12X, juros de ' . $juros . '% ao m&ecirc;s</div>';
+                    }
+
+                    }
+                    }
+                    }
+                    if((!empty($dados['ativo'])) and (!empty($dados['boleto_ativo']))) {
+                        $boleto = number_format($preco_numero*((100-(int)$dados['boleto_desconto'])/100),2,',','');
+                        if (!empty($dados['boleto'])) {
+                        $html .= "<img src='".$dados['boleto']."' alt ='Cartões aceitos'>";
+                        }
+                        $html .= "<div id='texto_boleto'>";
+                        if(!empty($dados['texto_boleto'])) { 
+                             $html .= html_entity_decode($dados['texto_boleto']); 
+                        } else { 
+                         $html .= 'Boleto por';
+                        }
+                        $html .= " R$ ".$boleto."</div>";
+                    }
+                    $valor_minimo = $this->config->get('free_total');
+                    $free_status = $this->config->get('free_status');
+
+                    //Vendo se o Frete Free está ativo e tem dados
+                    if((!empty($dados['ativo'])) and (!empty($dados['aviso_frete'])) and (!empty($valor_minimo)) and ($free_status == 1)){
+                        if ((!empty($preco_numero)) and ($preco_numero >= $valor_minimo)) { 
+                        $html .= "<div id='frete'>";
+                        if(!empty($dados['texto_frete'])) {
+                        $html .= html_entity_decode($dados['texto_frete'])."</div>"; 
+                        } else {
+                             $html .= "Compra com <span id='gratis'>FRETE GRÁTIS</span></div>";
+                        }
+                        }
+                    }
+                    $html .= "</div>";   
+                    return $html;
+            }
+        ]]>
+            </add>
+        </operation>
+        <operation info="Coloca as informações das Parcelas">
+            <search position="before">
+        <![CDATA[$this->data['discounts'] = array(); ]]>
+            </search>
+            <add>
+        <![CDATA[
+              $this->data['parcelamento'] = $this->felipoParcelamento($this->data['price'],$this->data['special']);
+        ]]>
+            </add>
+        </operation>
+        <!-- ATUALIZANDO OS PREÇOS COM BASE NA OPÇÃO - CRIADOR POR vlcekmi3 e MODIFICADO POR FELIPO ANTONOFF -->
+        <operation>
+            <search position="before"><![CDATA[public function index() {]]></search>
+            <add><![CDATA[
+  private function getOptionPrice($product_id = 0, $options = array()) {
+    $option_price = 0;
+
+    $product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.date_available <= NOW() AND p.status = '1'");
+    
+    if ($product_query->num_rows) {
+      foreach ($options as $product_option_id => $option_value) {
+        $option_query = $this->db->query("SELECT po.product_option_id, po.option_id, od.name, o.type FROM " . DB_PREFIX . "product_option po LEFT JOIN `" . DB_PREFIX . "option` o ON (po.option_id = o.option_id) LEFT JOIN " . DB_PREFIX . "option_description od ON (o.option_id = od.option_id) WHERE po.product_option_id = '" . (int)$product_option_id . "' AND po.product_id = '" . (int)$product_id . "' AND od.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+        
+        if ($option_query->num_rows) {
+          if ($option_query->row['type'] == 'select' || $option_query->row['type'] == 'radio' || $option_query->row['type'] == 'image') {
+            $option_value_query = $this->db->query("SELECT pov.option_value_id, ovd.name, pov.quantity, pov.subtract, pov.price, pov.price_prefix, pov.points, pov.points_prefix, pov.weight, pov.weight_prefix FROM " . DB_PREFIX . "product_option_value pov LEFT JOIN " . DB_PREFIX . "option_value ov ON (pov.option_value_id = ov.option_value_id) LEFT JOIN " . DB_PREFIX . "option_value_description ovd ON (ov.option_value_id = ovd.option_value_id) WHERE pov.product_option_value_id = '" . (int)$option_value . "' AND pov.product_option_id = '" . (int)$product_option_id . "' AND ovd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+            
+            if ($option_value_query->num_rows) {
+              if ($option_value_query->row['price_prefix'] == '+') {
+                $option_price += $option_value_query->row['price'];
+              } elseif ($option_value_query->row['price_prefix'] == '-') {
+                $option_price -= $option_value_query->row['price'];
+              }               
+            }
+          } elseif ($option_query->row['type'] == 'checkbox' && is_array($option_value)) {
+            foreach ($option_value as $product_option_value_id) {
+              $option_value_query = $this->db->query("SELECT pov.option_value_id, ovd.name, pov.quantity, pov.subtract, pov.price, pov.price_prefix, pov.points, pov.points_prefix, pov.weight, pov.weight_prefix FROM " . DB_PREFIX . "product_option_value pov LEFT JOIN " . DB_PREFIX . "option_value ov ON (pov.option_value_id = ov.option_value_id) LEFT JOIN " . DB_PREFIX . "option_value_description ovd ON (ov.option_value_id = ovd.option_value_id) WHERE pov.product_option_value_id = '" . (int)$product_option_value_id . "' AND pov.product_option_id = '" . (int)$product_option_id . "' AND ovd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+              
+              if ($option_value_query->num_rows) {
+                if ($option_value_query->row['price_prefix'] == '+') {
+                  $option_price += $option_value_query->row['price'];
+                } elseif ($option_value_query->row['price_prefix'] == '-') {
+                  $option_price -= $option_value_query->row['price'];
+                }
+              }
+            }           
+          }
+        }
+      }
+    }
+    return $option_price;
+    }
+
+  public function updatePrice() {
+    $json = array();
+    
+    if (isset($this->request->post['product_id'])) {
+      $product_id = $this->request->post['product_id'];
+    } else {
+      $product_id = 0;
+    }
+    
+    $this->load->model('catalog/product');
+    $this->language->load('product/product');
+            
+    $product_info = $this->model_catalog_product->getProduct($product_id);
+    
+    if ($product_info) {                            
+      if (isset($this->request->post['option'])) {
+        $option = array_filter($this->request->post['option']);
+      } else {
+        $option = array();  
+      }
+
+      $option_price = $this->getOptionPrice($product_id, $option);
+
+      if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
+        $json['price'] = $this->currency->format($this->tax->calculate($product_info['price'] + $option_price, $product_info['tax_class_id'], $this->config->get('config_tax')));
+      } else {
+        $json['price'] = false;
+      }
+            
+      if ((float)$product_info['special']) {
+        $json['special'] = $this->currency->format($this->tax->calculate($product_info['special'] + $option_price, $product_info['tax_class_id'], $this->config->get('config_tax')));
+      } else {
+        $json['special'] = false;
+      }
+      
+      if ($this->config->get('config_tax')) {
+        $json['tax'] = $this->language->get('text_tax').' '.$this->currency->format((float)$product_info['special'] ? $product_info['special'] + $option_price : $product_info['price'] + $option_price);
+      } else {
+        $json['tax'] = false;
+      }
+
+                        $json['parcelamento'] = $this->felipoParcelamento($json['price'],$json['special']);
+
+      $this->response->setOutput(json_encode($json));
+    } else {
+      return FALSE;
+    }
+  }
+        ]]></add>
+        </operation>
+        <!-- FIM - ATUALIZANDO OS PREÇOS COM BASE NA OPÇÃO - CRIADOR POR vlcekmi3 e MODIFICADO POR FELIPO ANTONOFF -->
+        
+        <operation>
+            <search position="after"><![CDATA[
+                foreach ($option['option_value'] as $option_value)
+            ]]></search>
+            <add><![CDATA[
+//Ativando Preço completo nas opções
+ $opcao = $this->config->get('modulo_felipo_parcelamento');
+if((!empty($opcao['ativo'])) and (!empty($opcao['opcao']))){
+                //Autor Qphoria
+                if ($option_value['price_prefix'] == '-') {
+                $option_value['price'] = (($product_info['special'] ? ($product_info['special'] - $option_value['price']) : ($product_info['price']) - $option_value['price']));
+                } else {
+                $option_value['price'] = (($product_info['special'] ? ($product_info['special'] + $option_value['price']) : ($product_info['price']) + $option_value['price']));
+                }
+                $option_value['price_prefix'] = '';
+                //Autor Qphoria
+}
+            ]]></add>
+        </operation>
+    </file>
+    
+    <!-- VIEW PRODUTO -->
+    <file path="catalog/view/theme/*/template/product/" name="product.tpl">
+        <operation info="Coloca as informações das Parcelas">
+            <search position="before" offset="3">
+        <![CDATA[<?php if ($discounts) { ?>]]>
+            </search>
+            <add>
+        <![CDATA[
+        <?php if(!empty($parcelamento)) echo $parcelamento; ?>
+        ]]>
+            </add>
+        </operation>
+        
+        <!-- ATUALIZANDO OS PREÇOS COM BASE NA OPÇÃO - CRIADOR POR vlcekmi3 e MODIFICADO POR FELIPO ANTONOFF -->
+        <operation>
+            <search position="replace"><![CDATA[<?php echo $price; ?>]]></search>
+            <add><![CDATA[<span class="updated-price"><?php echo $price; ?></span>]]></add>
+        </operation>
+        <operation>
+            <search position="before"><![CDATA[<?php echo $footer; ?>]]></search>
+            <add><![CDATA[<script type="text/javascript"><!--
+<?php 
+$atualizar = $this->config->get('modulo_felipo_parcelamento');
+if((!empty($atualizar['ativo'])) and (!empty($atualizar['atualizar']))){
+?>
+$('.option').change(function() {
+  $.ajax({
+    url: 'index.php?route=product/product/updatePrice',
+    type: 'post',
+    data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
+    dataType: 'json',
+    success: function(json) {
+      //$('.success, .warning, .attention, information, .error').remove();
+      if (json['price']) {
+        $('.product-info .updated-price').text(json['price']);
+      }
+      
+      if (json['special']) {
+        $('.product-info .price-new').text(json['special']);
+        $('.product-info .price-old').text(json['price']);
+      }
+
+      if (json['tax']) {
+        $('.price-tax').text(json['tax']);
+      }
+
+            if (json['parcelamento']) {
+         $('#parcelamento').html(json['parcelamento']);
+      }
+    }
+  });
+});
+<?php } ?>
+//--></script>
+]]></add>
+        </operation>
+        <!-- FIM - ATUALIZANDO OS PREÇOS COM BASE NA OPÇÃO - CRIADOR POR vlcekmi3 e MODIFICADO POR FELIPO ANTONOFF -->
+    </file>
+</modification>
