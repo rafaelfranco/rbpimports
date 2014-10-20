@@ -27,12 +27,13 @@
     	</select><br />    	
   	</div>
   
+  	
+  	<?php } ?>
   	<div id="tax-id">
     	<br />
 		<span id="tax-id-required" class="required">*</span> CPF (Para emissão da Nota Fiscal):<br />
 		<input type="text" name="tax_id" value="<?php echo $tax_id; ?>" class="large-field" /><br />    	
   	</div>
-  	<?php } ?>
 	<br /> 
 	<span class="required">*</span>    
   	<span id="payment-postcode-required" class="required">*</span> <?php echo $entry_postcode; ?><br />
