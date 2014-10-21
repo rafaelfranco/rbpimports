@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>
+		<![CDATA[AR Correios]]>
+	</id>
+	<version>
+		<![CDATA[1.0]]>
+	</version>
+	<vqmver>
+		<![CDATA[2.4.1]]>
+	</vqmver>
+	<author>
+		<![CDATA[Rogerio Alan Dobler - rogerioalandobler@hotmail.com]]>
+	</author>
+	<file path="admin/controller/sale/" name="order.php">
+		<operation info="">
+			<search position="after">
+				<![CDATA[ 
+				$this->data['insert'] = $this->url->link('sale/order/insert', 'token=' . $this->session->data['token'], 'SSL'); 
+				]]>
+			</search>
+			<add>
+				<![CDATA[ 	
+				$this->data['AR_correios'] = $this->url->link('sale/order/invoice&geraAR=sim', 'token=' . $this->session->data['token'], 'SSL'); 
+				]]>
+			</add>
+		</operation>
+		
+		<operation info="">
+			<search position="after">
+				<![CDATA[
+					$this->data['invoice'] = $this->url->link('sale/order/invoice', 'token=' . $this->session->data['token'] . '&order_id=' . (int)$this->request->get['order_id'], 'SSL');
+				]]>
+			</search>
+			<add>
+				<![CDATA[
+					$this->data['AR_correios'] = $this->url->link('sale/order/invoice', 'token=' . $this->session->data['token'] . '&geraAR=sim&order_id=' . (int)$this->request->get['order_id'], 'SSL');
+				]]>
+			</add>
+		</operation>
+		
+		<operation info="">
+			<search position="after">
+				<![CDATA[ 
+					'shipping_address'   => $shipping_address,
+				]]>
+			</search>
+			<add>
+				<![CDATA[ 	
+					'shipping_address_postCode'   => $order_info['shipping_postcode'],
+				]]>
+			</add>
+		</operation>		
+		
+		<operation info="">
+			<search position="after">
+				<![CDATA[ 
+					'payment_address'    => $payment_address,
+				]]>
+			</search>
+			<add>
+				<![CDATA[ 	
+					'payment_address_postCode'    => $order_info['shipping_postcode'],
+				]]>
+			</add>
+		</operation>
+		
+		
+	</file>
+	
+	<file path="admin/view/template/sale/" name="order_list.tpl">
+		<operation info="">
+			<search position="replace">
+				<![CDATA[
+				<div class="buttons">
+				]]>
+			</search>
+			<add><![CDATA[
+				<div class="buttons">
+				<a onclick="$('#form').attr('action', '<?php echo $AR_correios; ?>'); $('#form').attr('target', '_blank'); $('#form').submit();" class="button">Gerar AR</a>
+			]]>
+			</add>
+		</operation>
+		
+		
+	</file>
+	
+	<file path="admin/view/template/sale/" name="order_info.tpl">
+		<operation info="">
+			<search position="replace">
+				<![CDATA[
+				<div class="buttons">
+				]]>
+			</search>
+			<add>
+				<![CDATA[
+				<div class="buttons">
+				<a href="<?php echo $AR_correios; ?>" target="_blank" class="button">Gerar AR</a>
+				]]>
+			</add>
+		</operation>
+		
+		
+	</file>
+	
+	<file path="admin/view/template/sale/" name="order_invoice.tpl">
+		
+		<operation info="Cria o AR">
+			<search position="after">
+				<![CDATA[ 
+					<?php foreach ($orders as $order) { ?> 
+				]]>
+			</search>
+			<add>
+				<![CDATA[ 
+					<?php if(isset($_GET['geraAR'])=='sim') { ?>							
+							<div align="center" style="width: 100%; height: 465px; border:0px solid; float:left; margin: 11px; padding: 0px;">
+							<style type="text/css">
+							<!--
+							TD{
+								font-family: arial; 
+								font-size: 8px;	
+								vertical-align:top;	
+								}
+								
+							#divCodBarras{
+							width: 240px; 
+							overflow: auto;
+							}
+							.BordaInfDir{
+									border-right: 2px solid black;
+									border-bottom: 2PX solid black;
+							}
+							.BordaInf{
+									border-bottom: 2PX solid black;
+							}
+							.BordaEsq{
+									border-left: 2PX solid black;
+							}
+							.BordaInfEsq{
+									border-bottom: 2PX solid black;
+									border-left: 2px solid black;
+							}
+							.BordaSupEsr{
+									border-bottom: 2PX solid black;
+							}
+							.BordaDirTracejada{
+									border-right: 1px dotted;
+									text-align:center;
+									vertical-align:middle;
+							}
+
+							.BordaTodas{
+									border-right: 2px solid black;
+									border-left: 2PX solid black;
+									border-top: 2px solid black;
+									border-bottom: 2PX solid black;
+							}
+							.style36 {font-size: 10px; text-transform:uppercase;}
+							.style37 {font-size: 8px; text-transform:uppercase;}
+							.style42 {font-size: 10px; text-transform:uppercase;}
+							.style43 {font-size: 8px; text-transform:uppercase;}
+							.style57 {font-size: 7px}
+							.style58 {font-size: 1px}
+							.style59 {
+								font-size: 11px;
+								font-style: italic;
+								font-weight: bold;
+							}
+							.style60 {
+								font-size: 23px;
+								font-weight: bold;
+							}
+							.style62 {
+								font-size: 12px;
+								font-weight: bold;
+							}
+							-->
+							</style>
+
+									 <table width="689" height="385" border="0" cellspacing="0" class="BordaTodas" style=" left: 96px; top:60px; width: 540px; height: 385px;">
+									   <tbody>
+									   <tr>
+										 <td width="31" rowspan="12" valign="bottom" class="BordaDirTracejada"><div align="center"><img src="../etiqueta_correios/imagens/ar2_r3_c2.gif"></div></td>
+										 <td width="7" height="30">&nbsp;</td>
+										 <td width="124" class="BordaInf"><img src="../etiqueta_correios/imagens/logo_correios.gif" width="119" height="25" alt=""></td>
+										 <td width="86" class="style58 BordaInf"><span class="style59">AVISO DE <br>RECEBIMENTO</span></td>
+										 <td colspan="3" align="center" valign="middle" class="BordaInf style60">AR</td>
+										 <td align="center" valign="middle" class="BordaInf style62">&nbsp;</td>
+										 <td width="126" class="BordaInfEsq">DATA DE POSTAGEM </td>
+									   </tr>
+									   <tr>
+										 <td height="32">&nbsp;</td>
+										 <td colspan="6" rowspan="2" class="BordaInfEsq">
+										 
+												<table border="0" width="370px" height="176px">
+													<tbody>
+													<tr>
+													  <td valign="top" class="style24">
+														<span class="style36"><b>DESTINATÁRIO</b></span><br>
+														<span class="style37">
+														<?php 
+															if($order['shipping_address']){
+																echo $order['shipping_address'];
+															} else {
+																echo $order['payment_address'];
+															}
+														?>                 
+														<br/>													  
+													  </td>
+													</tr>
+													<tr>
+													  <td align="center" valign="bottom"><div id="divCodBarras" style="border: 1px dotted black; font-family: Arial, Helvetica, sans-serif; font-size: 8px;">(CÓDIGO DE BARRAS OU Nº DE REGISTRO DO OBJETO)</div></td>
+													</tr>
+													<tr>
+													  <td align="left" valign="bottom">
+															<span class="style42"><b>ENDEREÇO PARA DEVOLUÇÃO DO AR </b></span><br>
+															<span class="style43">
+															<?php echo $order['store_name']; ?><br />
+															<?php echo $order['store_address']; ?><br />
+															</span> 
+													  </td>
+													</tr>
+													</tbody>
+												</table> 
+										 
+										 
+										 </td>
+										 <td class="BordaInfEsq">UNIDADE DE POSTAGEM </td>
+									   </tr>
+									   <tr>
+										 <td height="148">&nbsp;</td>
+										 <td align="center" class="BordaInfEsq">CARIMBO<br>
+										 UNIDADE DE ENTREGA </td>
+									   </tr>
+									   <tr>
+										 <td height="32">&nbsp;</td>
+										 <td colspan="2" align="center" class="BordaEsq"><strong>TENTATIVAS DE ENTREGA </strong></td>
+										 <td colspan="5" class="BordaInfEsq">DECLARAÇÃO DE CONTEÚDO (SUJEITO À VERIFICAÇÃO) 
+										 <br><span class="style57"></span></td>
+									   </tr>
+									   <tr>
+										 <td height="71" rowspan="6">&nbsp;</td>
+										 <td rowspan="5" class="BordaEsq">1ª _______/_______/_______<br>
+										 <br>
+										 2ª _______/_______/_______<br>
+										 <br>
+										 3ª _______/_______/_______ </td>
+										 <td rowspan="5" align="center">______ : ______h<br>
+										 <br>
+										 ______ : ______h<br>
+										 <br>
+										 ______ : ______ h </td>
+										 <td height="9" colspan="4" align="center" valign="top" class="style57 BordaEsq"><strong>MOTIVO DE DEVOLUÇÃO </strong></td>
+										 <td rowspan="6" class="BordaInfEsq">RUBRICA E MATRÍCULA DO<br>
+										   CARTEIRO </td>
+									   </tr>
+									   <tr>
+										 <td width="21" height="58" rowspan="5" class="BordaInfEsq"><img src="../etiqueta_correios/imagens/ar2_r6_c10.gif" alt=""></td>
+										 <td width="71" height="13"><span class="style57">Mudou-se</span></td>
+										 <td width="15" rowspan="5" class="BordaInf"><img src="../etiqueta_correios/imagens/ar2_r5_c5.gif" alt=""></td>
+										 <td width="49"><span class="style57">Recusado</span></td>
+									   </tr>
+									   <tr>
+										 <td height="12"><span class="style57">Endereço insuficiente </span></td>
+										 <td width="49"><span class="style57">Não procurado </span></td>
+									   </tr>
+									   <tr>
+										 <td height="11"><span class="style57">Não existe o número </span></td>
+										 <td width="49"><span class="style57">Ausente</span></td>
+									   </tr>
+									   <tr>
+										 <td height="9" valign="middle"><span class="style57">Desconhecido</span></td>
+										 <td width="49" valign="middle"><span class="style57">Falecido</span></td>
+									   </tr>
+									   <tr>
+										 <td colspan="2" class="BordaInfEsq"><br>
+										   <span class="style57"></span></td>
+										 <td height="11" class="BordaInf style57">Outros</td>
+										 <td width="49" align="right" valign="bottom" class="BordaInf style58">.</td>
+									   </tr>
+									   <tr>
+										 <td height="24">&nbsp;</td>
+										 <td colspan="6" class="BordaInfEsq">ASSINATURA DO RECEBEDOR</td>
+										 <td class="BordaInfEsq">DATA DE ENTREGA </td>
+									   </tr>
+									   <tr>
+										 <td>&nbsp;</td>
+										 <td colspan="6" class="BordaEsq">NOME LEGÍVEL DO RECEBEDOR</td>
+										 <td class="BordaEsq">Nº DOC. DE IDENTIDADE </td>
+									   </tr>
+									   </tbody>
+									 </table> 									
+							</div>
+					<?php } else { ?>
+				]]>
+			</add>
+		</operation>
+		
+		<operation info="Fecha o código">
+			<search position="before">
+				<![CDATA[
+					</body>
+				]]>
+			</search>
+			<add>
+				<![CDATA[
+					</div>
+					<?php } ?>
+				]]>
+			</add>
+		</operation>
+
+		
+	</file>
+	
+</modification>

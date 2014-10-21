@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>
+		<![CDATA[Etiqueta Correios Chancela]]>
+	</id>
+	<version>
+		<![CDATA[1.0]]>
+	</version>
+	<vqmver>
+		<![CDATA[2.4.1]]>
+	</vqmver>
+	<author>
+		<![CDATA[Rogerio Alan Dobler - rogerioalandobler@hotmail.com]]>
+	</author>
+	<file path="admin/controller/sale/" name="order.php">
+		<operation info="">
+			<search position="after">
+				<![CDATA[ 
+				$this->data['insert'] = $this->url->link('sale/order/insert', 'token=' . $this->session->data['token'], 'SSL'); 
+				]]>
+			</search>
+			<add>
+				<![CDATA[ 	
+				$this->data['etiqueta_correios'] = $this->url->link('sale/order/invoice&geraetiquetas=sim', 'token=' . $this->session->data['token'], 'SSL'); 
+				]]>
+			</add>
+		</operation>
+		
+		<operation info="">
+			<search position="after">
+				<![CDATA[
+					$this->data['invoice'] = $this->url->link('sale/order/invoice', 'token=' . $this->session->data['token'] . '&order_id=' . (int)$this->request->get['order_id'], 'SSL');
+				]]>
+			</search>
+			<add>
+				<![CDATA[
+					$this->data['etiqueta_correios'] = $this->url->link('sale/order/invoice', 'token=' . $this->session->data['token'] . '&geraetiquetas=sim&order_id=' . (int)$this->request->get['order_id'], 'SSL');
+				]]>
+			</add>
+		</operation>
+		
+		<operation info="">
+			<search position="after">
+				<![CDATA[ 
+					'shipping_address'   => $shipping_address,
+				]]>
+			</search>
+			<add>
+				<![CDATA[ 	
+					'shipping_address_postCode'   => $order_info['shipping_postcode'],
+				]]>
+			</add>
+		</operation>		
+		
+		<operation info="">
+			<search position="after">
+				<![CDATA[ 
+					'payment_address'    => $payment_address,
+				]]>
+			</search>
+			<add>
+				<![CDATA[ 	
+					'payment_address_postCode'    => $order_info['shipping_postcode'],
+				]]>
+			</add>
+		</operation>
+		
+		
+	</file>
+	
+	<file path="admin/view/template/sale/" name="order_list.tpl">
+		<operation info="">
+			<search position="replace">
+				<![CDATA[
+				<div class="buttons"><a onclick="$('#form').attr('action', '<?php echo $invoice; ?>'); $('#form').attr('target', '_blank'); $('#form').submit();" class="button"><?php echo $button_invoice; ?></a><a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a><a onclick="$('#form').attr('action', '<?php echo $delete; ?>'); $('#form').attr('target', '_self'); $('#form').submit();" class="button"><?php echo $button_delete; ?></a></div>
+				]]>
+			</search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a onclick="$('#form').attr('action', '<?php echo $invoice; ?>'); $('#form').attr('target', '_blank'); $('#form').submit();" class="button"><?php echo $button_invoice; ?></a>
+					<a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a>
+					<a onclick="$('#form').attr('action', '<?php echo $delete; ?>'); $('#form').attr('target', '_self'); $('#form').submit();" class="button"><?php echo $button_delete; ?></a>
+					<a onclick="$('#form').attr('action', '<?php echo $etiqueta_correios; ?>'); $('#form').attr('target', '_blank'); $('#form').submit();" class="button">Gerar Etiquetas</a>
+				</div>	
+			]]>
+			</add>
+		</operation>
+		
+		
+	</file>
+	
+	<file path="admin/view/template/sale/" name="order_info.tpl">
+		<operation info="">
+			<search position="replace">
+				<![CDATA[
+				<div class="buttons">
+				]]>
+			</search>
+			<add>
+				<![CDATA[
+				<div class="buttons">
+				<a href="<?php echo $etiqueta_correios; ?>" target="_blank" class="button">Gerar Etiqueta</a>
+				]]>
+			</add>
+		</operation>
+		
+		
+	</file>
+	
+	<file path="admin/view/template/sale/" name="order_invoice.tpl">
+		<operation info="Chama o barcode">
+			<search position="before">
+				<![CDATA[
+					<?php foreach ($orders as $order) { ?> 
+				]]>
+			</search>
+			<add>
+				<![CDATA[			
+					<?php require_once (DIR_APPLICATION . "../etiqueta_correios/barcode.php");?>
+				]]>
+			</add>
+		</operation>
+		
+		<operation info="">
+			<search position="before">
+				<![CDATA[
+				<link rel="stylesheet" type="text/css" href="view/stylesheet/invoice.css" />
+				]]>
+			</search>
+			<add>
+				<![CDATA[			
+				<script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.4.1.min.js"></script>
+				<script type="text/javascript">
+					$(document).ready(function() {
+						setTimeout('window.print()', 1000);
+					});
+				</script>
+				]]>
+			</add>
+		</operation>
+		
+		<operation info="Cria a etiqueta">
+			<search position="after">
+				<![CDATA[ 
+					<?php foreach ($orders as $order) { ?> 
+				]]>
+			</search>
+			<add>
+				<![CDATA[ 
+					<?php if(isset($_GET['geraetiquetas'])=='sim') { ?>							
+							<div style="width: 100%; height: 465px; border:0px solid; float:left; margin: 11px; padding: 0px;">
+										<table width="100%" border="0">
+											<tbody>
+												<tr>
+													<td align="left" valign="top" ><img src="../etiqueta_correios/imagens/destinatario.gif" style="margin-top:0px;"/></td>
+													<td align="right" valign="top" ><img src="../etiqueta_correios/imagens/logo_correios.gif" style="margin-top:0px;"/></td>
+												</tr>
+											</tbody>
+										</table>
+										<table width="100%" border="0">
+										<tbody>
+											<tr>
+												<td valign="top" width="100%" colspan="2">
+													<span style="font-size:16px; text-transform:uppercase;">
+													  <?php 
+															if($order['shipping_address']){
+																echo $order['shipping_address'];
+															} else {
+																echo $order['payment_address'];
+															}
+														?>                 
+														<br/>													  
+													</span>
+												</td>									
+											</tr>
+											<tr>
+												<td width="100%" valign="top" align="left" colspan="2">										
+													<span style="font-size:16px; text-transform:uppercase;">
+													Tel: 
+														<?php echo $order['telephone']; ?>
+													</span>
+												</td>
+											</tr>
+											<tr align="center">
+												<td style="width:180px; padding-top: 15px;" valign="top">
+														<?php
+														if($order["shipping_address_postCode"]){
+															$code_number = $order["shipping_address_postCode"];
+															$caracteresInvalidos = array("/", "", "-", "_");													
+															$onlyconsonants = str_replace($caracteresInvalidos, "", $code_number);
+															$code_number = $onlyconsonants;
+															echo fbarcode($code_number) . "<br />";													
+															echo "<span style='font-size:12px;'>".$order["shipping_address_postCode"]."</span><br/>";
+														} else {
+															$code_number = $order["payment_address_postCode"];
+															$caracteresInvalidos = array("/", "", "-", "_");													
+															$onlyconsonants = str_replace($caracteresInvalidos, "", $code_number);
+															echo fbarcode($code_number);													
+															echo $order["payment_address_postCode"];
+														}
+													?>
+												</td>
+												<td style="width:180px;" valign="top">
+														<?php
+														if(preg_match('/PAC/i',$order['shipping_method'])){
+															$src = '../etiqueta_correios/imagens/pac.jpg';
+														}else if(preg_match('/Sedex/i',$order['shipping_method'])){
+															$src = '../etiqueta_correios/imagens/e-sedex.jpg';
+														}else{
+															$src = '../etiqueta_correios/imagens/sedex.jpg';
+														}
+														?>
+												<img src="<?php echo $src; ?>" style=" width: 142px; height: 104px;"/>		
+												</td>												
+											</tr>
+											<tr>
+												<td width="100%" valign="top" align="left" colspan="2">	
+													<div style="font-size: 10px;">
+													<br><b>Remetente:</b><br />
+													</div>
+													<span style="font-size:10px; text-transform:uppercase;">
+														<?php echo $order['store_name']; ?><br />
+														<?php echo $order['store_address']; ?><br />
+														<?php echo $text_telephone; ?> <?php echo $order['store_telephone']; ?><br />
+														<?php if ($order['store_fax']) { ?>
+														<?php echo $text_fax; ?> <?php echo $order['store_fax']; ?><br />
+														<?php } ?>		
+													</span>
+												</td>
+											</tr>
+										</tbody>
+										</table>
+										
+							</div>
+					<?php } else { ?>
+				]]>
+			</add>
+		</operation>
+		
+		<operation info="Fecha o código">
+			<search position="before">
+				<![CDATA[
+					</body>
+				]]>
+			</search>
+			<add>
+				<![CDATA[
+					</div>
+					<?php } ?>
+				]]>
+			</add>
+		</operation>
+
+		
+	</file>
+	
+</modification>
