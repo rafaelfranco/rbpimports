@@ -15,9 +15,7 @@
 	<file path="admin/controller/sale/" name="order.php">
 		<operation info="">
 			<search position="after">
-				<![CDATA[ 
-				$this->data['insert'] = $this->url->link('sale/order/insert', 'token=' . $this->session->data['token'], 'SSL'); 
-				]]>
+				<![CDATA[$this->data['insert'] = $this->url->link('sale/order/insert', 'token=' . $this->session->data['token'], 'SSL');]]>
 			</search>
 			<add>
 				<![CDATA[ 	
@@ -28,9 +26,7 @@
 		
 		<operation info="">
 			<search position="after">
-				<![CDATA[
-					$this->data['invoice'] = $this->url->link('sale/order/invoice', 'token=' . $this->session->data['token'] . '&order_id=' . (int)$this->request->get['order_id'], 'SSL');
-				]]>
+				<![CDATA[$this->data['invoice'] = $this->url->link('sale/order/invoice', 'token=' . $this->session->data['token'] . '&order_id=' . (int)$this->request->get['order_id'], 'SSL');]]>
 			</search>
 			<add>
 				<![CDATA[
@@ -41,9 +37,7 @@
 		
 		<operation info="">
 			<search position="after">
-				<![CDATA[ 
-					'shipping_address'   => $shipping_address,
-				]]>
+				<![CDATA['shipping_address'   => $shipping_address,]]>
 			</search>
 			<add>
 				<![CDATA[ 	
@@ -54,9 +48,7 @@
 		
 		<operation info="">
 			<search position="after">
-				<![CDATA[ 
-					'payment_address'    => $payment_address,
-				]]>
+				<![CDATA['payment_address'    => $payment_address,]]>
 			</search>
 			<add>
 				<![CDATA[ 	

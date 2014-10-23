@@ -17,7 +17,8 @@
       <div class="buttons">
         <a onclick="$('#form').attr('action', '<?php echo $label; ?>'); $('#form').attr('target', '_blank'); $('#form').submit();" class="button">Etiquetas</a>
         <a onclick="$('#form').attr('action', '<?php echo $invoice; ?>'); $('#form').attr('target', '_blank'); $('#form').submit();" class="button"><?php echo $button_invoice; ?></a>
-        <a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a><a onclick="$('#form').attr('action', '<?php echo $delete; ?>'); $('#form').attr('target', '_self'); $('#form').submit();" class="button"><?php echo $button_delete; ?></a></div>
+        <a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a><a onclick="$('#form').attr('action', '<?php echo $delete; ?>'); $('#form').attr('target', '_self'); $('#form').submit();" class="button"><?php echo $button_delete; ?></a>
+      <a onclick="$('#form').attr('action', '<?php echo $etiqueta_correios; ?>'); $('#form').attr('target', '_blank'); $('#form').submit();" class="button">Gerar Etiquetas</a></div>
     </div>
     <div class="content">
       <form action="" method="post" enctype="multipart/form-data" id="form">
