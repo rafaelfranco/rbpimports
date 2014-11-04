@@ -919,7 +919,7 @@ function createorder(){
 		data: $('#payment-address input[type=\'text\'], #payment-address input[type=\'password\'], #payment-address input[type=\'checkbox\']:checked, #payment-address input[type=\'radio\']:checked, #payment-address select'),
 		dataType: 'json',
 		success: function(json) {
-			window.location.reload();
+			
 			$('.success, .warning').remove();
 			$('.error').remove();
 						
@@ -1701,6 +1701,7 @@ if($('.onecheckout-content .error:first').html()) {
   $('#confirm .onecheckout-content').prepend('<div class="warning" style="display: none;">' + $('.onecheckout-content .error:first').html() + '</div>');					
   $('.warning').fadeIn('slow');	
 } else {
+
 	$.ajax({
 		url: 'index.php?route=onecheckout/confirm/checklog', 
 		type: 'post',
@@ -1711,6 +1712,7 @@ if($('.onecheckout-content .error:first').html()) {
 			$('#button-confirmorder').after('<span class="wait">&nbsp;<img src="catalog/view/theme/default/image/loading.gif" alt="" /></span>');
 		},		
 		success: function(json) {
+			console.log(json);
 			$('.success, .warning').remove();	
 			
 			if (json['error']) {

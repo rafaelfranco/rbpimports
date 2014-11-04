@@ -94,7 +94,8 @@ $valor_total = str_replace(".","",$valor_total);
       <td><b><?php echo $entry_cc_cvv2; ?></b></td>
       <td>
           <div class="bg-input txt_cod">
-            <input type="text" name="cc_cvv2" value="" size="3" />
+            <input type="text" name="cc_cvv2" value="" size="3" /> 
+            <a href="javascript:$('#cvvpng').show();">Tem dúvidas?</a><img id="cvvpng" style="display:none;" src="/cvv.png">
           </div>
       </td>
     </tr>
