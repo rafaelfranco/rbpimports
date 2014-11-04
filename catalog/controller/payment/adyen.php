@@ -171,15 +171,29 @@ class ControllerPaymentAdyen extends Controller {
 			
 	    } elseif($result->paymentResult->refusalReason) {
 			$message .= 'refusalReason: ';
-				
+			$json['status_pagamento'] = 'negado';
+
 			$message .= (string) $result->paymentResult->refusalReason . "\n";
 			
+            if($result->paymentResult->refusalReason == trim('101 Invalid card number')) {
+                $json['status_pagamento'] = 'negado_card_number';
+            }
+            if($result->paymentResult->refusalReason == trim('Blocked Card')) {
+                $json['status_pagamento'] = 'negado_blocked';
+            }
+            if($result->paymentResult->refusalReason == trim('103 CVC is not the right length')) {
+                $json['status_pagamento'] = 'negado_cvc';
+            }
+            if($result->paymentResult->refusalReason == trim('Invalid Amount')) {
+                $json['status_pagamento'] = 'negado_amount';
+            }
+
 			$this->model_checkout_order->confirm($this->session->data['order_id'], $this->config->get('adyen_nao_aprovado_id'));
 
 			$this->model_checkout_order->update($this->session->data['order_id'], $this->config->get('adyen_nao_aprovado_id'), $message, false);
             
             $json['success'] = $this->url->link('payment/adyen_message');
-            $json['status_pagamento'] = 'negado';
+            
 			
 	    } else {
 			$message .= 'Erro não especificado';

@@ -188,6 +188,20 @@ $('#button-confirm').bind('click', function() {
                         if(json['status_pagamento'] == 'negado') {
                              $('#payment').before('<div class="information_adyen">Pagamento não aprovado por favor entre em contato com sua operadora ou utilize outro cartão</div>');
                         }
+
+                        if(json['status_pagamento'] == 'negado_card_number') {
+                             $('#payment').before('<div class="information_adyen">Número de cartão inválido, corrja e tente novamente</div>');
+                        }
+                        if(json['status_pagamento'] == 'negado_blocked') {
+                             $('#payment').before('<div class="information_adyen">Seu cartão esta bloqueado tente novamente com outro cartão</div>');
+                        }
+                        if(json['status_pagamento'] == 'negado_cvc') {
+                             $('#payment').before('<div class="information_adyen">Código de segurança inválido, corrija e tente novamente.</div>');
+                        }
+                        if(json['status_pagamento'] == 'negado_amount') {
+                             $('#payment').before('<div class="information_adyen">Valor mínimo de parcela inválido, por favor reduza o número de parcelas</div>');
+                        }
+
                         if(json['status_pagamento'] == 'sucesso') {
                             location = json['success'];
                         }
