@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <title><?php echo $title; ?></title>
-
+<meta name="google-site-verification" content="4pqqGVaxw1FMrUO0KeGUwKpVHWQw_pMA0A7eauv7LTA" />
 <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1">
 <?php if ($description) { ?>
 <meta name="description" content="<?php echo $description; ?>" />
