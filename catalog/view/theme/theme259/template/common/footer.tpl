@@ -65,7 +65,10 @@
 						<div class="payments_types">
 <table cellpadding="5">
 	<tr>
-<td><a id="seloEbit" href="http://www.ebit.com.br/#RBP-Materiais-Eletricos-e-Eletronicos/selo" target="_blank" onclick="redir(this.href);" title="Avaliado pelos consumidores" oncontextmenu="alert(&quot;Cópia proibida – A certificação e-bit é de uso exclusivo de lojas conveniadas à e-bit.&quot;);return false;" style="display: block; overflow: hidden; position: relative;"><img src="https://a248.e.akamai.net/f/248/52872/0s/img.ebit.com.br/ebitBR/selo/img_49172.png" style="border: 0px;"></a> <script type="text/javascript" id="getSelo" src="https://558701205.r.anankecdn.com.br/ebitBR/static/getSelo.js?49172"></script></td>
+<td>
+	<a id="seloEbit" href="http://www.ebit.com.br/#RBP-Materiais-Eletricos-e-Eletronicos/selo" target="_blank" onclick="redir(this.href);" title="Avaliado pelos consumidores" oncontextmenu="alert(&quot;Cópia proibida – A certificação e-bit é de uso exclusivo de lojas conveniadas à e-bit.&quot;);return false;" style="display: block; overflow: hidden; position: relative;"><img src="https://a248.e.akamai.net/f/248/52872/0s/img.ebit.com.br/ebitBR/selo/img_49172.png" style="border: 0px;"></a> <script type="text/javascript" id="getSelo" src="https://558701205.r.anankecdn.com.br/ebitBR/static/getSelo.js?49172"></script>
+
+</td>
 <td>					<!-- Acrescente esta div em um local desejado desde que esteja dentro da tag <body></body> -->
 					<div id="cliqueeconfie"></div>
 					<!-- Inicio Selo cliqueeconfie.com.br -->
@@ -102,7 +105,10 @@
 			</div>
 		</div>
 		
-<span id="siteseal"><img style="cursor:pointer;cursor:hand" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();"></span>
+<span id="siteseal">
+	<a href="http://shopping.uol.com.br"><img src="http://selo.shopping.uol.com.br/out/shoppinguol.gif" alt="Shopping UOL" /></a>
+
+	<img style="cursor:pointer;cursor:hand" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();"></span>
 <div>
 	
 </div>
