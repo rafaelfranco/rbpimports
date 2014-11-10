@@ -987,7 +987,8 @@ function createorder(){
 				
 				$('#button-confirmorder').attr('disabled', false);
 				$('.wait').remove();																																	
-			} else {				
+			} else {
+				window.location.reload();				
 				$.ajax({
 					url: 'index.php?route=onecheckout/address/payment',
 					dataType: 'json',
