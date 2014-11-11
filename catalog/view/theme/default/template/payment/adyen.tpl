@@ -180,7 +180,7 @@ $('#button-confirm').bind('click', function() {
                     }
 
                     if (json['success']) {
-                        console.log();
+                        console.log(json);
 
                         if(json['status_pagamento'] == 'erro') {
                             $('#payment').before('<div class="information_adyen">Dados inválidos! Por favor verifique os dados e tente novamente</div>');

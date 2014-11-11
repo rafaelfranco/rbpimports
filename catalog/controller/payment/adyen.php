@@ -193,7 +193,6 @@ class ControllerPaymentAdyen extends Controller {
 			$this->model_checkout_order->update($this->session->data['order_id'], $this->config->get('adyen_nao_aprovado_id'), $message, false);
             
             $json['success'] = $this->url->link('payment/adyen_message');
-            
 			
 	    } else {
 			$message .= 'Erro não especificado';
