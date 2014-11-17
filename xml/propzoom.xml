@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRODUTOS>
+    <PRODUTO>
+        <CODIGO>113</CODIGO>
+        <NOME>Camera Digital e Filmadora Infantil Meu Primeiro Gradiente MPG 2C Visor Duplo 2MP Zoom Flash</NOME>
+        <DESCRICAO>Maquina Fotografica Digital com flash, zoom, 5 jogos e editor de fotos. Filma e grava fotos com voz. Display LCD colorido 1,8 polegadas. Memoria interna de 256 MB. Zoom digital 2x</DESCRICAO>
+        <PRECO_DE>98,00</PRECO_DE>
+        <PRECO>98,00</PRECO>
+        <NPARCELA>12</NPARCELA>
+        <VPARCELA>8,16</VPARCELA>
+        <URL>http://www.rbpimports.com.br/index.php?route=product/product&path=86&product_id=113</URL>
+        <URL_IMAGEM>https://www.rbpimports.com.br/image/data/Produtos/Gradiente/001ABI980000000_CamDigInfantilMPG2C_1.jpg</URL_IMAGEM>
+        <DEPARTAMENTO>Infantil</DEPARTAMENTO>
+        <SUBDEPARTAMENTO></SUBDEPARTAMENTO>
+        <ISBN/>
+        <EDITORA/>
+        <AUTOR/>
+        <MPC></MPC>
+        <EAN></EAN>
+        <SKU> </SKU>
+    </PRODUTO>
+    <PRODUTO>
+        <CODIGO>216</CODIGO>
+        <NOME>Karaoke Meu Primeiro Gradiente MPG 1K</NOME>
+        <DESCRICAO>Karaoke Meu Primeiro Gradiente MPG 1K com MP3, Efeitos de Voz, Gravador, Rádio FM + Pen Drive com 8 Cantigas Infantis</DESCRICAO>
+        <PRECO_DE>349,00</PRECO_DE>
+        <PRECO>39,00</PRECO>
+        <NPARCELA>12</NPARCELA>
+        <VPARCELA>29,08</VPARCELA>
+	<URL>http://www.rbpimports.com.br/index.php?route=product/product&path=86&product_id=216</URL>
+	<URL_IMAGEM>http://www.rbpimports.com.br/image/data/Produtos/Gradiente/009AQI980000000_Karaoke%CC%82_1.jpg</URL_IMAGEM>
+        <DEPARTAMENTO>Infantil</DEPARTAMENTO>
+        <SUBDEPARTAMENTO></SUBDEPARTAMENTO>
+        <ISBN></ISBN>
+        <EDITORA></EDITORA>
+        <AUTOR></AUTOR>
+        <MPC></MPC>
+        <EAN></EAN>
+        <SKU></SKU>
+    </PRODUTO>
+    <PRODUTO>
+        <CODIGO>115</CODIGO>
+        <NOME>DVD Portatil Meu Primeiro Gradiente MPG 5D Tela LCD LED 7 polegadas Giratoria, Bateria 3h, Suporte para Carro</NOME>
+        <DESCRICAO>DVD Portatil Meu Primeiro Gradiente MPG 5D Tela LCD LED 7 polegadas Giratoria, Bateria 3h, Suporte para Carro</DESCRICAO>
+        <PRECO_DE>350,00</PRECO_DE>
+        <PRECO>350,00</PRECO>
+        <NPARCELA>12</NPARCELA>
+        <VPARCELA>29,17</VPARCELA>        
+	<URL>http://www.rbpimports.com.br/index.php?route=product/product&path=86&product_id=115</URL>
+	<URL_IMAGEM>http://www.rbpimports.com.br/image/data/Produtos/Gradiente/033ANI980000000_DVDPortatilMPG5D_1.jpg</URL_IMAGEM>
+        <DEPARTAMENTO>Infantil</DEPARTAMENTO>
+        <SUBDEPARTAMENTO></SUBDEPARTAMENTO>
+        <ISBN></ISBN>
+        <EDITORA></EDITORA>
+        <AUTOR></AUTOR>
+        <MPC></MPC>
+        <EAN></EAN>
+        <SKU></SKU>
+    </PRODUTO>
+    <PRODUTO>
+        <CODIGO>356</CODIGO>
+        <NOME>Tablet Galinha Pintadinha 2 da Tectoy</NOME>
+        <DESCRICAO>Tablet Galinha Pintadinha 2 da Tectoy</DESCRICAO>
+        <PRECO_DE>499,00</PRECO_DE>
+        <PRECO>499,00</PRECO>
+        <NPARCELA>12</NPARCELA>
+        <VPARCELA>41,58</VPARCELA>        
+	<URL>http://www.rbpimports.com.br/index.php?route=product/product&product_id=536</URL>
+	<URL_IMAGEM>http://www.rbpimports.com.br/image/data/Produtos/TecToy/Tab1W.gif</URL_IMAGEM>
+        <DEPARTAMENTO>Infantil</DEPARTAMENTO>
+        <SUBDEPARTAMENTO></SUBDEPARTAMENTO>
+        <ISBN></ISBN>
+        <EDITORA></EDITORA>
+        <AUTOR></AUTOR>
+        <MPC></MPC>
+        <EAN></EAN>
+        <SKU></SKU>
+    </PRODUTO>
+    <PRODUTO>
+        <CODIGO>549</CODIGO>
+        <NOME>Furby Boom - Blue Waves - Hasbro</NOME>
+        <DESCRICAO>Furby Boom - Blue Waves - Hasbro</DESCRICAO>
+        <PRECO_DE>350,00</PRECO_DE>
+        <PRECO>350,00</PRECO>
+        <NPARCELA>12</NPARCELA>
+        <VPARCELA>29,92</VPARCELA>        
+	<URL>http://www.rbpimports.com.br/index.php?route=product/product&product_id=536</URL>
+	<URL_IMAGEM>http://www.rbpimports.com.br/image/data/Produtos/Hasbro/BurbyBlueW.gif</URL_IMAGEM>
+        <DEPARTAMENTO>Infantil</DEPARTAMENTO>
+        <SUBDEPARTAMENTO></SUBDEPARTAMENTO>
+        <ISBN></ISBN>
+        <EDITORA></EDITORA>
+        <AUTOR></AUTOR>
+        <MPC></MPC>
+        <EAN></EAN>
+        <SKU></SKU>
+    </PRODUTO>
+</PRODUTOS>
