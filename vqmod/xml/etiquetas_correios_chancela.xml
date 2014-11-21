@@ -18,12 +18,12 @@
 				<![CDATA[$this->data['insert'] = $this->url->link('sale/order/insert', 'token=' . $this->session->data['token'], 'SSL');]]>
 			</search>
 			<add>
-				<![CDATA[ 	
-				$this->data['etiqueta_correios'] = $this->url->link('sale/order/invoice&geraetiquetas=sim', 'token=' . $this->session->data['token'], 'SSL'); 
+				<![CDATA[
+				$this->data['etiqueta_correios'] = $this->url->link('sale/order/invoice&geraetiquetas=sim', 'token=' . $this->session->data['token'], 'SSL');
 				]]>
 			</add>
 		</operation>
-		
+
 		<operation info="">
 			<search position="after">
 				<![CDATA[$this->data['invoice'] = $this->url->link('sale/order/invoice', 'token=' . $this->session->data['token'] . '&order_id=' . (int)$this->request->get['order_id'], 'SSL');]]>
@@ -34,32 +34,32 @@
 				]]>
 			</add>
 		</operation>
-		
+
 		<operation info="">
 			<search position="after">
 				<![CDATA['shipping_address'   => $shipping_address,]]>
 			</search>
 			<add>
-				<![CDATA[ 	
+				<![CDATA[
 					'shipping_address_postCode'   => $order_info['shipping_postcode'],
 				]]>
 			</add>
-		</operation>		
-		
+		</operation>
+
 		<operation info="">
 			<search position="after">
 				<![CDATA['payment_address'    => $payment_address,]]>
 			</search>
 			<add>
-				<![CDATA[ 	
+				<![CDATA[
 					'payment_address_postCode'    => $order_info['shipping_postcode'],
 				]]>
 			</add>
 		</operation>
-		
-		
+
+
 	</file>
-	
+
 	<file path="admin/view/template/sale/" name="order_list.tpl">
 		<operation info="">
 			<search position="replace">
@@ -73,14 +73,14 @@
 					<a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a>
 					<a onclick="$('#form').attr('action', '<?php echo $delete; ?>'); $('#form').attr('target', '_self'); $('#form').submit();" class="button"><?php echo $button_delete; ?></a>
 					<a onclick="$('#form').attr('action', '<?php echo $etiqueta_correios; ?>'); $('#form').attr('target', '_blank'); $('#form').submit();" class="button">Gerar Etiquetas</a>
-				</div>	
+				</div>
 			]]>
 			</add>
 		</operation>
-		
-		
+
+
 	</file>
-	
+
 	<file path="admin/view/template/sale/" name="order_info.tpl">
 		<operation info="">
 			<search position="replace">
@@ -95,24 +95,24 @@
 				]]>
 			</add>
 		</operation>
-		
-		
+
+
 	</file>
-	
+
 	<file path="admin/view/template/sale/" name="order_invoice.tpl">
 		<operation info="Chama o barcode">
 			<search position="before">
 				<![CDATA[
-					<?php foreach ($orders as $order) { ?> 
+					<?php foreach ($orders as $order) { ?>
 				]]>
 			</search>
 			<add>
-				<![CDATA[			
+				<![CDATA[
 					<?php require_once (DIR_APPLICATION . "../etiqueta_correios/barcode.php");?>
 				]]>
 			</add>
 		</operation>
-		
+
 		<operation info="">
 			<search position="before">
 				<![CDATA[
@@ -120,7 +120,7 @@
 				]]>
 			</search>
 			<add>
-				<![CDATA[			
+				<![CDATA[
 				<script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.4.1.min.js"></script>
 				<script type="text/javascript">
 					$(document).ready(function() {
@@ -130,17 +130,17 @@
 				]]>
 			</add>
 		</operation>
-		
+
 		<operation info="Cria a etiqueta">
 			<search position="after">
-				<![CDATA[ 
-					<?php foreach ($orders as $order) { ?> 
+				<![CDATA[
+					<?php foreach ($orders as $order) { ?>
 				]]>
 			</search>
 			<add>
-				<![CDATA[ 
-					<?php if(isset($_GET['geraetiquetas'])=='sim') { ?>							
-							<div style="width: 100%; height: 465px; border:0px solid; float:left; margin: 11px; padding: 0px;">
+				<![CDATA[
+					<?php if(isset($_GET['geraetiquetas'])=='sim') { ?>
+							<div style="width: 45%; height: 465px; border:0px solid; float:left; margin: 11px; padding: 0px;">
 										<table width="100%" border="0">
 											<tbody>
 												<tr>
@@ -154,21 +154,21 @@
 											<tr>
 												<td valign="top" width="100%" colspan="2">
 													<span style="font-size:16px; text-transform:uppercase;">
-													  <?php 
+													  <?php
 															if($order['shipping_address']){
 																echo $order['shipping_address'];
 															} else {
 																echo $order['payment_address'];
 															}
-														?>                 
-														<br/>													  
+														?>
+														<br/>
 													</span>
-												</td>									
+												</td>
 											</tr>
 											<tr>
-												<td width="100%" valign="top" align="left" colspan="2">										
+												<td width="100%" valign="top" align="left" colspan="2">
 													<span style="font-size:16px; text-transform:uppercase;">
-													Tel: 
+													Tel:
 														<?php echo $order['telephone']; ?>
 													</span>
 												</td>
@@ -178,16 +178,16 @@
 														<?php
 														if($order["shipping_address_postCode"]){
 															$code_number = $order["shipping_address_postCode"];
-															$caracteresInvalidos = array("/", "", "-", "_");													
+															$caracteresInvalidos = array("/", "", "-", "_");
 															$onlyconsonants = str_replace($caracteresInvalidos, "", $code_number);
 															$code_number = $onlyconsonants;
-															echo fbarcode($code_number) . "<br />";													
+															echo fbarcode($code_number) . "<br />";
 															echo "<span style='font-size:12px;'>".$order["shipping_address_postCode"]."</span><br/>";
 														} else {
 															$code_number = $order["payment_address_postCode"];
-															$caracteresInvalidos = array("/", "", "-", "_");													
+															$caracteresInvalidos = array("/", "", "-", "_");
 															$onlyconsonants = str_replace($caracteresInvalidos, "", $code_number);
-															echo fbarcode($code_number);													
+															echo fbarcode($code_number);
 															echo $order["payment_address_postCode"];
 														}
 													?>
@@ -202,11 +202,11 @@
 															$src = '../etiqueta_correios/imagens/sedex.jpg';
 														}
 														?>
-												<img src="<?php echo $src; ?>" style=" width: 142px; height: 104px;"/>		
-												</td>												
+												<img src="<?php echo $src; ?>" style=" width: 142px; height: 104px;"/>
+												</td>
 											</tr>
 											<tr>
-												<td width="100%" valign="top" align="left" colspan="2">	
+												<td width="100%" valign="top" align="left" colspan="2">
 													<div style="font-size: 10px;">
 													<br><b>Remetente:</b><br />
 													</div>
@@ -216,19 +216,19 @@
 														<?php echo $text_telephone; ?> <?php echo $order['store_telephone']; ?><br />
 														<?php if ($order['store_fax']) { ?>
 														<?php echo $text_fax; ?> <?php echo $order['store_fax']; ?><br />
-														<?php } ?>		
+														<?php } ?>
 													</span>
 												</td>
 											</tr>
 										</tbody>
 										</table>
-										
+
 							</div>
 					<?php } else { ?>
 				]]>
 			</add>
 		</operation>
-		
+
 		<operation info="Fecha o código">
 			<search position="before">
 				<![CDATA[
@@ -243,7 +243,7 @@
 			</add>
 		</operation>
 
-		
+
 	</file>
-	
+
 </modification>
