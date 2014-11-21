@@ -22,9 +22,9 @@
     <PRODUTO>
         <CODIGO>216</CODIGO>
         <NOME>Karaoke Meu Primeiro Gradiente MPG 1K</NOME>
-        <DESCRICAO>Karaoke Meu Primeiro Gradiente MPG 1K com MP3, Efeitos de Voz, Gravador, Rádio FM + Pen Drive com 8 Cantigas Infantis</DESCRICAO>
+        <DESCRICAO>Karaoke Meu Primeiro Gradiente MPG 1K com MP3, Efeitos de Voz, Gravador, Radio FM + Pen Drive com 8 Cantigas Infantis</DESCRICAO>
         <PRECO_DE>349,00</PRECO_DE>
-        <PRECO>39,00</PRECO>
+        <PRECO>349,00</PRECO>
         <NPARCELA>12</NPARCELA>
         <VPARCELA>29,08</VPARCELA>
 	<URL>http://www.rbpimports.com.br/index.php?route=product/product&path=86&product_id=216</URL>
@@ -80,11 +80,11 @@
         <CODIGO>549</CODIGO>
         <NOME>Furby Boom - Blue Waves - Hasbro</NOME>
         <DESCRICAO>Furby Boom - Blue Waves - Hasbro</DESCRICAO>
-        <PRECO_DE>350,00</PRECO_DE>
-        <PRECO>350,00</PRECO>
+        <PRECO_DE>359,00</PRECO_DE>
+        <PRECO>359,00</PRECO>
         <NPARCELA>12</NPARCELA>
         <VPARCELA>29,92</VPARCELA>        
-	<URL>http://www.rbpimports.com.br/index.php?route=product/product&product_id=536</URL>
+	<URL>http://www.rbpimports.com.br/index.php?route=product/product&product_id=549</URL>
 	<URL_IMAGEM>http://www.rbpimports.com.br/image/data/Produtos/Hasbro/BurbyBlueW.gif</URL_IMAGEM>
         <DEPARTAMENTO>Infantil</DEPARTAMENTO>
         <SUBDEPARTAMENTO></SUBDEPARTAMENTO>
