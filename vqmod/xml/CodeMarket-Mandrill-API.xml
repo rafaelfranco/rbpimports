@@ -17,7 +17,7 @@
 				//Code Market - Mandrill API
 				//Configurações
 				//Informe a API Key do Mandril de usa conta (única configuração obrigatória)
-				public $api_key = 'Coloque sua API KEY aqui';
+				public $api_key = 'AWqiXBhElMTZO7Vcgqg08A';
 				//Use true para habilitar ou false para desabilitar, recomendamos deixar habilitado para acompanhar os e-mails  abertos e links clicados
 				public $verificar_aberto = 'true';
 				public $verificar_clique = 'true';
