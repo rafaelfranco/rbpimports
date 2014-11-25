@@ -1,0 +1,258 @@
+<modification>
+	<id><![CDATA[<a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Mandrill API</b> </a>]]></id>
+	<version><![CDATA[1.0]]></version>
+	<vqmver><![CDATA[2.4.1]]></vqmver>
+	<author>
+		<![CDATA[<b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>]]>
+	</author>
+
+	<file path="system/library/mail.php">
+		<operation>
+			<search position="replace">
+				<![CDATA[public function send() {
+				]]>
+			</search>
+			<add>
+				<![CDATA[
+				//Code Market - Mandrill API
+				//Configurações
+				//Informe a API Key do Mandril de usa conta (única configuração obrigatória)
+				public $api_key = 'Coloque sua API KEY aqui';
+				//Use true para habilitar ou false para desabilitar, recomendamos deixar habilitado para acompanhar os e-mails  abertos e links clicados
+				public $verificar_aberto = 'true';
+				public $verificar_clique = 'true';
+				//Opcional,apenas se tiver IP Dedicado
+				public $ip_dedicado = '';
+				//Informe uma Tag para saber que a mensagem foi enviada da loja, pode ser o nome dela ou deixe em branco, caso queira usar mais de uma tag, separe por virgula
+				public $tags = array('');
+				//Metadata é parecido com a tag, no caso pode por o mesmo valor, por padrão recomendamos a loja ou deixe em branco, serve para filtrar depois os e-mails
+				public $metadata = array('');
+
+				//Google
+				//Deixe em branco ou para mais detalhes de como adicionar os dados - http://help.mandrill.com/entries/21814166-How-do-I-add-Google-Analytics-tracking-to-my-links-
+				public $google_dominios = array('');
+				public $google_campanhas = array('');
+
+				//true ou false, envia as imagens em background, ou seja, o sistema retorna normal enquanto as mensagens são enviadas, sem precisar esperar. É ativo automaticamente para
+				//mais  de 10 destinatários
+				public $assincrono = 'true';
+
+				//Não recomendamos editar, vai servir para complementos e serão modificados de forma automática com base nos dados
+				public $metadata_clientes = array('');
+				public $dados = array('');
+				public $dados_clientes = array('');
+				protected $template_nome;
+				protected $template_dados;
+				protected $nomes;
+				protected $envio = '1';
+				public $data_envio;
+
+				//handlebars ou mailchimp
+				public $tema_engine = 'mailchimp';
+
+				//Fim Configurações Mandrill
+
+				//Mandrill
+				public function setNomes($nomes) {
+					$this->nomes = $nomes;
+				}
+
+				public function setAPI($api) {
+					$this->api_key = $api;
+				}
+
+				public function setVerificarAberto($aberto) {
+					$this->verificar_aberto = $aberto;
+				}
+
+				public function setVerificarClique($clique) {
+					$this->verificar_clique = $clique;
+				}
+
+				public function setIP($ip) {
+					$this->ip_dedicado = $ip;
+				}
+
+				public function setDados($dados) {
+					$this->dados = $dados;
+				}
+
+				public function setDadosClientes($dados_clientes) {
+					$this->dados_clientes = $dados_clientes;
+				}
+
+				public function setTags($tags) {
+					$this->tags = $tags;
+				}
+
+				public function setMetadata($metadata) {
+					$this->metadata = $metadata;
+				}
+
+				public function setMetadataClientes($metadata_clientes) {
+					$this->metadata_clientes = $metadata_clientes;
+				}
+
+				public function setGoogleDominios($google_dominios) {
+					$this->google_dominios = $google_dominios;
+				}
+
+				public function setGoogleCampanhas($google_campanhas) {
+					$this->google_campanhas = $google_campanhas;
+				}
+
+				public function setTemplateNome($template_nome) {
+					$this->template_nome = $template_nome;
+				}
+
+				public function setTemplateDados($template_dados) {
+					$this->template_dados = $template_dados;
+				}
+
+				public function setTemaEngine($tema_engine) {
+					$this->tema_engine = $tema_engine;
+				}
+
+				public function setDataEnvio($data_envio) {
+					$this->data_envio = $data_envio;
+				}
+
+				public function setEnvio($envio) {
+					$this->envio = $envio;
+				}
+
+				public function send(){
+					//Verificações
+					if (!$this->to) {
+						trigger_error('Error: E-Mail to required!');
+						exit();
+					}
+
+					if (!$this->from) {
+						trigger_error('Error: E-Mail from required!');
+						exit();
+					}
+
+					if (!$this->sender) {
+						trigger_error('Error: E-Mail sender required!');
+						exit();
+					}
+
+					if (!$this->subject) {
+						trigger_error('Error: E-Mail subject required!');
+						exit();
+					}
+
+					if ((!$this->text) && (!$this->html)) {
+						trigger_error('Error: E-Mail message required!');
+						exit();
+					}
+
+					if (is_array($this->to)) {
+						$to = implode(',', $this->to);
+					} else {
+						$to = $this->to;
+					}
+
+					require_once(DIR_SYSTEM . 'library/mandrill/src/Mandrill.php');
+					try {
+						if(empty($this->html)){
+							$html = '';
+						} else {
+							$html = $this->html;
+						}
+
+						if(empty($this->text)){
+							$text = '';
+						}else {
+							$text = $this->text;
+						}
+
+						//Enviar Para
+						$emails = explode(',',$to);
+
+						if(!empty($this->nomes)){
+							$nomes = explode(',',$this->nomes);
+						}else {
+							$nomes = '';
+						}
+
+						for ($i = 0; $i < count($emails); $i++) {
+							if(!empty($nomes[$i])){
+								$nome = $nomes[$i];
+							}else {
+								$nome = '';
+							}
+
+							$enviar_para[] = array(
+								'email' => $emails[$i],
+								'name' => $nome,
+								'type' => 'to'
+							);
+						}
+
+						$mandrill = new Mandrill($this->api_key);
+						$mensagem = array(
+							'html' => $html,
+							'text' => $text,
+							'subject' => $this->subject,
+							'from_email' => $this->from,
+							'from_name' => $this->sender,
+							'to' => $enviar_para,
+							'headers' => array('Reply-To' => $this->from),
+							'track_opens' => $this->verificar_aberto,
+							'track_clicks' => $this->verificar_clique,
+							'google_analytics_domains' => $this->google_dominios,
+							'google_analytics_campaign' => $this->google_campanhas,
+							'tags' => $this->tags,
+							'merge_language' => $this->tema_engine,
+							'global_merge_vars' => $this->dados,
+							'merge_vars' => $this->dados_clientes,
+							'metadata' => $this->metadata,
+							'recipient_metadata' => $this->metadata_clientes
+						);
+
+						//Envio
+						//1 = Padrão sem template nome, dados e sem ip dedicado
+						//2 = Padrão com template nome, dados e ip dedicado
+
+						//Alternativas
+						//3 = Padrão com template nome e dados
+						//4 = Padrão com template nome e ip dedicado
+						//5 = Padrão com template dados e ip  dedicado
+						//6 = Padrão com ip dedicado
+						switch ($this->envio) {
+							case 1:
+							$mandrill->messages->send($mensagem, $this->assincrono, $this->data_envio);
+							break;
+							case 2:
+							$mandrill->messages->send($this->template_nome, $this->template_dados, $mensagem, $this->assincrono, $this->ip_dedicado, $this->data_envio);
+							break;
+							case 3:
+							$mandrill->messages->send($this->template_nome, $this->template_dados, $mensagem, $this->assincrono, $this->data_envio);
+							break;
+							case 4:
+							$mandrill->messages->send($this->template_nome, $mensagem, $this->assincrono, $this->ip_dedicado, $this->data_envio);
+							break;
+							case 5:
+							$mandrill->messages->send($this->template_dados, $mensagem, $this->assincrono, $this->ip_dedicado, $this->data_envio);
+							break;
+							case 6:
+							$mandrill->messages->send($mensagem, $this->assincrono, $this->ip_dedicado, $this->data_envio);
+							break;
+						}
+
+					} catch(Mandrill_Error $e) {
+						// Mandrill errors are thrown as exceptions
+						echo 'Ocorreu um erro ao enviar o E-mail: ' . get_class($e) . ' - ' . $e->getMessage();
+						// A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+						throw $e;
+					}
+				}
+
+				public function send_desativado() {
+				]]>
+			</add>
+		</operation>
+	</file>
+</modification>
