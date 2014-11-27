@@ -85,7 +85,7 @@
 		</div>
 		
 <span id="siteseal">
-	<a href="http://shopping.uol.com.br"><img src="http://selo.shopping.uol.com.br/out/shoppinguol.gif" alt="Shopping UOL" /></a>
+	<a href="http://shopping.uol.com.br"><img src="//selo.shopping.uol.com.br/out/shoppinguol.gif" alt="Shopping UOL" /></a>
 
 	<img style="cursor:pointer;cursor:hand" src="https://seal.godaddy.com/images/3/en/siteseal_gd_3_h_l_m.gif" onclick="verifySeal();"></span>
 <div>
