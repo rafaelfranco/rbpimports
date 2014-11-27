@@ -70,12 +70,10 @@
 
 </td>
 <td>					<!-- Acrescente esta div em um local
-desejado desde que esteja entres as tags <body> e
-</body> -->             <div
-id="cliqueevalide"></div>             <!--
-Inicio Selo cliqueevalide.com.br -->             <script src="//www.cliqueevalide.com.br/js/selo-cliqueevalide.js"
-type="text/javascript"></script>             <!-- Fim do Selo cliqueevalide.com.br
--->					<script>
+desejado desde que esteja entres as tags 
+<!-- Fim do Selo cliqueevalide.com.br-->
+
+					<script>
 						(function(d, w) {
 							p = (/^http:/.test(d.location)? "http" : "https" ) + "://";
 							
