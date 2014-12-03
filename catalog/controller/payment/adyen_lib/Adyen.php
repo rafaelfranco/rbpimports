@@ -46,20 +46,6 @@ class Adyen {
 		if(!isset($parcelas) || $parcelas == 0){
 			return false;
 		}
-
-		print_r(array(
-		  "paymentRequest" => array 
-		  (
-		    "amount" => $valores,
-			"card" => $cartao, 
-			"installments" => $parcelas,
-			"merchantAccount" => $merchantAccount,
-			"reference" => $referencia, 
-			"billingAddress" => $endereco, 
-			"OrderReference" => $pedido, 
-			//"deliveryAddress" => $endereco
-			)
-		));
 		$response = $this->client->authorise( array(
 		  "paymentRequest" => array 
 		  (
