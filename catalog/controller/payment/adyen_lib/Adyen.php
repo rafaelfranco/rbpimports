@@ -8,8 +8,8 @@ class Adyen {
 		$this->DEBUG = $debug;
 
 		//Modificação realizada via N49 05/12/2013
-		$this->client = new SoapClient( "https://pal-$host.adyen.com/pal/Payment.wsdl",
-		#$this->client = new SoapClient( "http://www.rbpimports.com.br/loja/Payment.wsdl",
+		#$this->client = new SoapClient( "https://pal-$host.adyen.com/pal/Payment.wsdl",
+		$this->client = new SoapClient( "http://www.rbpimports.com.br/loja/Payment.wsdl",
 		  array(
 		    "location" => "https://pal-$host.adyen.com/pal/servlet/soap/Payment",
 		    "login" => $login,
