@@ -42,17 +42,16 @@ jQuery(document).ready(function($) {
         }
     });
 
-    console.log($('.price').html());
+
 
 });
 function preencheEndereco(cependereco) {
-console.log(cependereco);
     $.ajax({
             url: '/index.php?route=module/cep',
             type: 'POST',
             data: "CEP="+cependereco,
             success: function(json) {
-                console.log(json);
+            
                 dados = json.split(";");
                 $('input[name=address_1]').val(dados[0]);
                 $('input[name=address_2]').val(dados[1]);
