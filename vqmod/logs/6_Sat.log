@@ -1,5 +1,5 @@
----------- Date: 2014-10-18 12:11:58 ~ IP : ::1 ----------
-REQUEST URI : /admin/index.php?route=extension/module&amp;token=e88947da4e0aba2a47f2336a7ce8a7d5
+---------- Date: 2014-12-06 18:33:18 ~ IP : ::1 ----------
+REQUEST URI : /index.php?route=onecheckout/register
 MOD DETAILS:
    modFile   : /Users/rafaelfranco/Sites/rbpimports/vqmod/xml/Felipo-Numero-Complemento.xml
    id        : <a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Número e Complemento - Cadastro e Checkout</b></a>
@@ -8,9 +8,153 @@ MOD DETAILS:
    author    : 
         <b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>
     
-VQModObject::parseMods - Could not resolve path for [catalog/controller/onecheckout/guest_shipping.php] (SKIPPED)
-VQModObject::parseMods - Could not resolve path for [catalog/controller/onecheckout/payment_address.php] (SKIPPED)
-VQModObject::parseMods - Could not resolve path for [catalog/controller/onecheckout/shipping_address.php] (SKIPPED)
+
+File Name    : catalog/view/theme/*/template/onecheckout/register.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <?php echo $entry_address_2; ?><br />
+----------------------------------------------------------------------
+
+
+---------- Date: 2014-12-06 18:33:19 ~ IP : ::1 ----------
+REQUEST URI : /index.php?route=onecheckout/guest/shipping
+MOD DETAILS:
+   modFile   : /Users/rafaelfranco/Sites/rbpimports/vqmod/xml/Felipo-Numero-Complemento.xml
+   id        : <a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Número e Complemento - Cadastro e Checkout</b></a>
+   version   : 1.0
+   vqmver    : 2.4.1
+   author    : 
+        <b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>
+    
+
+File Name    : catalog/controller/onecheckout/guest.php(1)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if (isset($this->session->data['guest']['payment']['address_1'])) {
+----------------------------------------------------------------------
+
+
+---------- Date: 2014-12-06 18:39:16 ~ IP : ::1 ----------
+REQUEST URI : /index.php?route=onecheckout/register
+MOD DETAILS:
+   modFile   : /Users/rafaelfranco/Sites/rbpimports/vqmod/xml/Felipo-Numero-Complemento.xml
+   id        : <a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Número e Complemento - Cadastro e Checkout</b></a>
+   version   : 1.0
+   vqmver    : 2.4.1
+   author    : 
+        <b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>
+    
+
+File Name    : catalog/view/theme/*/template/onecheckout/register.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <?php echo $entry_address_2; ?><br />
+----------------------------------------------------------------------
+
+
+---------- Date: 2014-12-06 18:39:17 ~ IP : ::1 ----------
+REQUEST URI : /index.php?route=onecheckout/guest/shipping
+MOD DETAILS:
+   modFile   : /Users/rafaelfranco/Sites/rbpimports/vqmod/xml/Felipo-Numero-Complemento.xml
+   id        : <a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Número e Complemento - Cadastro e Checkout</b></a>
+   version   : 1.0
+   vqmver    : 2.4.1
+   author    : 
+        <b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>
+    
+
+File Name    : catalog/controller/onecheckout/guest.php(1)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if (isset($this->session->data['guest']['payment']['address_1'])) {
+----------------------------------------------------------------------
+
+
+---------- Date: 2014-12-06 18:40:11 ~ IP : ::1 ----------
+REQUEST URI : /index.php?route=onecheckout/register
+MOD DETAILS:
+   modFile   : /Users/rafaelfranco/Sites/rbpimports/vqmod/xml/Felipo-Numero-Complemento.xml
+   id        : <a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Número e Complemento - Cadastro e Checkout</b></a>
+   version   : 1.0
+   vqmver    : 2.4.1
+   author    : 
+        <b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>
+    
+
+File Name    : catalog/view/theme/*/template/onecheckout/register.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <?php echo $entry_address_2; ?><br />
+----------------------------------------------------------------------
+
+
+---------- Date: 2014-12-06 18:40:11 ~ IP : ::1 ----------
+REQUEST URI : /index.php?route=onecheckout/guest/shipping
+MOD DETAILS:
+   modFile   : /Users/rafaelfranco/Sites/rbpimports/vqmod/xml/Felipo-Numero-Complemento.xml
+   id        : <a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Número e Complemento - Cadastro e Checkout</b></a>
+   version   : 1.0
+   vqmver    : 2.4.1
+   author    : 
+        <b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>
+    
+
+File Name    : catalog/controller/onecheckout/guest.php(1)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if (isset($this->session->data['guest']['payment']['address_1'])) {
+----------------------------------------------------------------------
+
+
+---------- Date: 2014-12-06 18:40:39 ~ IP : ::1 ----------
+REQUEST URI : /index.php?route=onecheckout/register
+MOD DETAILS:
+   modFile   : /Users/rafaelfranco/Sites/rbpimports/vqmod/xml/Felipo-Numero-Complemento.xml
+   id        : <a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Número e Complemento - Cadastro e Checkout</b></a>
+   version   : 1.0
+   vqmver    : 2.4.1
+   author    : 
+        <b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>
+    
+
+File Name    : catalog/view/theme/*/template/onecheckout/register.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <?php echo $entry_address_2; ?><br />
+----------------------------------------------------------------------
+
+
+---------- Date: 2014-12-06 18:40:40 ~ IP : ::1 ----------
+REQUEST URI : /index.php?route=onecheckout/guest/shipping
+MOD DETAILS:
+   modFile   : /Users/rafaelfranco/Sites/rbpimports/vqmod/xml/Felipo-Numero-Complemento.xml
+   id        : <a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Número e Complemento - Cadastro e Checkout</b></a>
+   version   : 1.0
+   vqmver    : 2.4.1
+   author    : 
+        <b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>
+    
+
+File Name    : catalog/controller/onecheckout/guest.php(1)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if (isset($this->session->data['guest']['payment']['address_1'])) {
+----------------------------------------------------------------------
+
+
+---------- Date: 2014-12-06 18:41:33 ~ IP : ::1 ----------
+REQUEST URI : /index.php?route=onecheckout/register
+MOD DETAILS:
+   modFile   : /Users/rafaelfranco/Sites/rbpimports/vqmod/xml/Felipo-Numero-Complemento.xml
+   id        : <a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Número e Complemento - Cadastro e Checkout</b></a>
+   version   : 1.0
+   vqmver    : 2.4.1
+   author    : 
+        <b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>
+    
+
+File Name    : catalog/view/theme/*/template/onecheckout/register.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <?php echo $entry_address_2; ?><br />
+----------------------------------------------------------------------
+
+
+---------- Date: 2014-12-06 18:41:33 ~ IP : ::1 ----------
+REQUEST URI : /index.php?route=onecheckout/guest/shipping
+MOD DETAILS:
+   modFile   : /Users/rafaelfranco/Sites/rbpimports/vqmod/xml/Felipo-Numero-Complemento.xml
+   id        : <a style="text-decoration:none" href="http://www.codemarket.com.br"><b  style="color:#00a99d;margin-right: 8px;">Code Market - Número e Complemento - Cadastro e Checkout</b></a>
+   version   : 1.0
+   vqmver    : 2.4.1
+   author    : 
+        <b><a style="color:#00a99d;" href="http://www.codemarket.com.br">Felipo Antonoff Araújo - codemarket.com.br</a></b>
+    
+
+File Name    : catalog/controller/onecheckout/guest.php(1)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): if (isset($this->session->data['guest']['payment']['address_1'])) {
 ----------------------------------------------------------------------
 
 
