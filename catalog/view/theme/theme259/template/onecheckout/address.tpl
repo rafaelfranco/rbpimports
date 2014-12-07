@@ -53,7 +53,7 @@
     </tr>
     <tr>
       <td><span id="<?php echo $type; ?>-postcode-required" class="required">*</span> <?php echo $entry_postcode; ?></td>
-      <td><input type="text" onkeypress="return onlyNumbers();" name="postcode" value="" class="large-field" /><br /></td>
+      <td><input type="text" maxlength="8" onkeypress="return onlyNumbers();" name="postcode" value="" class="large-field" /><br /></td>
     </tr>
     <tr>
       <td><span class="required">*</span> <?php echo $entry_country; ?></td>

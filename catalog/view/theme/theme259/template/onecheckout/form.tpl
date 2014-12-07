@@ -37,7 +37,7 @@
 	<br /> 
 	<span class="required">*</span>    
   	<span id="payment-postcode-required" class="required">*</span> <?php echo $entry_postcode; ?><br />
-  	<input type="text" name="postcode" onkeypress="return onlyNumbers();" onchange="javascript:preencheEndereco($(this).val())" value="<?php echo $postcode; ?>" class="large-field" /><br />
+  	<input type="text" name="postcode" maxlength="8" onkeypress="return onlyNumbers();" onchange="javascript:preencheEndereco($(this).val())" value="<?php echo $postcode; ?>" class="large-field" /><br />
   
   	<br />
 	<span class="required">*</span> Endereço<br />
