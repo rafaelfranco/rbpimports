@@ -1,6 +1,12 @@
 <?php if ($error_warning) { ?>
 	<div class="warning"><?php echo $error_warning; ?></div>
 <?php } ?>
+<div class="headstep">
+	<span class="old-step backto1">ENDEREÇO</span> >> 
+  	<span class="old-step backto2">ENTREGA</span> >> 
+  	<span class="current-step">PAGAMENTO</span> >> 
+  	<span class="next-step">FINALIZAÇÃO</span>
+</div>
 <?php if ($payment_methods) { ?>
 <p><?php echo $text_payment_method; ?></p>
 <div>
@@ -19,8 +25,10 @@
 </div>
 <br />
 <?php } ?>
+<div class="hidden">
 <label><?php echo $text_comments; ?></label>
 <textarea name="comment" rows="8" style="width: 98%;"><?php echo $comment; ?></textarea>
+</div>
 <?php if ($text_agree) { ?>
 <div class="buttons">
 	<label class="checkbox">
@@ -31,12 +39,14 @@
 		<input type="checkbox" name="agree" value="1" />
 		<?php } ?>
 	</label>
-	<a id="button-payment-method" class="button-cont-right fright" ><?php echo $button_continue; ?><i class="icon-circle-arrow-right"></i></a>
+	
+
+	 <a id="button-payment-method" class="button-cont-right fright" ><?php echo $button_continue; ?><i class="icon-circle-arrow-right"></i></a>
 </div>
 <?php } else { ?>
 <div class="buttons">
   <div class="right">
-	<a id="button-payment-method" class="button"><span><?php echo $button_continue; ?></span></a>
+	<a id="button-payment-method" class="button-cont-right fright" ><span style="background-image:none;padding:0px;">Continuar</span><i class="icon-circle-arrow-right"></i></a>
   </div>
 </div>
 <?php } ?>

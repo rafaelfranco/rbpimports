@@ -1,4 +1,12 @@
+<div class="headstep">
+  <span class="old-step backto1">ENDEREÇO</span> >> 
+    <span class="old-step backto2">ENTREGA</span> >> 
+    <span class="old-step backto3">PAGAMENTO</span> >> 
+    <span class="current-step">FINALIZAÇÃO</span>
+</div>
 <?php if (!isset($redirect)) { ?>
+<div class="payment"><?php echo $payment; ?></div>
+<br><br>
 <div class="checkout-product">
   <table class="table table-bordered">
     <thead>
@@ -44,9 +52,19 @@
     </tfoot>
   </table>
 </div>
-<div class="payment"><?php echo $payment; ?></div>
+
 <?php } else { ?>
 <script type="text/javascript"><!--
 location = '<?php echo $redirect; ?>';
 //--></script> 
 <?php } ?>
+<style>
+  .right {
+    text-align: center !important;
+    float: none !important;
+  }
+  .table td {
+    font-size: 12px !important;
+    text-align: left;
+  }
+</style>

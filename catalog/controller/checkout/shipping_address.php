@@ -112,6 +112,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 						
 				if (!$json) {			
 					$this->session->data['shipping_address_id'] = $this->request->post['address_id'];
+					$this->session->data['payment_address_id'] = $this->request->post['address_id'];
 					
 					// Default Shipping Address
 					$this->load->model('account/address');
@@ -174,6 +175,11 @@ class ControllerCheckoutShippingAddress extends Controller {
 					$this->session->data['shipping_country_id'] = $this->request->post['country_id'];
 					$this->session->data['shipping_zone_id'] = $this->request->post['zone_id'];
 					$this->session->data['shipping_postcode'] = $this->request->post['postcode'];
+
+					$this->session->data['payment_address_id'] = $this->model_account_address->addAddress($this->request->post);
+					$this->session->data['payment_country_id'] = $this->request->post['country_id'];
+					$this->session->data['payment_zone_id'] = $this->request->post['zone_id'];
+					$this->session->data['payment_postcode'] = $this->request->post['postcode'];
 									
 					unset($this->session->data['shipping_method']);						
 					unset($this->session->data['shipping_methods']);

@@ -1,6 +1,8 @@
 <?php 
 class ControllerCheckoutRegister extends Controller {
 	public function index() {
+
+		
 		$this->language->load('checkout/checkout');
 
 		$this->data['text_your_details'] = $this->language->get('text_your_details');
@@ -95,6 +97,7 @@ class ControllerCheckoutRegister extends Controller {
 	}
 
 	public function validate() {
+
 		$this->language->load('checkout/checkout');
 
 		$this->load->model('account/customer');
@@ -238,12 +241,12 @@ class ControllerCheckoutRegister extends Controller {
 				$this->session->data['payment_country_id'] = $this->request->post['country_id'];
 				$this->session->data['payment_zone_id'] = $this->request->post['zone_id'];
 
-				if (!empty($this->request->post['shipping_address'])) {
-					$this->session->data['shipping_address_id'] = $this->customer->getAddressId();
-					$this->session->data['shipping_country_id'] = $this->request->post['country_id'];
-					$this->session->data['shipping_zone_id'] = $this->request->post['zone_id'];
-					$this->session->data['shipping_postcode'] = $this->request->post['postcode'];					
-				}
+			
+				$this->session->data['shipping_address_id'] = $this->customer->getAddressId();
+				$this->session->data['shipping_country_id'] = $this->request->post['country_id'];
+				$this->session->data['shipping_zone_id'] = $this->request->post['zone_id'];
+				$this->session->data['shipping_postcode'] = $this->request->post['postcode'];					
+
 			} else {
 				$json['redirect'] = $this->url->link('account/success');
 			}

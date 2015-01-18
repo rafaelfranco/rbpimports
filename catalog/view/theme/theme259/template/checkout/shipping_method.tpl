@@ -1,6 +1,13 @@
 <?php if ($error_warning) { ?>
 	<div class="warning"><?php echo $error_warning; ?></div>
 <?php } ?>
+<div class="headstep">
+	<span class="old-step backto1">ENDEREÇO</span> >> 
+  	<span class="current-step">ENTREGA</span> >> 
+  	<span class="next-step">PAGAMENTO</span> >> 
+  	<span class="next-step">FINALIZAÇÃO</span>
+</div>
+
 <?php if ($shipping_methods) { ?>
 <p><?php echo $text_shipping_method; ?></p>
 	<div>
@@ -33,10 +40,11 @@
 
 <br />
 <?php } ?>
+<div class="hidden">
 <label><?php echo $text_comments; ?></label>
 <textarea name="comment" rows="8" style="width: 98%;"><?php echo $comment; ?></textarea>
-<br />
-<br />
+</div>
+
 <div class="buttons">
   <div class="right">
 	<a id="button-shipping-method" class="button-cont-right fright" ><?php echo $button_continue; ?><i class="icon-circle-arrow-right"></i></a>

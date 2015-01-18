@@ -6,13 +6,13 @@ $order_info  = $this->model_checkout_order->getOrder($this->session->data['order
 $valor_total = number_format($order_info['total'],2);
 $valor_total = str_replace(".","",$valor_total);
 ?>
-<div class="checkout-heading"><?php echo $text_barra; ?> </div>
+
 <div class="content" id="payment">
     <form id="pag" action="" method="POST">
-    <table class="form">
-    <tr>
-      <td><b>Escolha o cartão a ser usado</b></td>
-      <td>
+    <table class="form" cellpadding="5" cellspace="5">
+    <tr >
+      <td style="text-align:left;"><b>Escolha o cartão a ser usado</b></td>
+      <td style="text-align:left;">
             <div style="width:330px;text-align:left;position:relative">
                 <? if ($this->config->get('entry_cartao_visae') == 1) { ?>
                 <span class="cartao" style="">
@@ -60,25 +60,25 @@ $valor_total = str_replace(".","",$valor_total);
             </div>
       </td>
     </tr>
-        <tr>
-      <td><b><?php echo $entry_cc_number; ?></b></td>
-      <td>
+        <tr style="background-color:#fcfcfc;">
+      <td style="text-align:left;"><b><?php echo $entry_cc_number; ?></b></td>
+      <td style="text-align:left;">
           <div class="bg-input">
             <input type="text" name="cc_number" value="" style="width: 260px" />
           </div>  
       </td>
     </tr>
     <tr>
-      <td><b><?php echo $entry_cc_owner; ?></b></td>
-      <td>
+      <td style="text-align:left;"><b><?php echo $entry_cc_owner; ?></b></td>
+      <td style="text-align:left;">
           <div class="bg-input">
             <input type="text" name="cc_owner" value="" style="width: 260px" />
           </div>
       </td>
     </tr>
-    <tr class="card_date">
-      <td><b><?php echo $entry_cc_expire_date; ?></b></td>
-      <td><select name="cc_expire_date_month" class="selecto">
+    <tr style="background-color:#fcfcfc;" class="card_date">
+      <td style="text-align:left;"><b><?php echo $entry_cc_expire_date; ?></b></td>
+      <td style="text-align:left;"><select name="cc_expire_date_month" class="selecto">
           <?php foreach ($months as $month) { ?>
           <option value="<?php echo $month['value']; ?>"><?php echo $month['text']; ?></option>
           <?php } ?>
@@ -91,23 +91,23 @@ $valor_total = str_replace(".","",$valor_total);
         </select></td>
     </tr>
     <tr>
-      <td><b><?php echo $entry_cc_cvv2; ?></b></td>
-      <td>
+      <td style="text-align:left;"><b><?php echo $entry_cc_cvv2; ?></b></td>
+      <td style="text-align:left;">
           <div class="bg-input txt_cod">
             <input type="text" name="cc_cvv2" value="" size="3" /> 
             <a href="javascript:$('#cvvpng').show();">Tem dúvidas?</a><img id="cvvpng" style="display:none;" src="/cvv.png">
           </div>
       </td>
     </tr>
-    <tr>
-        <td><b>Parcelas</b></td>
-        <td id="parcelas">Selecione um cartão de crédito primeiro.<td>
+    <tr style="background-color:#fcfcfc;">
+        <td style="text-align:left;"><b>Parcelas</b></td>
+        <td style="text-align:left;" id="parcelas">Selecione um cartão de crédito primeiro.<td style="text-align:left;">
     </tr>
   </table>
   </form>
 </div>
 <div class="buttons">
-  <div class="right">
+  <div class="">
     <input type="button" value="<?php echo $button_confirm; ?>" id="button-confirm" class="button" />
   </div>
 </div>
@@ -219,5 +219,16 @@ $('#button-confirm').bind('click', function() {
         text-align: center;
         display: inline-block;
         margin-bottom: 15px;
+    }
+    .button {
+        color:#fff !important;
+        padding:5px !important;
+        background-color:#282d8b !important;
+        font-size: 14px !important;
+        color: #FFF !important;
+        border-radius: 5px !important;
+        border: 0px;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
     }
 </style>

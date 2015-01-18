@@ -98,7 +98,15 @@
              }
         });
 	});
-});</script><?php if ($addresses) { ?>
+});</script>
+<div class="headstep">
+	<span class="current-step">ENDEREÇO</span> >> 
+  	<span class="next-step">ENTREGA</span> >> 
+  	<span class="next-step">PAGAMENTO</span> >> 
+  	<span class="next-step">FINALIZAÇÃO</span>
+</div>
+
+<?php if ($addresses) { ?>
 <label class="radio" for="shipping-address-existing"><?php echo $text_address_existing; ?>
 		<input type="radio" name="shipping_address" value="existing" id="shipping-address-existing" checked="checked" />
 </label>

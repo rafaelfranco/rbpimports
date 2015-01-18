@@ -4030,3 +4030,35 @@ input#button-comprar-agora.button{
 	border:0px;
 	background-color: rgb(75, 167, 61);
 }
+.hidden {
+	display: none;
+}
+.checkout-heading {
+	text-align:center;
+}
+
+.current-step {
+	color: rgb(40, 45, 139);
+}
+.next-step {
+	color: rgb(169, 169, 169);
+}
+.old-step {
+	cursor: pointer;
+}
+.headstep{
+	background-color: #fcfcfc;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: solid 1px #ccc;
+	border-left: solid 5px #ccc;
+	text-align: center;
+	font-weight: bold;
+	color: #ccc;
+}
+.payment {
+	text-align: center;
+}
+.checkout {
+	border:0px !important;
+}
