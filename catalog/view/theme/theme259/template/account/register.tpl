@@ -417,8 +417,15 @@ $('select[name=\'country_id\']').trigger('change');
 <script type="text/javascript"><!--
 $(document).ready(function() {
 	$('.colorbox').fancybox({
-		
 	});
 });
-//--></script> 
+//-->
+
+jQuery(document).ready(function($) {
+  	$('input[name=postcode]').attr('maxlength',9);
+   	$('input[name=postcode]').mask("99999-999");
+});
+</script> 
+
+
 <?php echo $footer; ?>
