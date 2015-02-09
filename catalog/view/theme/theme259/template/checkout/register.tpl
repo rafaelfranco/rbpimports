@@ -1,5 +1,10 @@
 <script>
   jQuery(document).ready(function($) {
+  
+  $('input[name=postcode]').attr('maxlength',9);
+  
+  $('input[name=postcode]').mask("99999-999");
+
   $('input[name=postcode]').change(function() {
     $.ajax({
             url: '/index.php?route=module/cep',

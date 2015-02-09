@@ -52,6 +52,8 @@
 
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
+<script src="catalog/view/javascript/jquery/jquery.maskedinput.js" type="text/javascript"></script>
+
 <link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
 <script type="text/javascript" src="catalog/view/javascript/jquery/ui/external/jquery.cookie.js"></script>
 <script type="text/javascript" src="catalog/view/theme/<?php echo $this->config->get('config_template');?>/js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
