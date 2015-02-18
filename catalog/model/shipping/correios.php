@@ -258,7 +258,6 @@ class ModelShippingCorreios extends Model {
 			}
 			// grava no log de erros do OpenCart a mensagem de erro retornado pelos Correios
 			else{
-				echo $this->correios[$servico['Codigo']].': '.$servico['MsgErro'].'<br>';
 				$this->log->write($this->correios[$servico['Codigo']].': '.$servico['MsgErro']);
 			}
 		}
