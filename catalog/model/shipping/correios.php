@@ -219,7 +219,7 @@ class ModelShippingCorreios extends Model {
 		$total_caixa = ($total_caixa > $this->valor_max) ? $this->valor_max : $total_caixa;
 		
 		list($weight, $height, $width, $length) = $this->ajustarDimensoes($caixa);
-		
+	
 		// fazendo a chamada ao site dos Correios e obtendo os dados
 		$servicos = $this->getServicos($weight, $total_caixa, $length, $width, $height);
 	
@@ -258,6 +258,7 @@ class ModelShippingCorreios extends Model {
 			}
 			// grava no log de erros do OpenCart a mensagem de erro retornado pelos Correios
 			else{
+				echo $this->correios[$servico['Codigo']].': '.$servico['MsgErro'].'<br>';
 				$this->log->write($this->correios[$servico['Codigo']].': '.$servico['MsgErro']);
 			}
 		}
@@ -353,7 +354,7 @@ class ModelShippingCorreios extends Model {
 						"MsgErro" => $servico->getElementsByTagName('MsgErro')->item(0)->nodeValue,
 						"ValorMaoPropria" => (isset($servico->getElementsByTagName('ValorMaoPropria')->item(0)->nodeValue)) ? str_replace(',', '.', $servico->getElementsByTagName('ValorMaoPropria')->item(0)->nodeValue) : 0,
 						"ValorAvisoRecebimento" => (isset($servico->getElementsByTagName('ValorAvisoRecebimento')->item(0)->nodeValue)) ? str_replace(',', '.', $servico->getElementsByTagName('ValorAvisoRecebimento')->item(0)->nodeValue) : 0,
-						"ValorValorDeclarado" => (isset($servico->getElementsByTagName('ValorValorDeclarado')->item(0)->nodeValue)) ? str_replace(',', '.', $servico->getElementsByTagName('ValorValorDeclarado')->item(0)->nodeValue) : 0
+						"ValorValorDeclarado" =>  0
 					);
 				}
 			}
