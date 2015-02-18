@@ -4,6 +4,9 @@
   $('input[name=postcode]').attr('maxlength',9);
   
   $('input[name=postcode]').mask("99999-999");
+  $('input[name=tax_id]').mask("999.999.999-99");
+  $('input[name=tax_id]').attr('maxlength',14);
+
 
   $('input[name=postcode]').change(function() {
     $.ajax({
