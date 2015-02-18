@@ -1,7 +1,7 @@
 <?php
 class ModelShippingCorreios extends Model {
 	
-	private $valor_max = 10000; 	// máximo valor declarado, em reais
+	private $valor_max = 100000000; 	// máximo valor declarado, em reais
 	
 	private $altura_max = 105; 		// todas as medidas em cm
 	private $largura_max = 105;
