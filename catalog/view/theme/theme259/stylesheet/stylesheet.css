@@ -4062,3 +4062,10 @@ input#button-comprar-agora.button{
 .checkout {
 	border:0px !important;
 }
+#ceperro {
+	display: inline-block;
+	color:red;
+	font-size: 12px;
+	padding: 0px;
+	margin-top: -15px;
+}
