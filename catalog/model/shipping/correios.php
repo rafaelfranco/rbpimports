@@ -222,7 +222,9 @@ class ModelShippingCorreios extends Model {
 	
 		// fazendo a chamada ao site dos Correios e obtendo os dados
 		$servicos = $this->getServicos($weight, $total_caixa, $length, $width, $height);
-	
+
+
+
 		foreach ($servicos as $servico) {
 
 			// o site dos Correios retornou os dados sem erros.
@@ -258,6 +260,12 @@ class ModelShippingCorreios extends Model {
 			}
 			// grava no log de erros do OpenCart a mensagem de erro retornado pelos Correios
 			else{
+
+				
+
+
+				echo $this->correios[$servico['Codigo']].': '.$servico['MsgErro'].'<br>';
+
 				$this->log->write($this->correios[$servico['Codigo']].': '.$servico['MsgErro']);
 			}
 		}
@@ -316,7 +324,7 @@ class ModelShippingCorreios extends Model {
 		$peso 		= str_replace('.', ',', $peso);
 		
 		$valor 		= str_replace('.', ',', $valor);
-		$valor 		= number_format((float)$valor, 2, ',' , '.');
+		
 		
 		$comp 		= str_replace('.', ',', $comp);
 		$larg 		= str_replace('.', ',', $larg);
