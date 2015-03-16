@@ -264,7 +264,7 @@ class ModelShippingCorreios extends Model {
 				
 
 
-				echo $this->correios[$servico['Codigo']].': '.$servico['MsgErro'].'<br>';
+#				echo $this->correios[$servico['Codigo']].': '.$servico['MsgErro'].'<br>';
 
 				$this->log->write($this->correios[$servico['Codigo']].': '.$servico['MsgErro']);
 			}
