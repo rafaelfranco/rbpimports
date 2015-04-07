@@ -4069,3 +4069,6 @@ input#button-comprar-agora.button{
 	padding: 0px;
 	margin-top: -15px;
 }
+div#content.span9 {
+	width: 98%;
+}
