@@ -86,7 +86,7 @@
 			<tr>
 				<td>
 					<div class="control-group">
-						<label class="control-label" for="fax">Data de Nascimento</label>
+						<label class="control-label" for="fax">Data de Nascimento:</label>
 						<div class="controls">
 							<input class="q1" type="text" name="birthday" value="<?php echo $birthday; ?>" />
 						</div>
