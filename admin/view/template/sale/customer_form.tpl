@@ -63,6 +63,10 @@
                 <td><input type="text" name="fax" value="<?php echo $fax; ?>" /></td>
               </tr>
               <tr>
+                <td>Data de nascimento:</td>
+                <td><input type="text" name="birthday" value="<?php echo $birthday; ?>" /></td>
+              </tr>
+              <tr>
                 <td><?php echo $entry_password; ?></td>
                 <td><input type="password" name="password" value="<?php echo $password; ?>"  />
                   <?php if ($error_password) { ?>

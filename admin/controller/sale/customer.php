@@ -852,6 +852,16 @@ class ControllerSaleCustomer extends Controller {
 			$this->data['fax'] = '';
 		}
 
+		if (isset($this->request->post['birthday'])) {
+			$this->data['birthday'] = $this->request->post['birthday'];
+		} elseif (!empty($customer_info)) {
+			$this->data['birthday'] = $customer_info['birthday'];
+		} else {
+			$this->data['birthday'] = '';
+		}
+
+		
+
 		if (isset($this->request->post['newsletter'])) {
 			$this->data['newsletter'] = $this->request->post['newsletter'];
 		} elseif (!empty($customer_info)) {
