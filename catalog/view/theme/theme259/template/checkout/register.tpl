@@ -50,7 +50,10 @@
   <input type="text" name="fax" value="" class="large-field" />
   <br />
   <br />
-  
+  Data de nascimento<br />
+  <input type="text" name="birthday" value="" class="large-field" />
+  <br />
+  <br />
   <span class="required">*</span> <?php echo $entry_password; ?><br />
   <input type="password" name="password" value="" class="large-field" />
   <br />
